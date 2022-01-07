@@ -1,5 +1,5 @@
 import React from 'react'
-import { url_center } from '../../functions/pageUrls'
+import { url_center, url_course } from '../../functions/pageUrls'
 import HqCard from './HqCard'
 
 const HqMain = () => {
@@ -7,7 +7,7 @@ const HqMain = () => {
         <div className='mt-10'>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <HqCard title="Center Management" link={url_center} />
-                <HqCard title="Course Management" />
+                <HqCard title="Course Management" link={url_course} />
                 <HqCard title="KPI Settings" />
                 <HqCard title="Reports" />
                 <HqCard title="Package Management" />

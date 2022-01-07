@@ -8,7 +8,8 @@ import HqMain from './pages/hqMain'
 import Center from './pages/center'
 import Student from './pages/student'
 import Register from './components/pages/student/Register';
-import { url_center, url_editStudent, url_hq, url_login, url_registerStudent, url_student } from './components/functions/pageUrls';
+import Course from './pages/course'
+import { url_center, url_course, url_editStudent, url_hq, url_login, url_registerStudent, url_student } from './components/functions/pageUrls';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path={url_student} element={<Student />} />
           <Route path={url_registerStudent} element={<Register />} />
           <Route path={url_editStudent} element={<Register />} />
+          <Route path={url_course} element={<Course />} />
         </Routes>
       </Container>
     </div>
