@@ -16,17 +16,17 @@ const Center = () => {
     return (
         <div className='mt-10'>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <CenterCard title="Student" icon={<PeopleIcon fontSize='inherit' />} link={url_student} />
-                <CenterCard title="Course" icon={<MenuBookIcon fontSize='inherit' />} />
-                <CenterCard title="Attendence" icon={<FactCheckIcon fontSize='inherit' />} />
-                <CenterCard title="Request HQ" icon={<LocalShippingIcon fontSize='inherit' />} />
-                <CenterCard title="Student Pay" icon={<LocalAtmIcon fontSize='inherit' />} />
-                <CenterCard title="Pay HQ" icon={<LocalAtmIcon fontSize='inherit' />} />
-                <CenterCard title="Report" icon={<AssessmentIcon fontSize='inherit' />} />
-                <CenterCard title="Help Support" icon={<SupportAgentIcon fontSize='inherit' />} />
-                <CenterCard title="User Settings" icon={<SettingsIcon fontSize='inherit' />} />
-                <CenterCard title="Enquiry" icon={<EmailIcon fontSize='inherit' />} />
-                <CenterCard title="Issue To Student" icon={<LocalLibraryIcon fontSize='inherit' />} />
+                <CenterCard title="Student" image='StudentsManagement.png' link={url_student} width={80} />
+                <CenterCard title="Course" image='Course.png' />
+                <CenterCard title="Attendence" image='Attendance.png' />
+                <CenterCard title="Request HQ" image="RequestHq.png" />
+                <CenterCard title="Student Pay" image="Payment.png" />
+                <CenterCard title="Pay HQ" image="Received.png" />
+                <CenterCard title="Report" image="Report.png" />
+                <CenterCard title="Help Support" image="HelpSupport.png" width={48} />
+                <CenterCard title="User Settings" image="Settings.png" />
+                <CenterCard title="Enquiry" image="Enquiries.png" />
+                <CenterCard title="Issue To Student" image="IssuanceToStudents.png" width={48} />
             </div>
         </div>
     )
