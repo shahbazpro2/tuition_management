@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { url_registerStudent } from '../../functions/pageUrls';
 import StudentList from './StudentList';
 import { Button, Modal, TextField } from '@mui/material';
+import Add from '../../common/Add';
 
 
 const Student = () => {
@@ -11,10 +12,7 @@ const Student = () => {
     const [open, setOpen] = useState(false)
     return (
         <div className='mt-7'>
-            <div className="flex space-x-1 items-center text-xl font-bold cursor-pointer" onClick={() => navigate(url_registerStudent)}>
-                <AddIcon fontSize="inherit" />
-                <div >Register Student</div>
-            </div>
+            <Add title="Register Student" link={url_registerStudent} />
             <div className="mt-10">
                 <StudentList setOpen={setOpen} />
             </div>

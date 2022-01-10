@@ -1,16 +1,6 @@
 import React from 'react'
 import CenterCard from './CenterCard'
-import PeopleIcon from '@mui/icons-material/People';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import FactCheckIcon from '@mui/icons-material/FactCheck';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import LocalAtmIcon from '@mui/icons-material/LocalAtm';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import SettingsIcon from '@mui/icons-material/Settings';
-import EmailIcon from '@mui/icons-material/Email';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import { url_student } from '../../functions/pageUrls';
+import { url_attendence, url_student } from '../../functions/pageUrls';
 
 const Center = () => {
     return (
@@ -18,7 +8,7 @@ const Center = () => {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <CenterCard title="Student" image='StudentsManagement.png' link={url_student} width={80} />
                 <CenterCard title="Course" image='Course.png' />
-                <CenterCard title="Attendence" image='Attendance.png' />
+                <CenterCard title="Attendence" image='Attendance.png' link={url_attendence} />
                 <CenterCard title="Request HQ" image="RequestHq.png" />
                 <CenterCard title="Student Pay" image="Payment.png" />
                 <CenterCard title="Pay HQ" image="Received.png" />

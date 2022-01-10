@@ -9,9 +9,10 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editStudent, url_registerStudent } from '../../functions/pageUrls';
+import CustomTable from '../../common/CustomTable';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createData(id, name) {
+    return { id, name };
 }
 
 const rows = [
@@ -26,7 +27,8 @@ const StudentList = ({ setOpen }) => {
     const navigate = useNavigate()
     return (
         <div>
-            <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+            <CustomTable rows={rows} head={['Id', 'Name', '']} onEdit={(e) => console.log('edit', e)} onStop={(e) => console.log(e)} />
+            {/*  <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
@@ -55,7 +57,7 @@ const StudentList = ({ setOpen }) => {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
+            </TableContainer> */}
         </div>
     )
 }
