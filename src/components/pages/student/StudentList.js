@@ -27,7 +27,7 @@ const StudentList = ({ setOpen }) => {
     const navigate = useNavigate()
     return (
         <div>
-            <CustomTable rows={rows} head={['Id', 'Name', '']} onEdit={(e) => console.log('edit', e)} onStop={(e) => console.log(e)} />
+            <CustomTable rows={rows} head={['Id', 'Name', '']} onEdit={(e) => navigate(url_editStudent)} onStop={(e) => setOpen(true)} />
             {/*  <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
