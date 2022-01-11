@@ -31,6 +31,29 @@ const AttendenceTable = () => {
                                     variant="outlined"
                                     multiline
                                     rows={1}
+                                    fullWidth
+
+                                />
+                            </TableCell>
+
+
+                        </TableRow>
+                        <TableRow
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+
+                            <TableCell>
+                                <CheckBox />
+                            </TableCell>
+                            <TableCell>
+                                Ahmed
+                            </TableCell>
+                            <TableCell>
+                                <TextField
+                                    variant="outlined"
+                                    multiline
+                                    rows={1}
+                                    fullWidth
 
                                 />
                             </TableCell>
