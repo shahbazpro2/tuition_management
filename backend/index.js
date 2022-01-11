@@ -10,13 +10,13 @@ const app = express()
 const port = process.env.PORT || 5000
 const buildPath = path.join(__dirname, '..', 'build')
 app.use(express.static(buildPath))
-app.use(recordRoutes);
+/* app.use(recordRoutes);
 dbo.connectToServer(function (err) {
     if (err) {
         console.error(err);
-        process.exit();
+        //process.exit();
     }
-})
+}) */
 
 
 
