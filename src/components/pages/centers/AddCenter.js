@@ -2,7 +2,7 @@ import React from 'react';
 import CenterInput from './CenterInput';
 
 const AddCenter = () => {
-    return <div className='mt-10'>
+    return <div className='my-10'>
         <div className="text-2xl text-center font-bold">Add Center</div>
         <div className="mt-10">
             <div className="grid grid-cols-6">
