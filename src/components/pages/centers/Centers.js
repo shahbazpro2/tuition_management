@@ -1,8 +1,8 @@
 import React from 'react'
-import AddIcon from '@mui/icons-material/Add';
 import Add from '../../common/Add';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { url_addCenter } from '../../functions/pageUrls';
+import { url_addCenter, url_editCenter } from '../../functions/pageUrls';
+import { useNavigate } from 'react-router-dom';
 
 function createData(id, name, location, pic, status) {
     return { id, name, location, pic, status };
@@ -17,6 +17,7 @@ const rows = [
 
 
 const Centers = () => {
+    const navigate = useNavigate()
     return (
         <div className='mt-10'>
             <Add title="Add Center" link={url_addCenter} />
@@ -47,7 +48,10 @@ const Centers = () => {
                                     <TableCell align="left"  >{row.pic}</TableCell>
                                     <TableCell align="left"  >{row.status}</TableCell>
                                     <TableCell align="left">
-                                        <Button variant="contained" color="success">Edit</Button>
+                                        <div className="flex space-x-3 justify-end">
+                                            <Button variant="contained" color="success" onClick={() => navigate(url_editCenter)}>Edit</Button>
+                                            <Button variant="contained" color="error">Delete</Button>
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             ))}
