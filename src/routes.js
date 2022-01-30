@@ -1,5 +1,5 @@
-import { url_addCenter, url_attendence, url_centers, url_course, url_editCenter, url_editStudent, url_hq, url_login, url_registerStudent, url_student } from './components/functions/pageUrls'
-import { Login, HqMain, Centers, AddCenter, EditCenter, Student, RegisterStudent, Course, Attendence } from './pages'
+import { url_addCenter, url_addCourse, url_attendence, url_centers, url_courses, url_editCenter, url_editCourse, url_editStudent, url_hq, url_login, url_registerStudent, url_student } from './components/functions/pageUrls'
+import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Student, RegisterStudent, Attendence } from './pages'
 export const routes = [
     { element: <Login />, path: '/' },
     { element: <Login />, path: url_login },
@@ -7,9 +7,11 @@ export const routes = [
     { element: <Centers />, path: url_centers },
     { element: <AddCenter />, path: url_addCenter },
     { element: <EditCenter />, path: url_editCenter },
+    { element: <Courses />, path: url_courses },
+    { element: <AddCourse />, path: url_addCourse },
+    { element: <EditCourse />, path: url_editCourse },
     { element: <Student />, path: url_student },
     { element: <RegisterStudent />, path: url_registerStudent },
     { element: <RegisterStudent />, path: url_editStudent },
-    { element: <Course />, path: url_course },
     { element: <Attendence />, path: url_attendence },
 ]

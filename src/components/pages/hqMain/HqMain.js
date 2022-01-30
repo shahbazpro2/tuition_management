@@ -1,13 +1,13 @@
 import React from 'react'
 import ImageCard from '../../common/ImageCard'
-import { url_attendence, url_centers, url_course } from '../../functions/pageUrls'
+import { url_attendence, url_centers, url_courses } from '../../functions/pageUrls'
 
 const HqMain = () => {
     return (
         <div className='mt-10'>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <ImageCard title="Centers" image="CentreManagement.png" link={url_centers} />
-                <ImageCard title="Courses" image="Course.png" link={url_course} />
+                <ImageCard title="Courses" image="Course.png" link={url_courses} />
                 <ImageCard title="Center's KPI" image="KPI.png" width={60} />
                 <ImageCard title="Packages" image="PackageManagement.png" />
                 <ImageCard title="Inventories" image="Inventories.png" />
