@@ -9,6 +9,6 @@ html{
 .rltb-0{
     @apply right-0 bottom-0 top-0 left-0;
   }
-  .m-rltb-auto{
-    @apply mt-auto ml-auto mb-auto mr-auto;
-  }
+.m-rltb-auto{
+  @apply mt-auto ml-auto mb-auto mr-auto;
+}
