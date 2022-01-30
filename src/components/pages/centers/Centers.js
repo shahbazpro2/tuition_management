@@ -2,6 +2,7 @@ import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import Add from '../../common/Add';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { url_addCenter } from '../../functions/pageUrls';
 
 function createData(id, name, location, pic, status) {
     return { id, name, location, pic, status };
@@ -15,10 +16,10 @@ const rows = [
 ];
 
 
-const Center = () => {
+const Centers = () => {
     return (
         <div className='mt-10'>
-            <Add title="Add Center" />
+            <Add title="Add Center" link={url_addCenter} />
             <div className="mt-5">
                 <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
                     <Table stickyHeader sx={{ minWidth: 650 }}>
@@ -58,4 +59,4 @@ const Center = () => {
     )
 }
 
-export default Center
+export default Centers
