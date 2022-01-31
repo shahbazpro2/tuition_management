@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { url_editCourse } from '../../functions/pageUrls'
+import { url_editCourse, url_viewCourse } from '../../functions/pageUrls'
 
 
 function createData(type, language, description, status) {
@@ -53,7 +53,7 @@ const CoursesList = () => {
                                 <TableCell align="left"  >{row.language}</TableCell>
                                 <TableCell align="left"  >{row.description}</TableCell>
                                 <TableCell align="left"  >{row.status}</TableCell>
-                                <TableCell align="left"  ><PlayArrowIcon /></TableCell>
+                                <TableCell align="left"  ><PlayArrowIcon onClick={() => navigate(url_viewCourse)} sx={{ cursor: 'pointer' }} /></TableCell>
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
                                         <Button variant="contained" color="success" onClick={() => navigate(url_editCourse)}>Edit</Button>

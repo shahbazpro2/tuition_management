@@ -8,7 +8,7 @@ import { url_addCourse } from '../../functions/pageUrls';
 const Courses = () => {
     const navigate = useNavigate()
     return (
-        <div className='mt-7'>
+        <div className='my-7'>
             <div className="flex space-x-1 items-center text-xl font-bold" >
                 <AddIcon fontSize="inherit" />
                 <div className='cursor-pointer' onClick={() => navigate(url_addCourse)}>Add Course</div>

@@ -12,3 +12,7 @@ html{
 .m-rltb-auto{
   @apply mt-auto ml-auto mb-auto mr-auto;
 }
+.swiper {
+  width: 600px;
+  height: 300px;
+}
