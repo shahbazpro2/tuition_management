@@ -7,8 +7,15 @@ import Courses from './courses'
 import AddCourse from '../components/pages/courses/AddCourse';
 import EditCourse from '../components/pages/courses/EditCourse';
 import ViewCourse from '../components/pages/courses/ViewCourse';
+import CenterKpi from '../components/pages/centerKpi/CenterKpi';
+import Packages from '../components/pages/packages/Packages';
+import AddPackage from '../components/pages/packages/AddPackage';
+import EditPackage from '../components/pages/packages/EditPackage';
+import Discounts from '../components/pages/packages/discounts/Discounts';
+import AddDiscount from '../components/pages/packages/discounts/AddDiscount';
+import EditDiscount from '../components/pages/packages/discounts/EditDiscount';
 import Student from './student'
 import RegisterStudent from '../components/pages/student/Register';
 import Attendence from './attendence';
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, Student, RegisterStudent, Attendence }
+export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Student, RegisterStudent, Attendence }

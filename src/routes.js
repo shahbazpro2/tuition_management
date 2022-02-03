@@ -1,5 +1,5 @@
-import { url_addCenter, url_addCourse, url_attendence, url_centers, url_courses, url_editCenter, url_editCourse, url_editStudent, url_hq, url_login, url_registerStudent, url_student, url_viewCourse } from './components/functions/pageUrls'
-import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Student, RegisterStudent, Attendence, ViewCourse } from './pages'
+import { url_addCenter, url_addCourse, url_addDiscount, url_addPackage, url_attendence, url_centerKpi, url_centers, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editPackage, url_editStudent, url_hq, url_login, url_packages, url_registerStudent, url_student, url_viewCourse } from './components/functions/pageUrls'
+import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Student, RegisterStudent, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount } from './pages'
 export const routes = [
     { element: <Login />, path: '/' },
     { element: <Login />, path: url_login },
@@ -11,6 +11,13 @@ export const routes = [
     { element: <AddCourse />, path: url_addCourse },
     { element: <EditCourse />, path: url_editCourse },
     { element: <ViewCourse />, path: url_viewCourse },
+    { element: <CenterKpi />, path: url_centerKpi },
+    { element: <Packages />, path: url_packages },
+    { element: <AddPackage />, path: url_addPackage },
+    { element: <EditPackage />, path: url_editPackage },
+    { element: <Discounts />, path: url_dicounts },
+    { element: <AddDiscount />, path: url_addDiscount },
+    { element: <EditDiscount />, path: url_editDiscount },
     { element: <Student />, path: url_student },
     { element: <RegisterStudent />, path: url_registerStudent },
     { element: <RegisterStudent />, path: url_editStudent },

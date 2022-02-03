@@ -7,7 +7,7 @@ const ImageCard = ({ title, image, width, link }) => {
     const navigate = useNavigate()
     return (
         <div>
-            <Card className="cursor-pointer" onClick={() => navigate(link)} sx={{ background: '#f9c8ff', height: '130px' }}>
+            <Card variant="outlined" className="cursor-pointer" onClick={() => navigate(link)} sx={{ height: '130px' }}>
                 <CardContent className='text-center flex items-center justify-center h-full'>
                     <div>
                         <div className="flex justify-center">
