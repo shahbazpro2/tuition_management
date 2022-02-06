@@ -14,8 +14,11 @@ import EditPackage from '../components/pages/packages/EditPackage';
 import Discounts from '../components/pages/packages/discounts/Discounts';
 import AddDiscount from '../components/pages/packages/discounts/AddDiscount';
 import EditDiscount from '../components/pages/packages/discounts/EditDiscount';
+import Others from '../components/pages/packages/others/Others';
+import AddOthers from '../components/pages/packages/others/AddOthers'
+import EditOthers from '../components/pages/packages/others/EditOthers'
 import Student from './student'
 import RegisterStudent from '../components/pages/student/Register';
 import Attendence from './attendence';
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Student, RegisterStudent, Attendence }
+export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Student, RegisterStudent, Attendence }

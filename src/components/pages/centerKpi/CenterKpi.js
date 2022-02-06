@@ -19,7 +19,7 @@ const rows = [
 
 const CenterKpi = () => {
     const navigate = useNavigate()
-    return <div className='my-7'>
+    return <div className='content'>
         <div className="text-xl font-bold mb-5">Center's Kpi</div>
         <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
             <Table stickyHeader sx={{ minWidth: 650 }}>

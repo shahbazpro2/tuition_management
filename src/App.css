@@ -16,3 +16,7 @@ html{
   width: 600px;
   height: 300px;
 }
+
+.content{
+  @apply my-7;
+}

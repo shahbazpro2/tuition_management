@@ -19,7 +19,7 @@ const rows = [
 const Centers = () => {
     const navigate = useNavigate()
     return (
-        <div className='mt-10'>
+        <div className='content'>
             <Add title="Add Center" link={url_addCenter} />
             <div className="mt-5">
                 <TableContainer component={Paper} sx={{ maxHeight: 440 }}>

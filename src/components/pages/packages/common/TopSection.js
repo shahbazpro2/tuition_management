@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Add from '../../../common/Add';
-import { url_dicounts, url_packages } from '../../../functions/pageUrls';
+import { url_dicounts, url_packageOthers, url_packages } from '../../../functions/pageUrls';
 
 const TopSection = ({ title, url, active }) => {
     const navigate = useNavigate()
@@ -18,7 +18,7 @@ const TopSection = ({ title, url, active }) => {
                 <div className="text-lg">Type</div>
                 <Button variant={`${active === 'packages' ? 'contained' : 'outlined'}`} onClick={() => navigate(url_packages)}>Packages</Button>
                 <Button variant={`${active === 'discounts' ? 'contained' : 'outlined'}`} onClick={() => navigate(url_dicounts)}>Discounts</Button>
-                <Button variant={`${active === 'others' ? 'contained' : 'outlined'}`}>Others</Button>
+                <Button variant={`${active === 'others' ? 'contained' : 'outlined'}`} onClick={() => navigate(url_packageOthers)}>Others</Button>
             </div>
         </div>
     </div>
