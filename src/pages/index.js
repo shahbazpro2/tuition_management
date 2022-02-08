@@ -18,8 +18,10 @@ import Others from '../components/pages/packages/others/Others';
 import AddOthers from '../components/pages/packages/others/AddOthers'
 import EditOthers from '../components/pages/packages/others/EditOthers'
 import Inventories from '../components/pages/inventories/Inventories';
+import AddInventory from '../components/pages/inventories/AddInventory';
+import EditInventory from '../components/pages/inventories/EditInventory'
 import Student from './student'
 import RegisterStudent from '../components/pages/student/Register';
 import Attendence from './attendence';
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, Student, RegisterStudent, Attendence }
+export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, Student, RegisterStudent, Attendence }
