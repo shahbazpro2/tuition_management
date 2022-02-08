@@ -1,5 +1,5 @@
-import { url_addCenter, url_addCourse, url_addDiscount, url_addInventory, url_addPackage, url_attendence, url_centerKpi, url_centers, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editInventory, url_editPackage, url_editStudent, url_hq, url_inventories, url_login, url_packageAddOthers, url_packageEditOthers, url_packageOthers, url_packages, url_registerStudent, url_student, url_viewCourse } from './components/functions/pageUrls'
-import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Student, RegisterStudent, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory } from './pages'
+import { url_addCenter, url_addCourse, url_addDiscount, url_addInventory, url_addPackage, url_attendence, url_centerInvoice, url_centerInvoicing, url_centerKpi, url_centers, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editInventory, url_editPackage, url_editStudent, url_hq, url_inventories, url_login, url_packageAddOthers, url_packageEditOthers, url_packageOthers, url_packages, url_registerStudent, url_student, url_studentInvoice, url_studentInvoicing, url_viewCourse } from './components/functions/pageUrls'
+import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Student, RegisterStudent, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice } from './pages'
 export const routes = [
     { element: <Login />, path: '/' },
     { element: <Login />, path: url_login },
@@ -24,6 +24,12 @@ export const routes = [
     { element: <Inventories />, path: url_inventories },
     { element: <AddInventory />, path: url_addInventory },
     { element: <EditInventory />, path: url_editInventory },
+    { element: <StudentInvoicing />, path: url_studentInvoicing },
+    { element: <StudentInvoice />, path: url_studentInvoice },
+    { element: <CenterInvoicing />, path: url_centerInvoicing },
+    { element: <CenterInvoice />, path: url_centerInvoice },
+
+
     { element: <Student />, path: url_student },
     { element: <RegisterStudent />, path: url_registerStudent },
     { element: <RegisterStudent />, path: url_editStudent },

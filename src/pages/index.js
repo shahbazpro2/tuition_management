@@ -20,8 +20,12 @@ import EditOthers from '../components/pages/packages/others/EditOthers'
 import Inventories from '../components/pages/inventories/Inventories';
 import AddInventory from '../components/pages/inventories/AddInventory';
 import EditInventory from '../components/pages/inventories/EditInventory'
+import StudentInvoicing from '../components/pages/invoicing/student/StudentInvoicing';
+import StudentInvoice from '../components/pages/invoicing/student/StudentInvoice';
+import CenterInvoicing from '../components/pages/invoicing/center/CenterInvoicing';
+import CenterInvoice from '../components/pages/invoicing/center/CenterInvoice';
 import Student from './student'
 import RegisterStudent from '../components/pages/student/Register';
 import Attendence from './attendence';
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, Student, RegisterStudent, Attendence }
+export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Student, RegisterStudent, Attendence }
