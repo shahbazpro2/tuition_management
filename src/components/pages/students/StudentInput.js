@@ -3,7 +3,7 @@ import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { url_editStudent } from '../../functions/pageUrls';
 
-const Register = () => {
+const StudentInput = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const update = location.pathname === url_editStudent
@@ -69,4 +69,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default StudentInput
