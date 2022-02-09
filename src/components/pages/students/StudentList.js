@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { url_editCourse } from '../../functions/pageUrls'
+import { url_editCourse, url_editStudent } from '../../functions/pageUrls'
 
 
 function createData(id, studentName, gender, fatherName, motherName) {
@@ -57,7 +57,7 @@ const StudentList = () => {
                                 <TableCell align="left"  >{row.motherName}</TableCell>
                                 <TableCell align='center'><Button variant="contained" color="primary">View</Button></TableCell>
                                 <TableCell align="center">
-                                    <Button variant="contained" color="success" onClick={() => navigate(url_editCourse)}>Edit</Button>
+                                    <Button variant="contained" color="success" onClick={() => navigate(url_editStudent)}>Edit</Button>
                                 </TableCell>
                             </TableRow>
                         ))}

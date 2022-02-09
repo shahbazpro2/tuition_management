@@ -1,72 +1,64 @@
-import { Button, Card, CardContent, TextField } from '@mui/material'
-import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { url_editStudent } from '../../functions/pageUrls';
+import { Button, Checkbox, FormControlLabel, MenuItem } from '@mui/material';
+import React from 'react';
+import SelectField from '../../common/textFields/SelectField';
+import TextFieldSimple from '../../common/textFields/TextFieldSimple';
 
 const StudentInput = () => {
-    const navigate = useNavigate();
-    const location = useLocation()
-    const update = location.pathname === url_editStudent
-    const onSubmit = (e) => {
-        e.preventDefault()
-    }
-    return (
-        <div className='mt-7 flex justify-center'>
-            <Card variant="outlined" className="w-[500px] text-center p-7">
-                <CardContent>
-                    <div className="text-2xl font-bold">{update ? 'Update Student' : 'Register Student'}</div>
-                    <div className="mt-10">
-                        <form className='space-y-5' onSubmit={onSubmit}>
-                            <TextField
-                                variant="outlined"
-                                label="Id"
-                                name="id"
-                                fullWidth
-                            />
-                            <TextField
-                                variant="outlined"
-                                label="Name"
-                                name="name"
-                                fullWidth
-                            />
-                            <TextField
-                                variant="outlined"
-                                label="Age"
-                                name="age"
-                                fullWidth
-                            />
-                            <TextField
-                                variant="outlined"
-                                label="Parent Name"
-                                name="parent"
-                                fullWidth
-                            />
-                            <TextField
-                                variant="outlined"
-                                label="Address"
-                                name="address"
-                                fullWidth
-                            />
-                            <TextField
-                                variant="outlined"
-                                label="Emergency Contact"
-                                name="contact"
-                                fullWidth
-                            />
-                            <TextField
-                                variant="outlined"
-                                label="Subject"
-                                name="subject"
-                                fullWidth
-                            />
-                            <Button type="submit" variant="contained" fullWidth>Submit</Button>
-                        </form>
 
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
-    )
-}
+    return <div className="">
+        <form className='space-y-4'>
+            <TextFieldSimple
+                label="Name"
+            />
+            <SelectField label="Gender">
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+            </SelectField>
+            <SelectField label="Religion">
+                <MenuItem value="muslim">Muslim</MenuItem>
+                <MenuItem value="hindu">Hindu</MenuItem>
+            </SelectField>
+            <TextFieldSimple
+                label="Address"
+                multiline
+                rows={3}
+            />
+            <TextFieldSimple
+                label="Contact Number"
+            />
+            <TextFieldSimple
+                label="Emergency Contact Number"
+            />
 
-export default StudentInput
+            <TextFieldSimple
+                label="Father Name"
+            />
+            <TextFieldSimple
+                label="Mother Name"
+            />
+            <SelectField label="Select Package">
+            </SelectField>
+
+            <div>
+                <div className="text-base">Health Condition</div>
+                <div className="flex">
+                    <FormControlLabel control={<Checkbox />} label="Yes" />
+                    <FormControlLabel control={<Checkbox />} label="No" />
+                </div>
+            </div>
+            <div>
+                <div className="text-base">Prefered Language</div>
+                <div className="grid grid-cols-2">
+                    <FormControlLabel control={<Checkbox />} label="English" />
+                    <FormControlLabel control={<Checkbox />} label="Malay" />
+                    <FormControlLabel control={<Checkbox />} label="Chinese (Mandarian)" />
+                    <FormControlLabel control={<Checkbox />} label="Chinese (Cantonese)" />
+                </div>
+            </div>
+
+            <Button variant="contained" fullWidth>Save</Button>
+        </form>
+    </div>;
+};
+
+export default StudentInput;

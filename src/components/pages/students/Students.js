@@ -7,9 +7,9 @@ import Add from '../../common/Add';
 const Students = () => {
     const [open, setOpen] = useState(false)
     return (
-        <div className='mt-7'>
+        <div className='content'>
             <Add title="Add Student" link={url_addStudent} />
-            <div className="mt-10">
+            <div className="mt-7">
                 <StudentList setOpen={setOpen} />
             </div>
 
