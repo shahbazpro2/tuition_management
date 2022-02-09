@@ -1,9 +1,12 @@
 import { Button } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import SelectField from '../../../common/textFields/SelectField';
 import TextFieldSimple from '../../../common/textFields/TextFieldSimple';
+import { url_studentInvoice } from '../../../functions/pageUrls';
 
 const GenerateBillModal = () => {
+    const navigate = useNavigate()
     return <div className="space-y-7">
         <TextFieldSimple type="date" label="Which Month" InputLabelProps={{ shrink: true }} />
         <div className="space-y-3">
@@ -36,7 +39,7 @@ const GenerateBillModal = () => {
             </SelectField>
         </div>
 
-        <Button variant="contained">Submit</Button>
+        <Button variant="contained" onClick={() => navigate(url_studentInvoice)}>Submit</Button>
     </div>
 
 };

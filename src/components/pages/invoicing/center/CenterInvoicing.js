@@ -23,7 +23,7 @@ export default function CenterInvoicing() {
             <div className="flex justify-between">
                 <TopSection active="center" />
                 <Button variant="contained" color="success" onClick={() => setOpen(true)}>Generate Invoices</Button>
-                <ModalLayout height="h-[95%]" title="Generate Invoice" open={open} setOpen={() => setOpen(false)}>
+                <ModalLayout height="max-h-[650px]" title="Generate Invoice" open={open} setOpen={() => setOpen(false)}>
                     <GenerateBillModal />
                 </ModalLayout>
             </div>
