@@ -1,6 +1,9 @@
 /* eslint-disable react/jsx-key */
-import { url_addCenter, url_addCourse, url_addDiscount, url_addInventory, url_addPackage, url_addStudent, url_attendence, url_attendenceHistory, url_centerInvoice, url_centerInvoicing, url_centerKpi, url_centers, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editInventory, url_editPackage, url_editStudent, url_hq, url_inventories, url_login, url_packageAddOthers, url_packageEditOthers, url_packageOthers, url_packages, url_studentInvoice, url_studentInvoicing, url_students, url_viewCourse } from './components/functions/pageUrls'
-import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, AttendenceHistory } from './pages'
+import { url_addCenter, url_addCourse, url_addDiscount, url_addInventory, url_addPackage, url_addStudent, url_attendence, url_attendenceHistory, url_centerInvoice, url_centerInvoicing, url_centerKpi, url_centers, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editInventory, url_editPackage, url_editStudent, url_hq, url_inventories, url_login, url_packageAddOthers, url_packageEditOthers, url_packageOthers, url_packages, url_payHq, url_payHqPaymentHistory, url_studentInvoice, url_studentInvoicing, url_students, url_viewCourse } from './components/functions/pageUrls'
+
+import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, AttendenceHistory, PayHq, PaymentHistory } from './pages'
+
+
 export const routes = [
     [<Login />, '/'],
     [<Login />, url_login],
@@ -34,4 +37,6 @@ export const routes = [
     [<EditStudent />, url_editStudent],
     [<Attendence />, url_attendence],
     [<AttendenceHistory />, url_attendenceHistory],
+    [<PayHq />, url_payHq],
+    [<PaymentHistory />, url_payHqPaymentHistory],
 ]

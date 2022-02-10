@@ -6,7 +6,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useNavigate } from 'react-router-dom';
 
 
 function createData(no, studentName, courseAttended, dateAttended) {
@@ -23,7 +22,6 @@ const rows = [
 ];
 
 const AttendenceHistory = () => {
-    const navigate = useNavigate()
     return (
         <div className='content'>
             <div className="text-xl font-medium">Attendence History</div>

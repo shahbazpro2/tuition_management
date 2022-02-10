@@ -29,5 +29,7 @@ export const url_addStudent = '/add-student'
 export const url_editStudent = '/edit-student'
 export const url_attendence = '/attendence'
 export const url_attendenceHistory = '/attendence-history'
+export const url_payHq = '/payhq'
+export const url_payHqPaymentHistory = '/payhq/payment-history'
 
 
