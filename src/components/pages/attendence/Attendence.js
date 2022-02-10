@@ -1,13 +1,15 @@
+import { Button } from '@mui/material'
 import React from 'react'
-import Add from '../../common/Add'
-import TopSecton from './TopSecton'
-import AttendenceTable from './AttendenceTable'
+import { useNavigate } from 'react-router-dom'
 import SelectField from '../../common/textFields/SelectField'
 import TextFieldSimple from '../../common/textFields/TextFieldSimple'
+import AttendenceList from './AttendenceList'
+import { url_attendenceHistory } from '../../functions/pageUrls'
 
 const Attendence = () => {
+    const navigate = useNavigate()
     return (
-        <div className='content'>
+        <div className='content space-y-7'>
             <div className="grid grid-cols-6 gap-5">
                 <div className='col-span-1 flex items-center'>Selected Course</div>
                 <div className="col-span-2">
@@ -20,8 +22,12 @@ const Attendence = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-7">
-                <AttendenceTable />
+            <div className="">
+                <AttendenceList />
+            </div>
+            <div className="flex justify-between">
+                <Button variant="contained" onClick={() => navigate(url_attendenceHistory)}>Attendence History</Button>
+                <Button variant="contained" color="success">Submit</Button>
             </div>
         </div>
     )

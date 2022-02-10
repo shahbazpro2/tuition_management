@@ -28,4 +28,6 @@ export const url_students = '/students'
 export const url_addStudent = '/add-student'
 export const url_editStudent = '/edit-student'
 export const url_attendence = '/attendence'
+export const url_attendenceHistory = '/attendence-history'
+
 
