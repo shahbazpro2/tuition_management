@@ -32,5 +32,7 @@ export const url_attendenceHistory = '/attendence-history'
 export const url_payHq = '/payhq'
 export const url_payHqPaymentHistory = '/payhq/payment-history'
 export const url_report = '/report'
+export const url_issue2Student = '/issue2student'
+export const url_request2Hq = '/request2hq'
 
 

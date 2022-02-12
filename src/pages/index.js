@@ -32,5 +32,7 @@ import AttendenceHistory from '../components/pages/attendence/AttendenceHistory'
 import PayHq from '../components/pages/payHq/PayHq';
 import PaymentHistory from '../components/pages/payHq/PaymentHistory';
 import Report from '../components/pages/report/Report';
+import Issue2Student from '../components/pages/issue&request/issue2Student/Issue2Student'
+import Request2Hq from '../components/pages/issue&request/Request2Hq'
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, Attendence, AttendenceHistory, PayHq, PaymentHistory, Report }
+export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, Attendence, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq }

@@ -3,7 +3,6 @@ import React from 'react';
 
 const ModalLayout = (props) => {
     const height = props.height
-    console.log('h', height)
     return <Modal
         open={props.open}
         onClose={() => { props.setOpen(false) }}
