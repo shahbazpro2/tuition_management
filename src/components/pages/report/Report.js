@@ -22,11 +22,11 @@ const Report = () => {
                     shrink={true}
                 />
                 <div className="grid grid-cols-2">
-                    <div className='cursor-pointer inline-block h-20'>
+                    <div className='cursor-pointer inline-block h-20 text-center'>
                         <img src="https://img.icons8.com/color/48/000000/ms-excel.png" className='m-auto w-12' />
                         Generate Excel
                     </div>
-                    <div className='cursor-pointer inline-block h-20'>
+                    <div className='cursor-pointer inline-block h-20 text-center'>
                         <img src="https://img.icons8.com/color/48/000000/pdf-2--v1.png" className='m-auto w-12' />
                         Generate PDF
                     </div>
