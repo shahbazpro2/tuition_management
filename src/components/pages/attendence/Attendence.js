@@ -18,7 +18,7 @@ const Attendence = () => {
                 </div>
                 <div className="col-span-3">
                     <div className="w-[200px] ml-auto">
-                        <TextFieldSimple type="date" label="Date" InputLabelProps={{ shrink: true }} />
+                        <TextFieldSimple type="date" label="Date" shrink={true} />
                     </div>
                 </div>
             </div>

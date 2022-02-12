@@ -4,6 +4,9 @@ import React from 'react';
 const TextFieldSimple = (props) => {
     return <TextField
         {...props}
+        InputLabelProps={{
+            ...props
+        }}
         fullWidth
     />;
 };

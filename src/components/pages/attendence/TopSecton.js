@@ -12,7 +12,7 @@ const TopSecton = () => {
                                 variant="outlined"
                                 label="Student"
                                 select
-                                InputLabelProps={{ shrink: true }}
+                                shrink={true}
                                 fullWidth
                             >
                                 <MenuItem>...</MenuItem>
@@ -22,14 +22,14 @@ const TopSecton = () => {
                                 type="date"
                                 label="Date From"
                                 fullWidth
-                                InputLabelProps={{ shrink: true }}
+                                shrink={true}
                             />
                             <TextField
                                 variant="outlined"
                                 type="date"
                                 label="Date To"
                                 fullWidth
-                                InputLabelProps={{ shrink: true }}
+                                shrink={true}
                             />
                             <Button variant="contained">View Attendence</Button>
 

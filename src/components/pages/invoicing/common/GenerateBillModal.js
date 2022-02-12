@@ -8,7 +8,7 @@ import { url_studentInvoice } from '../../../functions/pageUrls';
 const GenerateBillModal = () => {
     const navigate = useNavigate()
     return <div className="space-y-7">
-        <TextFieldSimple type="date" label="Which Month" InputLabelProps={{ shrink: true }} />
+        <TextFieldSimple type="date" label="Which Month" shrink={true} />
         <div className="space-y-3">
             <div className="text-lg">Additional item to include in</div>
             <div className="grid grid-cols-5 gap-3">

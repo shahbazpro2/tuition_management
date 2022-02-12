@@ -27,7 +27,7 @@ const PayHq = () => {
                 <TextFieldSimple
                     type="date"
                     label="Payment Date"
-                    InputLabelProps={{ shrink: true }}
+                    shrink={true}
                 />
                 <div className='flex space-x-5 items-center'>
                     <div>Attachment</div>

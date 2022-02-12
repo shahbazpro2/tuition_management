@@ -31,5 +31,6 @@ export const url_attendence = '/attendence'
 export const url_attendenceHistory = '/attendence-history'
 export const url_payHq = '/payhq'
 export const url_payHqPaymentHistory = '/payhq/payment-history'
+export const url_report = '/report'
 
 
