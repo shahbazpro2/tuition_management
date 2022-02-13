@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Container from './Container'
 import MenuIcon from '@mui/icons-material/Menu';
-import { url_hq, url_login } from '../functions/pageUrls';
+import { url_contact, url_hq, url_login } from '../functions/pageUrls';
 const links = [
     { url: url_login, name: 'TCenter' },
     { url: url_hq, name: 'HQ' },
@@ -19,7 +19,7 @@ const Header = () => {
             <Container>
                 <div className='h-[75px] flex items-center'>
                     <Link to={links[0].url}><div className='text-xl cursor-pointer'><img src={`${process.env.PUBLIC_URL}/assets/logo_default.png`} width="45" /></div></Link>
-                    {(!location.pathname.includes(url_login)) && <>
+                    {(!location.pathname.includes(url_login)) ? <>
                         <div className="md:hidden ml-auto flex items-center" onClick={() => setOpen(true)}>
                             <MenuIcon />
                         </div>
@@ -29,7 +29,9 @@ const Header = () => {
 
                             ))}
                         </div>
-                    </>
+                    </> : <div className="ml-auto space-x-7 hidden md:flex">
+                        <Link to={url_contact}>  <div className="cursor-pointer">Contact Us</div></Link>
+                    </div>
                     }
                 </div>
             </Container>

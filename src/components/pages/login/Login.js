@@ -27,7 +27,7 @@ const Login = () => {
                                     type="password"
                                     label="Password"
                                 />
-                                <Button type="submit" variant="contained" fullWidth>Login</Button>
+                                <Button type="submit" size="large" variant="contained" fullWidth>Login</Button>
                             </form>
 
                         </div>

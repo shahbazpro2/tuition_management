@@ -36,5 +36,6 @@ export const url_issue2Student = '/issue2student'
 export const url_request2Hq = '/request2hq'
 export const url_payByStudent = '/pay-by-student'
 export const url_pbsPaymentHistory = '/pay-by-student/payment-history'
+export const url_contact = '/contact-us'
 
 
