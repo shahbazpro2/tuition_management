@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
 import { Button, Card, CardContent, TextField } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import TextFieldSimple from '../../common/textFields/TextFieldSimple';
 import { url_hq } from '../../functions/pageUrls'
 
 const Login = () => {
@@ -18,19 +20,12 @@ const Login = () => {
                         <div className="text-2xl font-bold">Login</div>
                         <div className="mt-10">
                             <form className='space-y-5' onSubmit={onSubmit}>
-                                <TextField
-                                    variant="outlined"
+                                <TextFieldSimple
                                     label="Email"
-                                    name="email"
-                                    type="email"
-                                    fullWidth
                                 />
-                                <TextField
-                                    variant="outlined"
-                                    label="Password"
-                                    name="password"
+                                <TextFieldSimple
                                     type="password"
-                                    fullWidth
+                                    label="Password"
                                 />
                                 <Button type="submit" variant="contained" fullWidth>Login</Button>
                             </form>

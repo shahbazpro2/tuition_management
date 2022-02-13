@@ -43,7 +43,7 @@ const CourseInput = () => {
             <div>
                 <label htmlFor="contained-button-file">
                     <Input id="contained-button-file" multiple type="file" />
-                    <Button variant="contained" component="span">
+                    <Button variant="contained" color="secondary" component="span">
                         Upload
                     </Button>
                 </label>

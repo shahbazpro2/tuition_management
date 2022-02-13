@@ -15,7 +15,7 @@ const Header = () => {
     const location = useLocation()
     const [open, setOpen] = useState(false)
     return (
-        <div className='shadow-md shadow-gray-400 bg-gray-800 text-white print:hidden'>
+        <div className=' bg-[#FCB241] text-black print:hidden'>
             <Container>
                 <div className='h-[75px] flex items-center'>
                     <Link to={links[0].url}><div className='text-xl cursor-pointer'><img src={`${process.env.PUBLIC_URL}/assets/logo_default.png`} width="45" /></div></Link>
