@@ -37,5 +37,6 @@ import Request2Hq from '../components/pages/issue&request/Request2Hq'
 import PayByStudent from '../components/pages/payByStudent/PayByStudent';
 import PbsPaymentHistory from '../components/pages/payByStudent/PaymentHistory';
 import Contact from '../components/pages/contact/Contact';
+import Enquires from '../components/pages/enquires/Enquires'
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, Attendence, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq, PayByStudent, PbsPaymentHistory, Contact }
+export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, Attendence, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq, PayByStudent, PbsPaymentHistory, Contact, Enquires }
