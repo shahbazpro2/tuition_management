@@ -80,9 +80,6 @@ const theme = createTheme({
         },
         secondary: {
             main: "#5A67A6",
-        },
-        error: {
-            main: "#FC5A5A"
         }
     },
     typography: {

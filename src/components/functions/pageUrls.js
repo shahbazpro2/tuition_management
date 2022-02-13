@@ -38,5 +38,6 @@ export const url_payByStudent = '/pay-by-student'
 export const url_pbsPaymentHistory = '/pay-by-student/payment-history'
 export const url_contact = '/contact-us'
 export const url_enquires = '/enquires'
+export const url_settings = '/settings'
 
 
