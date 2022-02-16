@@ -3,6 +3,7 @@ import Add from '../../common/Add';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { url_addCenter, url_editCenter } from '../../functions/pageUrls';
 import { useNavigate } from 'react-router-dom';
+import TbCell from '../../common/TableCell';
 
 function createData(id, name, location, pic, status) {
     return { id, name, location, pic, status };
@@ -26,12 +27,12 @@ const Centers = () => {
                     <Table stickyHeader sx={{ minWidth: 650 }}>
                         <TableHead>
                             <TableRow>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Center ID</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Center Name</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Location</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>PIC Name</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}></TableCell>
+                                <TbCell>Center ID</TbCell>
+                                <TbCell>Center Name</TbCell>
+                                <TbCell>Location</TbCell>
+                                <TbCell>PIC Name</TbCell>
+                                <TbCell>Status</TbCell>
+                                <TbCell></TbCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

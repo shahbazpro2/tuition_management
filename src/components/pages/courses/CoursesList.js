@@ -10,6 +10,7 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { url_editCourse, url_viewCourse } from '../../functions/pageUrls'
+import TbCell from '../../common/TableCell';
 
 
 function createData(type, language, description, status) {
@@ -33,12 +34,12 @@ const CoursesList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Type</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Language</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Description</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>View</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}></TableCell>
+                            <TbCell>Type</TbCell>
+                            <TbCell>Language</TbCell>
+                            <TbCell>Description</TbCell>
+                            <TbCell>Status</TbCell>
+                            <TbCell>View</TbCell>
+                            <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -9,7 +9,7 @@ import { url_attendenceHistory } from '../../functions/pageUrls'
 const Attendence = () => {
     const navigate = useNavigate()
     return (
-        <div className='content space-y-7'>
+        <div className='content space-y-7 '>
             <div className="grid grid-cols-6 gap-5">
                 <div className='col-span-1 flex items-center'>Selected Course</div>
                 <div className="col-span-2">

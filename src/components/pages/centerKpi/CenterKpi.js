@@ -2,6 +2,7 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import TbCell from '../../common/TableCell';
 import { url_editCourse } from '../../functions/pageUrls';
 
 function createData(id, name, kpi, amt) {
@@ -25,11 +26,11 @@ const CenterKpi = () => {
             <Table stickyHeader sx={{ minWidth: 650 }}>
                 <TableHead>
                     <TableRow>
-                        <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Center Id Number</TableCell>
-                        <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Center Name</TableCell>
-                        <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>KPI</TableCell>
-                        <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Amt/Qty</TableCell>
-                        <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}></TableCell>
+                        <TbCell>Center Id Number</TbCell>
+                        <TbCell>Center Name</TbCell>
+                        <TbCell>KPI</TbCell>
+                        <TbCell>Amt/Qty</TbCell>
+                        <TbCell></TbCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

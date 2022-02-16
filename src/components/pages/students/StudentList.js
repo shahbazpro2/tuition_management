@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editCourse, url_editStudent } from '../../functions/pageUrls'
+import TbCell from '../../common/TableCell';
 
 
 function createData(id, studentName, gender, fatherName, motherName) {
@@ -26,20 +27,19 @@ const rows = [
 
 const StudentList = () => {
     const navigate = useNavigate()
-    const headStyle = { background: '#818181', color: 'white', fontWeight: 'bold' }
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={headStyle}>ID</TableCell>
-                            <TableCell sx={headStyle}>Student Name</TableCell>
-                            <TableCell sx={headStyle}>Gender</TableCell>
-                            <TableCell sx={headStyle}>Father Name</TableCell>
-                            <TableCell sx={headStyle}>Mother Name</TableCell>
-                            <TableCell sx={headStyle}></TableCell>
-                            <TableCell sx={headStyle}></TableCell>
+                            <TbCell>ID</TbCell>
+                            <TbCell>Student Name</TbCell>
+                            <TbCell>Gender</TbCell>
+                            <TbCell>Father Name</TbCell>
+                            <TbCell>Mother Name</TbCell>
+                            <TbCell></TbCell>
+                            <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

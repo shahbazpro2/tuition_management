@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TbCell from '../../common/TableCell';
 
 
 function createData(no, studentName, courseAttended, dateAttended) {
@@ -30,10 +31,10 @@ const AttendenceHistory = () => {
                     <Table stickyHeader sx={{ minWidth: 650 }}>
                         <TableHead>
                             <TableRow>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>No</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Student Name</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Course Attended</TableCell>
-                                <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Date Attended</TableCell>
+                                <TbCell>No</TbCell>
+                                <TbCell>Student Name</TbCell>
+                                <TbCell>Course Attended</TbCell>
+                                <TbCell>Date Attended</TbCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

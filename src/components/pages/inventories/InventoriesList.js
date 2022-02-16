@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editInventory } from '../../functions/pageUrls'
+import TbCell from '../../common/TableCell';
 
 
 function createData(id, category, description, qty, status) {
@@ -32,12 +33,12 @@ const InventoriesList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Category</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Description</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Qty</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}></TableCell>
+                            <TbCell>ID</TbCell>
+                            <TbCell>Category</TbCell>
+                            <TbCell>Description</TbCell>
+                            <TbCell>Qty</TbCell>
+                            <TbCell>Status</TbCell>
+                            <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

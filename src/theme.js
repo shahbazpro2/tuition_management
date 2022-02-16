@@ -1,9 +1,7 @@
 
 
-import { createTheme } from "@mui/material/styles";
-
 // Create a theme instance.
-const theme = createTheme({
+const globalTheme = {
     components: {
         MuiButton: {
             styleOverrides: {
@@ -70,22 +68,14 @@ const theme = createTheme({
                 },
 
             }
-        }
-    },
-
-    palette: {
-        primary: {
-            main: "#D68D08",
-
         },
-        secondary: {
-            main: "#5A67A6",
-        }
     },
+
+
     typography: {
         fontFamily: "'Roboto', sans-serif"
     },
 
-});
+}
 
-export default theme;
+export default globalTheme;

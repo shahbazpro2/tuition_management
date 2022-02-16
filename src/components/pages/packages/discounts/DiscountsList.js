@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editDiscount } from '../../../functions/pageUrls';
+import TbCell from '../../../common/TableCell';
 
 
 function createData(id, description, discount, status) {
@@ -33,11 +34,11 @@ const DiscountsList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Discount Description</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Disc %</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}></TableCell>
+                            <TbCell>ID</TbCell>
+                            <TbCell>Discount Description</TbCell>
+                            <TbCell>Disc %</TbCell>
+                            <TbCell>Status</TbCell>
+                            <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

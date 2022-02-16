@@ -17,7 +17,7 @@ const rows = [
 ];
 
 const InvoiceTemplate = () => {
-    return <div className="content">
+    return <div className="content dark:text-white print:text-black">
         <div className="grid grid-cols-2">
             <div className="flex space-x-5">
                 <img src={`${process.env.PUBLIC_URL}/assets/logo_default.png`} width="45" />

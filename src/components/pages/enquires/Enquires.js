@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TbCell from '../../common/TableCell';
 
 
 function createData(id, name, phone, email, description) {
@@ -21,7 +22,6 @@ const rows = [
 
 ];
 const Enquires = () => {
-    const headStyle = { background: '#818181', color: 'white', fontWeight: 'bold' }
     return (
         <div className='content'>
             <div className="text-xl font-mediun">Enquires</div>
@@ -30,11 +30,11 @@ const Enquires = () => {
                     <Table stickyHeader sx={{ minWidth: 650 }}>
                         <TableHead>
                             <TableRow>
-                                <TableCell sx={headStyle}>ID</TableCell>
-                                <TableCell sx={headStyle}>Name</TableCell>
-                                <TableCell sx={headStyle}>Phone</TableCell>
-                                <TableCell sx={headStyle}>Email</TableCell>
-                                <TableCell sx={headStyle}>Description</TableCell>
+                                <TbCell>ID</TbCell>
+                                <TbCell>Name</TbCell>
+                                <TbCell>Phone</TbCell>
+                                <TbCell>Email</TbCell>
+                                <TbCell>Description</TbCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

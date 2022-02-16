@@ -6,6 +6,9 @@
 html{
     font-family: 'Roboto', sans-serif;
 }
+body{
+  @apply dark:bg-black/90;
+}
 .rltb-0{
     @apply right-0 bottom-0 top-0 left-0;
   }

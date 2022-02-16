@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Checkbox } from '@mui/material';
+import TbCell from '../../../common/TableCell';
 
 
 function createData(id, description, qty) {
@@ -29,10 +30,10 @@ const InventoryTable = () => {
                 <Table size="small" stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Select</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Description</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Qty</TableCell>
+                            <TbCell>ID</TbCell>
+                            <TbCell>Select</TbCell>
+                            <TbCell>Description</TbCell>
+                            <TbCell>Qty</TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -6,10 +6,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button, Checkbox } from '@mui/material';
+import { Checkbox } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { url_editCourse, url_viewCourse } from '../../functions/pageUrls'
+import TbCell from '../../common/TableCell';
 
 
 function createData(id, studentName, fatherName, motherName) {
@@ -33,11 +32,11 @@ const AttendenceList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Select</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Student Name</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Father Name</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Mother Name</TableCell>
+                            <TbCell>ID</TbCell>
+                            <TbCell>Select</TbCell>
+                            <TbCell>Student Name</TbCell>
+                            <TbCell>Father Name</TbCell>
+                            <TbCell>Mother Name</TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -1,5 +1,6 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useTheme } from '@mui/material'
 import React from 'react'
+import TbCell from './TableCell'
 
 const CustomTable = ({ head, rows, onEdit, onStop }) => {
     return (
@@ -9,7 +10,7 @@ const CustomTable = ({ head, rows, onEdit, onStop }) => {
                     <TableHead>
                         <TableRow>
                             {head.map((h, index) => (
-                                <TableCell key={index} sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>{h}</TableCell>
+                                <TbCell key={index}>{h}</TbCell>
                             ))}
 
                         </TableRow>

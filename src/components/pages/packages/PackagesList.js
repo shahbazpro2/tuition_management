@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editCourse, url_editPackage, url_viewCourse } from '../../functions/pageUrls'
+import TbCell from '../../common/TableCell';
 
 
 function createData(id, subject, days, amount, status) {
@@ -33,12 +34,12 @@ const PackagesList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Number of Subject</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Number of Day's Per Week</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Amount</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-                            <TableCell sx={{ background: '#818181', color: 'white', fontWeight: 'bold' }}></TableCell>
+                            <TbCell>ID</TbCell>
+                            <TbCell>Number of Subject</TbCell>
+                            <TbCell>Number of Day's Per Week</TbCell>
+                            <TbCell>Amount</TbCell>
+                            <TbCell>Status</TbCell>
+                            <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

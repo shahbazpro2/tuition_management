@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TbCell from '../../common/TableCell';
 
 
 function createData(no, centerName, invoiceNo, paymentDate, enterBy) {
@@ -21,7 +22,6 @@ const rows = [
 
 ];
 const PaymentHistory = () => {
-    const headStyle = { background: '#818181', color: 'white', fontWeight: 'bold' }
     return (
         <div className='content'>
             <div className="text-xl font-mediun">Payment History</div>
@@ -30,11 +30,11 @@ const PaymentHistory = () => {
                     <Table stickyHeader sx={{ minWidth: 650 }}>
                         <TableHead>
                             <TableRow>
-                                <TableCell sx={headStyle}>No</TableCell>
-                                <TableCell sx={headStyle}>Center Name</TableCell>
-                                <TableCell sx={headStyle}>Invoice No</TableCell>
-                                <TableCell sx={headStyle}>Payment Date</TableCell>
-                                <TableCell sx={headStyle}>Enter By</TableCell>
+                                <TbCell>No</TbCell>
+                                <TbCell>Center Name</TbCell>
+                                <TbCell>Invoice No</TbCell>
+                                <TbCell>Payment Date</TbCell>
+                                <TbCell>Enter By</TbCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
