@@ -23,3 +23,11 @@ body{
 .content{
   @apply my-7;
 }
+
+.MuiDataGrid-columnHeaders{
+  background-color: #FFEDC6;
+  color: black;
+}
+.MuiDataGrid-columnHeaders svg{
+  color:#bababa;
+}
