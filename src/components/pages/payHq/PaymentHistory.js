@@ -56,9 +56,9 @@ const PaymentHistory = () => {
                                     <TableCell align='center'><Button variant="contained" color="primary">View</Button></TableCell>
                                     <TableCell align="center">
                                         {index == 1 ?
-                                            <Button variant="outlined" disableTouchRipple color="warning" >Pending</Button> :
-                                            index === 3 ? <Button variant="outlined" disableTouchRipple color="error" >No Fund Received</Button> :
-                                                <Button variant="outlined" disableTouchRipple color="success" >Verified</Button>
+                                            <Button variant="contained" color="warning" >Pending</Button> :
+                                            index === 3 ? <Button variant="contained" color="error" >No Fund Received</Button> :
+                                                <Button variant="contained" color="success" >Verified</Button>
                                         }
                                     </TableCell>
                                 </TableRow>
