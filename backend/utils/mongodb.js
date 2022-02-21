@@ -7,21 +7,21 @@ const client = new MongoClient(connectionString, {
 
 let dbConnection;
 
-export const dbo = {
-    connectToServer: function (callback) {
-        client.connect(function (err, db) {
+const dbo = {
+    connectToServer: (callback) => {
+        client.connect((err, db) => {
             if (err || !db) {
                 return callback(err);
             }
-
             dbConnection = db.db("tcenter");
             console.log("Successfully connected to MongoDB.");
-
             return callback();
         });
     },
 
-    getDb: function () {
+    getDb: () => {
         return dbConnection;
     },
 };
+
+export default dbo
