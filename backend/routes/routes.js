@@ -1,9 +1,7 @@
 import UserRoute from './UserRoute.js'
-import createUser from './createUser.js'
 
 const allRoutes = [
-    UserRoute,
-    createUser
+    UserRoute
 ]
 
 export default allRoutes
