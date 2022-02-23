@@ -1,6 +1,15 @@
-import { MongoClient } from 'mongodb'
-const connectionString = 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false';
-const client = new MongoClient(connectionString, {
+import mongoose from 'mongoose';
+const uri = 'mongodb://localhost:27017/tcenter?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false';
+
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000
+})
+    .then(res => console.log('connected'))
+    .catch(err => console.log(err.reason))
+
+/* const client = new MongoClient(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -24,4 +33,4 @@ const dbo = {
     },
 };
 
-export default dbo
+export default dbo */

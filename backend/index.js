@@ -3,7 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import dotenv from 'dotenv'
-import dbo from './utils/mongodb.js'
+import './utils/mongodb.js'
 import apiRoutes from './routes/routes.js'
 
 const app = express()
@@ -20,7 +20,7 @@ const buildPath = path.join(__dirname, '..', 'build')
 app.use(express.static(buildPath))
 
 //DB connect
-dbo.connectToServer((err) => err && console.error(err))
+/* dbo.connectToServer((err) => err && console.error(err)) */
 
 //Api routes
 apiRoutes.map(routes => app.use('/api', routes))
