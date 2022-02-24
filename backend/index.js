@@ -23,7 +23,7 @@ app.use(express.static(buildPath))
 /* dbo.connectToServer((err) => err && console.error(err)) */
 
 //Api routes
-apiRoutes.map(routes => app.use('/api', routes))
+apiRoutes.map(([routes, url]) => app.use(`/api/${url}`, routes))
 
 //Listen node at specified port
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

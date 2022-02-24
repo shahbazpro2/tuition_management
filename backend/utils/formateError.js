@@ -1,6 +1,6 @@
 const formateError = (error, duplicateMessage) => {
     if (error.name === 'MongoServerError' && error.code === 11000) {
-        return duplicateMessage
+        return duplicateMessage || "Data already exist"
     } else if (error.name === 'ValidationError') {
         return Object.values(error.errors).map(val => val.message)[0]
     }
