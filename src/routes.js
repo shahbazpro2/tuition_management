@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
-import { url_addCenter, url_addCourse, url_addDiscount, url_addInventory, url_addPackage, url_addStudent, url_attendence, url_attendenceHistory, url_centerInvoice, url_centerInvoicing, url_centerKpi, url_centers, url_contact, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editInventory, url_editPackage, url_editStudent, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packageAddOthers, url_packageEditOthers, url_packageOthers, url_packages, url_payByStudent, url_payHq, url_payHqPaymentHistory, url_pbsPaymentHistory, url_report, url_request2Hq, url_settings, url_studentInvoice, url_studentInvoicing, url_students, url_viewCourse } from './components/functions/pageUrls'
+import { url_addCenter, url_addCourse, url_addDiscount, url_addInventory, url_addPackage, url_addStudent, url_addUser, url_attendence, url_attendenceHistory, url_centerInvoice, url_centerInvoicing, url_centerKpi, url_centers, url_contact, url_courses, url_dicounts, url_editCenter, url_editCourse, url_editDiscount, url_editInventory, url_editPackage, url_editStudent, url_editUser, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packageAddOthers, url_packageEditOthers, url_packageOthers, url_packages, url_payByStudent, url_payHq, url_payHqPaymentHistory, url_pbsPaymentHistory, url_report, url_request2Hq, url_settings, url_studentInvoice, url_studentInvoicing, url_students, url_viewCourse } from './components/functions/pageUrls'
 
-import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq, PayByStudent, PbsPaymentHistory, Contact, Enquires, Settings } from './pages'
+import { Login, HqMain, Centers, AddCenter, Courses, AddCourse, EditCourse, EditCenter, Attendence, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq, PayByStudent, PbsPaymentHistory, Contact, Enquires, Settings, AddUser, EditUser } from './pages'
 
 
 export const routes = [
@@ -47,4 +47,6 @@ export const routes = [
     [<Contact />, url_contact],
     [<Enquires />, url_enquires],
     [<Settings />, url_settings],
+    [<AddUser />, url_addUser],
+    [<EditUser />, url_editUser],
 ]

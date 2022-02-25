@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import { url_attendence, url_centerKpi, url_centers, url_contact, url_courses, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packages, url_payByStudent, url_payHq, url_report, url_studentInvoice, url_students } from '../functions/pageUrls';
+import { url_attendence, url_centerKpi, url_centers, url_contact, url_courses, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoice, url_students } from '../functions/pageUrls';
 import { Toggle } from './Toggle';
 const links = [
     { url: url_login, name: 'TCenter' },
@@ -27,7 +27,7 @@ const extraLinks = [
     { url: url_enquires, name: 'Enquiries' },
     { url: url_issue2Student, name: 'Issue Inventory' },
     { url: url_payByStudent, name: 'Received Payment' },
-    { url: '/hq', name: 'Setting' },
+    { url: url_settings, name: 'Setting' },
 ]
 const Header = () => {
     const location = useLocation()

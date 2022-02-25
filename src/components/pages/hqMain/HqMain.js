@@ -1,6 +1,6 @@
 import React from 'react'
 import ImageCard from '../../common/ImageCard'
-import { url_attendence, url_centerKpi, url_centers, url_courses, url_enquires, url_inventories, url_issue2Student, url_packages, url_payByStudent, url_payHq, url_report, url_studentInvoicing, url_students } from '../../functions/pageUrls'
+import { url_attendence, url_centerKpi, url_centers, url_courses, url_enquires, url_inventories, url_issue2Student, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoicing, url_students } from '../../functions/pageUrls'
 
 const HqMain = () => {
     return (
@@ -19,7 +19,7 @@ const HqMain = () => {
                 <ImageCard title="Issue & Request Inventory" image="IssuanceToStudents.png" link={url_issue2Student} />
                 <ImageCard title="Received Payment From Student" image="Received.png" link={url_payByStudent} />
                 <ImageCard title="Enquires" image="Enquiries.png" link={url_enquires} />
-                <ImageCard title="Settings" image="Settings.png" />
+                <ImageCard title="Settings" image="Settings.png" link={url_settings} />
             </div>
         </div>
     )

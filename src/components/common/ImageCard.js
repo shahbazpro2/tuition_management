@@ -10,9 +10,11 @@ const ImageCard = ({ title, image, width, link }) => {
             <Card variant="outlined" className="cursor-pointer" onClick={() => navigate(link)} sx={{ height: '130px' }}>
                 <CardContent className='text-center flex items-center justify-center h-full'>
                     <div>
-                        <div className="flex justify-center">
-                            <img src={`${process.env.PUBLIC_URL}/assets/${image}`} width={width || 55} />
-                        </div>
+                        {image &&
+                            <div className="flex justify-center">
+                                <img src={`${process.env.PUBLIC_URL}/assets/${image}`} width={width || 55} />
+                            </div>
+                        }
                         <div className="text-lg font-medium">
                             {title}
                         </div>
