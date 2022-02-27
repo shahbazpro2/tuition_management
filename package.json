@@ -30,7 +30,7 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start-client": "react-scripts start",
+    "start-local": "react-scripts start",
     "build": "react-scripts build && (cd backend && npm install)",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
