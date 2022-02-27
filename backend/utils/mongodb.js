@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
 import mongoose from 'mongoose';
-const uri = 'mongodb://localhost:27017/tcenter?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false';
-
+import dotenv from 'dotenv'
+dotenv.config();
+const uri = process.env.mongourl;
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
