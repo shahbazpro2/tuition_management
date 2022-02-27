@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import Header from 'components/common/Header';
 import Container from 'components/common/Container';
+import FeedbackWrapper from 'components/wrappers/FeedbackWrapper';
 
 export const DarkModeContext = createContext()
 function App() {
@@ -51,16 +52,18 @@ function App() {
     <Provider store={store}>
       <DarkModeContext.Provider value={contextValue}>
         <ThemeProvider theme={theme}>
-          <div className="App dark:text-gray-300">
-            <Header />
-            <Container>
-              <Routes>
-                {routes.map(([element, path], index) =>
-                  <Route key={index} element={element} path={path} />
-                )}
-              </Routes>
-            </Container>
-          </div>
+          <FeedbackWrapper>
+            <div className="App dark:text-gray-300">
+              <Header />
+              <Container>
+                <Routes>
+                  {routes.map(([element, path], index) =>
+                    <Route key={index} element={element} path={path} />
+                  )}
+                </Routes>
+              </Container>
+            </div>
+          </FeedbackWrapper>
         </ThemeProvider>
       </DarkModeContext.Provider>
     </Provider>

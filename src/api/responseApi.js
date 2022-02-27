@@ -13,10 +13,10 @@ const responseApi = async (url, method, data, header = true) => {
             data: ["Oops! You're offline. Please check your network connection..."]
         }
 
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem('x-access-token')
 
     let config = {
-        authorization: token && `Token ${token}`,
+        "x-access-token": token || null,
     }
 
     try {
@@ -31,19 +31,19 @@ const responseApi = async (url, method, data, header = true) => {
         })
 
         if (res?.data)
-            return { error: false, status: res.status, data: res.data }
+            return { error: false, status: res.status, data: res.data.data, message: res.data.message }
     } catch (err) {
         let data
         if (err.response?.status === 404 || err.response?.status === 500) {
-            data = { status: err.response?.status, data: ['Something went wrong.'] }
+            data = { status: err.response?.status, message: ['Something went wrong.'] }
         }
         else if (err.message === "Network Error") {
-            data = { status: 408, data: ['Server is not responding.'] }
+            data = { status: 408, message: ['Server is not responding.'] }
         } else
-            data = { status: err.response?.status, data: objectToArray(err.response?.data) }
+            data = { status: err.response?.status, message: objectToArray(err.response?.data?.message) }
 
 
-        return { error: true, ...data }
+        return { error: true, ...data, data: null }
     }
 
 }

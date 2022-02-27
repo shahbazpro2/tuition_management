@@ -1,8 +1,9 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Add from '../../common/Add'
 import TbCell from '../../common/TableCell'
 import { url_addUser } from 'utils/pageUrls';
+import { getUsersApi } from 'api/auth';
 
 function createData(id, name, email, role) {
     return { id, name, email, role };
@@ -18,6 +19,20 @@ const rows = [
 ];
 
 const Settings = () => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        (async () => {
+            const res = await getUsersApi()
+            if (!res.error) {
+                setData(res.data)
+            }
+            console.log('res', res)
+        })()
+    }, [])
+
+
+
     return (
         <div className="content">
             <div className="text-lg">Settings</div>
@@ -36,13 +51,13 @@ const Settings = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row, index) => (
+                                {data?.map((row, index) => (
                                     <TableRow
                                         key={index}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell>
-                                            {row.id}
+                                            {index + 1}
                                         </TableCell>
                                         <TableCell align="left"  >{row.name}</TableCell>
                                         <TableCell align="left"  >{row.email}</TableCell>
