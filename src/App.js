@@ -1,7 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/common/Header';
-import Container from './components/common/Container';
 import { routes } from './routes';
 import { ThemeProvider } from '@mui/system';
 import React from 'react';
@@ -9,6 +7,10 @@ import { createTheme } from '@mui/material';
 import { createContext } from 'react';
 import { useState } from 'react';
 import globalTheme from './theme';
+import { Provider } from 'react-redux';
+import { store } from 'redux/store';
+import Header from 'components/common/Header';
+import Container from 'components/common/Container';
 
 export const DarkModeContext = createContext()
 function App() {
@@ -46,20 +48,22 @@ function App() {
     [darkMode],
   );
   return (
-    <DarkModeContext.Provider value={contextValue}>
-      <ThemeProvider theme={theme}>
-        <div className="App dark:text-gray-300">
-          <Header />
-          <Container>
-            <Routes>
-              {routes.map(([element, path], index) =>
-                <Route key={index} element={element} path={path} />
-              )}
-            </Routes>
-          </Container>
-        </div>
-      </ThemeProvider>
-    </DarkModeContext.Provider>
+    <Provider store={store}>
+      <DarkModeContext.Provider value={contextValue}>
+        <ThemeProvider theme={theme}>
+          <div className="App dark:text-gray-300">
+            <Header />
+            <Container>
+              <Routes>
+                {routes.map(([element, path], index) =>
+                  <Route key={index} element={element} path={path} />
+                )}
+              </Routes>
+            </Container>
+          </div>
+        </ThemeProvider>
+      </DarkModeContext.Provider>
+    </Provider>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import ImageCard from '../../common/ImageCard'
-import { url_attendence, url_centerKpi, url_centers, url_courses, url_enquires, url_inventories, url_issue2Student, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoicing, url_students } from '../../functions/pageUrls'
+import { url_attendence, url_centerKpi, url_centers, url_courses, url_enquires, url_inventories, url_issue2Student, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoicing, url_students } from 'utils/pageUrls'
 
 const HqMain = () => {
     return (

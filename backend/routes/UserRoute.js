@@ -36,7 +36,25 @@ UserRoute.route('/login').post(checkInputs(loginFields), async (_req, _res) => {
         return _res.status(200).json({ message: 'Logged in successfully', token })
 
     } catch (error) {
-        console.log(error.message)
+        return _res.status(500).send({ message: "There is something wrong" })
+    }
+})
+
+UserRoute.route('/me').get(async (_req, _res) => {
+    try {
+        var token = _req.headers['x-access-token'];
+        if (!token) return _res.status(401).send({ message: 'No token provided.' })
+
+        jwt.verify(token, process.env.secret, async (err, decoded) => {
+            if (err) return _res.status(500).send({ message: 'Failed to authenticate token.' })
+
+            const res = await User.findOne({ _id: decoded.id })
+
+            return _res.status(200).send({ data: res })
+        });
+
+    } catch (error) {
+        return _res.status(500).send({ message: "There is something wrong" })
     }
 })
 

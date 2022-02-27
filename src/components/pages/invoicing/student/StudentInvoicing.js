@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import ModalLayout from '../../../common/Modal';
 import GenerateBillModal from '../common/GenerateBillModal';
 import TabsSection from '../../common/TabsSection';
-import { url_centerInvoicing, url_studentInvoicing } from '../../../functions/pageUrls';
+import { url_centerInvoicing, url_studentInvoicing } from 'utils/pageUrls';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },

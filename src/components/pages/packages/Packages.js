@@ -1,5 +1,5 @@
 import React from 'react';
-import { url_addPackage } from '../../functions/pageUrls';
+import { url_addPackage } from 'utils/pageUrls';
 import TopSection from './common/TopSection';
 import PackagesList from './PackagesList';
 

@@ -3,7 +3,7 @@ import { Button, Card, CardContent, TextField } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import TextFieldSimple from '../../common/textFields/TextFieldSimple';
-import { url_hq } from '../../functions/pageUrls'
+import { url_hq } from 'utils/pageUrls'
 
 const Login = () => {
     const navigate = useNavigate();

@@ -1,8 +1,7 @@
 import React from 'react'
 import CoursesList from './CoursesList'
-import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
-import { url_addCourse } from '../../functions/pageUrls';
+import { url_addCourse } from 'utils/pageUrls';
 import Add from '../../common/Add';
 
 const Courses = () => {

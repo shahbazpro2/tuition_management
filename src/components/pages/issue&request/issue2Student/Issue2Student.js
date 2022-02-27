@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
 import React from 'react'
-import { url_issue2Student, url_request2Hq } from '../../../functions/pageUrls'
+import { url_issue2Student, url_request2Hq } from 'utils/pageUrls'
 import TabsSection from '../../common/TabsSection'
 import InventoryTable from '../common/InventoryTable'
 import InventoryToIssue from '../common/InventoryTable'

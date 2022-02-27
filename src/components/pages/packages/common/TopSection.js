@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Add from '../../../common/Add';
-import { url_dicounts, url_packageOthers, url_packages } from '../../../functions/pageUrls';
+import { url_dicounts, url_packageOthers, url_packages } from 'utils/pageUrls';
 
 const TopSection = ({ title, url, active }) => {
     const navigate = useNavigate()

@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import SelectField from '../../common/textFields/SelectField'
 import TextFieldSimple from '../../common/textFields/TextFieldSimple'
-import { url_payHqPaymentHistory } from '../../functions/pageUrls';
+import { url_payHqPaymentHistory } from 'utils/pageUrls';
 import AddEditLayout from '../common/AddEditLayout';
 
 const Input = styled('input')({

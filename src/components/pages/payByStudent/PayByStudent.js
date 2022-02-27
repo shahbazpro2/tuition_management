@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import SelectField from '../../common/textFields/SelectField'
 import TextFieldSimple from '../../common/textFields/TextFieldSimple'
-import { url_pbsPaymentHistory } from '../../functions/pageUrls'
+import { url_pbsPaymentHistory } from 'utils/pageUrls'
 import AddEditLayout from '../common/AddEditLayout'
 
 const PayByStudent = () => {

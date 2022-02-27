@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { url_addStudent } from '../../functions/pageUrls';
+import { url_addStudent } from 'utils/pageUrls';
 import StudentList from './StudentList';
 import Add from '../../common/Add';
 

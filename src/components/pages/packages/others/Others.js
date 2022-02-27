@@ -1,5 +1,5 @@
 import React from 'react';
-import { url_packageAddOthers } from '../../../functions/pageUrls';
+import { url_packageAddOthers } from 'utils/pageUrls';
 import TopSection from '../common/TopSection';
 import OthersList from './OthersList';
 

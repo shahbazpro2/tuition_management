@@ -1,7 +1,7 @@
 import React from 'react'
 import Add from '../../common/Add';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { url_addCenter, url_editCenter } from '../../functions/pageUrls';
+import { url_addCenter, url_editCenter } from 'utils/pageUrls';
 import { useNavigate } from 'react-router-dom';
 import TbCell from '../../common/TableCell';
 

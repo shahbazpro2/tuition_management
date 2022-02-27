@@ -1,5 +1,5 @@
 import React from 'react';
-import { url_addDiscount } from '../../../functions/pageUrls';
+import { url_addDiscount } from 'utils/pageUrls';
 import TopSection from '../common/TopSection';
 import DiscountsList from './DiscountsList';
 

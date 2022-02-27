@@ -1,10 +1,10 @@
 import { Button } from '@mui/material'
+import { url_attendenceHistory } from 'utils/pageUrls'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import SelectField from '../../common/textFields/SelectField'
 import TextFieldSimple from '../../common/textFields/TextFieldSimple'
 import AttendenceList from './AttendenceList'
-import { url_attendenceHistory } from '../../functions/pageUrls'
 
 const Attendence = () => {
     const navigate = useNavigate()

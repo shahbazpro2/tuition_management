@@ -3,7 +3,6 @@ import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import TbCell from '../../common/TableCell';
-import { url_editCourse } from '../../functions/pageUrls';
 
 function createData(id, name, kpi, amt) {
     return { id, name, kpi, amt };

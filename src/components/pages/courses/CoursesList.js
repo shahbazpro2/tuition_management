@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { url_editCourse, url_viewCourse } from '../../functions/pageUrls'
+import { url_editCourse, url_viewCourse } from 'utils/pageUrls'
 import TbCell from '../../common/TableCell';
 
 

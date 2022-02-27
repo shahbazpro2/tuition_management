@@ -2,7 +2,7 @@ import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, 
 import React from 'react'
 import Add from '../../common/Add'
 import TbCell from '../../common/TableCell'
-import { url_addUser } from '../../functions/pageUrls';
+import { url_addUser } from 'utils/pageUrls';
 
 function createData(id, name, email, role) {
     return { id, name, email, role };
