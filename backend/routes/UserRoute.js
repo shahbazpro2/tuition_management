@@ -6,11 +6,12 @@ import formateError from '../utils/formateError.js';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken';
 import formateRes from '../utils/formateRes.js'
+import accessApi from '../middlewares/AccessApi.js';
 const UserRoute = express.Router();
 
 
 const registerFields = ['name', 'role', 'email', 'password']
-UserRoute.route('/register').post(checkInputs(registerFields), async (_req, _res) => {
+UserRoute.route('/register').post(accessApi(), checkInputs(registerFields), async (_req, _res) => {
     try {
         const hashedPassword = bcrypt.hashSync(_req.body.password, 8);
         const res = await User.create({ ..._req.body, password: hashedPassword })
