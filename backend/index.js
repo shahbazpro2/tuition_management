@@ -17,13 +17,16 @@ const port = process.env.PORT || 8000
 
 //Static path for frontend
 const __dirname = path.resolve();
-/* const buildPath = path.join(__dirname, '..', 'build')
+const buildPath = path.join(__dirname + '/build')
 app.use(express.static(buildPath))
- */
-app.use(express.static(path.join(__dirname, '/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/build/index.html'));
-});
+
+/* app.get('/api/*', (req, res) => res.sendFile(path.join(__dirname)))
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/build', 'index.html'));
+}); */
+/* app.use(express.static(path.join(__dirname + '/build')));
+*/
 
 //DB connect
 /* dbo.connectToServer((err) => err && console.error(err)) */
