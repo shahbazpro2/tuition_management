@@ -19,12 +19,14 @@ const port = process.env.PORT || 8000
 const __dirname = path.resolve();
 const buildPath = path.join(__dirname + '/build')
 app.use(express.static(buildPath))
-
-/* app.get('/api/*', (req, res) => res.sendFile(path.join(__dirname)))
+apiRoutes.map(([routes, url]) => app.use(`/api/${url}`, routes))
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname + '/build', 'index.html'));
-}); */
+});
+/* app.get('/api/*', (req, res) => res.sendFile(path.join(__dirname)))
+
+ */
 /* app.use(express.static(path.join(__dirname + '/build')));
 */
 
@@ -32,7 +34,7 @@ app.get('/*', (req, res) => {
 /* dbo.connectToServer((err) => err && console.error(err)) */
 
 //Api routes
-apiRoutes.map(([routes, url]) => app.use(`/api/${url}`, routes))
+
 
 //Listen node at specified port
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
