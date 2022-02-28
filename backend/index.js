@@ -13,12 +13,17 @@ app.use(express.json());
 //Get from process.env
 dotenv.config();
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 8000
 
 //Static path for frontend
-const __dirname = path.resolve();
+/* const __dirname = path.resolve();
 const buildPath = path.join(__dirname, '..', 'build')
-app.use(express.static(buildPath))
+app.use(express.static(buildPath)) */
+const __dirname = path.resolve();
+console.log(path.join(__dirname, '..', 'build', 'index.html'))
+app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
 
 //DB connect
 /* dbo.connectToServer((err) => err && console.error(err)) */
