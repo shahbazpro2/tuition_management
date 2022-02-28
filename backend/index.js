@@ -20,18 +20,10 @@ const __dirname = path.resolve();
 /* const buildPath = path.join(__dirname, '..', 'build')
 app.use(express.static(buildPath))
  */
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../build/index.html'), function (err) {
-        if (err) {
-            res.status(500).send(err)
-        }
-    })
-})
-/* const __dirname = path.resolve();
-console.log(path.join(__dirname, '..', 'build', 'index.html'))
-app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-}); */
+app.use(express.static(path.join(__dirname, '/build')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/build/index.html'));
+});
 
 //DB connect
 /* dbo.connectToServer((err) => err && console.error(err)) */
