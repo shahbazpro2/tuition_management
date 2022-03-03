@@ -10,7 +10,7 @@ export const userPublicPaths = [
 ]
 
 export const isPublicRoute = ({ pathname }) => {
-    return [...userGuestPaths].includes(pathname)
+    return [...userPublicPaths].includes(pathname)
 }
 
 export const isGuestRoute = ({ pathname }) => {

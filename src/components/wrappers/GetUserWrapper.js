@@ -1,22 +1,23 @@
-import { useAppDispatch } from '@redux/Store'
-import { getUsersApi } from 'api/auth'
-import router from 'next/router'
+import { getUserApi } from 'api/auth'
 import React, { useEffect, useState } from 'react'
 import RouteWrapper from './RouteWrapper'
 import Spinner from '../common/spinner/Spinner'
+import { useLocation } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 const GetUserWrapper = ({ children }) => {
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
+    const location = useLocation()
     const [loading, setLoading] = useState(true)
 
 
 
     useEffect(() => {
         (async () => {
-            await dispatch(getUsersApi())
+            await dispatch(getUserApi())
             setLoading(false)
         })()
-    }, [router.asPath])
+    }, [location.pathname])
 
     return (
         <div>

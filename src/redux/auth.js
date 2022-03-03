@@ -23,8 +23,9 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getUserApi.fulfilled, (state, { payload }) => {
+            console.log(payload)
             if (!payload.error) {
-                state.user = payload.data.user[0]
+                state.user = payload.data
             } else {
                 if (payload.error && payload.status === 401) {
                     state.user = {}

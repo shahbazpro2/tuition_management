@@ -1,33 +1,42 @@
-import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import objectIsEmpty from 'utils/objectIsEmpty';
 import { url_hq, url_login } from 'utils/pageUrls';
-import { isGuestRoute } from 'utils/paths';
+import { isGuestRoute, isPublicRoute } from 'utils/paths';
 
 const RouteWrapper = ({ children }) => {
   const { user } = useSelector(state => state.authReducer)
-  const router = useRouter();
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  const checkRoute = () => {
-    if (isGuestRoute(router)) {
+  console.log(user, objectIsEmpty(user), location)
+
+  const checkRoute = useMemo(() => {
+    if (isGuestRoute(location)) {
+      console.log('gurst', !objectIsEmpty(user))
       if (!objectIsEmpty(user)) {
-        router.push(url_hq)
+        navigate(url_hq)
       } else {
         return children
       }
-    } else if (isGuestRoute(router) && objectIsEmpty(user)) {
-      router.push(url_login)
-    } else {
+    } else if (isPublicRoute(location)) {
+      console.log('public')
       return children
+    } else {
+      console.log('else')
+      if (objectIsEmpty(user)) {
+        navigate(url_login)
+      } else
+        return children
     }
-  }
+  }, [location.pathname, user])
 
 
 
   return (
     <>
-      {checkRoute()}
+      {checkRoute}
     </>
   )
 }
