@@ -8,25 +8,21 @@ import { isGuestRoute, isPublicRoute } from 'utils/paths';
 const RouteWrapper = ({ children }) => {
   const { user } = useSelector(state => state.authReducer)
   const location = useLocation()
-  const navigate = useNavigate()
 
   console.log(user, objectIsEmpty(user), location)
 
   const checkRoute = useMemo(() => {
     if (isGuestRoute(location)) {
-      console.log('gurst', !objectIsEmpty(user))
       if (!objectIsEmpty(user)) {
-        navigate(url_hq)
+        window.location.replace(url_hq)
       } else {
         return children
       }
     } else if (isPublicRoute(location)) {
-      console.log('public')
       return children
     } else {
-      console.log('else')
       if (objectIsEmpty(user)) {
-        navigate(url_login)
+        window.location.replace(url_login)
       } else
         return children
     }
