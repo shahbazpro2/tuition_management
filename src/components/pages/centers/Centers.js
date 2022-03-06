@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Add from '../../common/Add';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { url_addCenter, url_editCenter } from 'utils/pageUrls';
 import { useNavigate } from 'react-router-dom';
 import TbCell from '../../common/TableCell';
+import { getCentersApi } from 'api/center';
 
 function createData(id, name, location, pic, status) {
     return { id, name, location, pic, status };
@@ -19,6 +20,19 @@ const rows = [
 
 const Centers = () => {
     const navigate = useNavigate()
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        getCenters()
+    }, [])
+
+    const getCenters = async () => {
+        const res = await getCentersApi()
+        if (!res.error)
+            setData(res.data)
+    }
+
+
     return (
         <div className='content'>
             <Add title="Add Center" link={url_addCenter} />
@@ -36,7 +50,7 @@ const Centers = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
+                            {data.map((row) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
