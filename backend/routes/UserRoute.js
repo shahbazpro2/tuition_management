@@ -40,6 +40,7 @@ UserRoute.route('/login').post(checkInputs(loginFields), async (_req, _res) => {
         return _res.status(200).json(formateRes("Logged in successfully", data))
 
     } catch (error) {
+        console.log(error)
         return _res.status(500).send(formateRes("There is something wrong"))
     }
 })

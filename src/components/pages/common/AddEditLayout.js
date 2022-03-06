@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 
 const AddEditLayout = ({ children, title }) => {
     return <div className='content'>
@@ -10,7 +10,7 @@ const AddEditLayout = ({ children, title }) => {
                 </div>
             </div>
         </div>
-    </div>;
+    </div>
 };
 
 export default AddEditLayout;

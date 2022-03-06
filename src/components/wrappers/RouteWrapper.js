@@ -9,8 +9,6 @@ const RouteWrapper = ({ children }) => {
   const { user } = useSelector(state => state.authReducer)
   const location = useLocation()
 
-  console.log(user, objectIsEmpty(user), location)
-
   const checkRoute = useMemo(() => {
     if (isGuestRoute(location)) {
       if (!objectIsEmpty(user)) {

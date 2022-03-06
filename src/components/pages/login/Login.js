@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { loginUserApi } from 'api/auth';
 import { FeedbackContext } from 'context/FeedbackContext';
 import TextFieldSimple from 'components/common/textFields/TextFieldSimple';
+import { url_hq } from 'utils/pageUrls';
 
 const Login = () => {
     const context = useContext(FeedbackContext)
@@ -18,15 +19,14 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         const res = await loginUserApi(state)
-        console.log(res)
+        context.setFeedback(res.message, res.error)
         if (!res.error) {
-            context.setSuccess(res.message)
             localStorage.setItem("x-access-token", res.data.token)
-            window.location.replace('/hq')
+            window.location.replace(url_hq)
             return
         }
 
-        context.setError(res.message)
+
     }
 
     return (
@@ -40,6 +40,7 @@ const Login = () => {
                                 <TextFieldSimple
                                     label="Email"
                                     name="email"
+                                    type="email"
                                     required
                                     onChange={onChangeInput}
                                 />

@@ -19,16 +19,15 @@ const AddUser = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         const res = await registerUserApi(state)
+        context.setFeedback(res.message, res.error)
         if (!res.error) {
-            context.setSuccess(res.message)
             setTimeout(() => {
-                context.setSuccess(null)
+                context.setFeedback(null, false)
                 navigator(url_settings)
             }, 1000)
             return
         }
 
-        context.setError(res.message)
 
     }
 

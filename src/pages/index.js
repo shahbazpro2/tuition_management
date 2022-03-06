@@ -1,3 +1,4 @@
+import Home from './home'
 import Login from './login'
 import HqMain from './hqMain'
 import Centers from './centers'
@@ -42,4 +43,4 @@ import Settings from 'components/pages/settings/Settings';
 import AddUser from 'components/pages/settings/AddUser';
 import EditUser from 'components/pages/settings/EditUser';
 
-export { Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, Attendence, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq, PayByStudent, PbsPaymentHistory, Contact, Enquires, Settings, AddUser, EditUser }
+export { Home, Login, HqMain, Centers, AddCenter, EditCenter, Courses, AddCourse, EditCourse, ViewCourse, CenterKpi, Packages, AddPackage, EditPackage, Discounts, AddDiscount, EditDiscount, Others, AddOthers, EditOthers, Inventories, AddInventory, EditInventory, StudentInvoicing, StudentInvoice, CenterInvoicing, CenterInvoice, Students, AddStudent, EditStudent, Attendence, AttendenceHistory, PayHq, PaymentHistory, Report, Issue2Student, Request2Hq, PayByStudent, PbsPaymentHistory, Contact, Enquires, Settings, AddUser, EditUser }

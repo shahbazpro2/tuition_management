@@ -11,12 +11,10 @@ const FeedbackWrapper = ({ children }) => {
     const contextValue = {
         error: state.error,
         success: state.success,
-        setError: (message) => {
-            console.log('message', message)
-            setState({ ...state, error: message })
-        },
-        setSuccess: (message) => {
-            setState({ ...state, success: message })
+        setFeedback: (message, error) => {
+            error ?
+                setState({ ...state, error: message }) : setState({ ...state, success: message })
+
         }
     }
 

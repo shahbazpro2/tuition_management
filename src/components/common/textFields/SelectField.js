@@ -2,13 +2,19 @@ import React from 'react'
 import { TextField } from '@mui/material'
 import { useTheme } from '@mui/system'
 
-const SelectField = (props) => {
+const SelectField = ({ required, ...props }) => {
     const theme = useTheme()
     const dark = theme.palette.mode === 'dark'
     return (
         <TextField
             select
+            required={required || true}
             className="w-full h-full text-left"
+            defaultValue={null}
+            SelectProps={{
+                displayEmpty: true
+            }}
+            InputLabelProps={{ shrink: true }}
             {...props}
             sx={{
                 "& .MuiOutlinedInput-root": {
