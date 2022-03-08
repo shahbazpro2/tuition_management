@@ -5,18 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { url_centers } from 'utils/pageUrls';
 import AddEditLayout from '../common/AddEditLayout';
 import CenterInput from './CenterInput';
+export const initialState = {
+    name: '',
+    address: '',
+    regNumber: '',
+    pic: '',
+    bank: '',
+    officeNumber: '',
+    kpi: ''
+}
 
 const AddCenter = () => {
     const context = useContext(FeedbackContext)
-    const [state, setState] = useState({
-        name: '',
-        address: '',
-        regNumber: '',
-        pic: '',
-        bank: '',
-        officeNumber: '',
-        kpi: ''
-    })
+    const [state, setState] = useState(initialState)
     const navigate = useNavigate()
 
     const onSubmit = async (e) => {
@@ -30,7 +31,6 @@ const AddCenter = () => {
                 navigate(url_centers)
             }, 500)
 
-        console.log('state', state)
     }
 
     return <AddEditLayout title="Add Center">

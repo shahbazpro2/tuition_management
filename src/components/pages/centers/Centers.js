@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Add from '../../common/Add';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { url_addCenter, url_editCenter } from 'utils/pageUrls';
 import { useNavigate } from 'react-router-dom';
 import TbCell from '../../common/TableCell';
-import { getCentersApi } from 'api/center';
-
-function createData(id, name, location, pic, status) {
-    return { id, name, location, pic, status };
-}
-
-const rows = [
-    createData(1, 'HanoAmpang', 'Ampang', 'Chris', 'Active'),
-    createData(2, 'HanoAmpang', 'Ampang', 'Chris', 'Active'),
-    createData(3, 'HanoAmpang', 'Ampang', 'Chris', 'Inactive'),
-    createData(5, 'HanoAmpang', 'Ampang', 'Chris', 'Active'),
-];
-
+import { deleteCenterApi, getCentersApi } from 'api/center';
+import { FeedbackContext } from 'context/FeedbackContext';
 
 const Centers = () => {
+    const context = useContext(FeedbackContext)
     const navigate = useNavigate()
     const [data, setData] = useState([])
 
@@ -32,6 +22,19 @@ const Centers = () => {
             setData(res.data)
     }
 
+    const onDelete = async (id) => {
+        const res = await deleteCenterApi(id)
+
+        if (!res.error) {
+            context.setFeedback(res.message)
+            getCenters()
+            return
+        }
+
+        context.setFeedback("Delete failed", true)
+
+    }
+
 
     return (
         <div className='content'>
@@ -43,29 +46,29 @@ const Centers = () => {
                             <TableRow>
                                 <TbCell>Center ID</TbCell>
                                 <TbCell>Center Name</TbCell>
-                                <TbCell>Location</TbCell>
+                                <TbCell>Office Number</TbCell>
                                 <TbCell>PIC Name</TbCell>
                                 <TbCell>Status</TbCell>
                                 <TbCell></TbCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
+                            {data?.map((row) => (
                                 <TableRow
-                                    key={row.name}
+                                    key={row._id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell>
-                                        {row.id}
+                                        {row._id}
                                     </TableCell>
-                                    <TableCell align="left"  >{row.name}</TableCell>
-                                    <TableCell align="left"  >{row.location}</TableCell>
-                                    <TableCell align="left"  >{row.pic}</TableCell>
-                                    <TableCell align="left"  >{row.status}</TableCell>
+                                    <TableCell align="left"  >{row?.name}</TableCell>
+                                    <TableCell align="left"  >{row?.officeNumber}</TableCell>
+                                    <TableCell align="left"  >{row?.pic?.name}</TableCell>
+                                    <TableCell align="left"  >{row?.status}</TableCell>
                                     <TableCell align="left">
                                         <div className="flex space-x-3 justify-end">
-                                            <Button variant="contained" color="success" onClick={() => navigate(url_editCenter)}>Edit</Button>
-                                            <Button variant="contained" color="error">Delete</Button>
+                                            <Button variant="contained" color="success" onClick={() => navigate(`${url_editCenter}/${row?._id}`)}>Edit</Button>
+                                            <Button variant="contained" color="error" onClick={() => onDelete(row?._id)}>Delete</Button>
                                         </div>
                                     </TableCell>
                                 </TableRow>

@@ -6,4 +6,4 @@ const bandSchema = new Schema({
     accountNumber: String
 });
 
-export default mongoose.model('bank', bandSchema)
+export default mongoose.model('Bank', bandSchema)

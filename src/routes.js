@@ -10,7 +10,7 @@ export const routes = [
     [<HqMain />, url_hq],
     [<Centers />, url_centers],
     [<AddCenter />, url_addCenter],
-    [<EditCenter />, url_editCenter],
+    [<EditCenter />, `${url_editCenter}/:id`],
     [<Courses />, url_courses],
     [<AddCourse />, url_addCourse],
     [<EditCourse />, url_editCourse],
