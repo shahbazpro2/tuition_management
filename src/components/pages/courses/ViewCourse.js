@@ -159,7 +159,7 @@ const ViewCourse = () => {
                 >
                     <Viewer plugins={[
                         disableScrollPluginInstance, pageNavigationPluginInstance, zoomPluginInstance
-                    ]} defaultScale={SpecialZoomLevel.PageFit} fileUrl={`${process.env.PUBLIC_URL}/assets/courses/flashcard.pdf`} />
+                    ]} defaultScale={SpecialZoomLevel.PageFit} fileUrl={`${process.env.PUBLIC_URL}/assets/courses/hano.pdf`} />
                 </div>
             </Worker>
 
