@@ -10,7 +10,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { url_attendence, url_centerKpi, url_centers, url_contact, url_courses, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoice, url_students } from 'utils/pageUrls';
 import { Toggle } from './Toggle';
 const links = [
-    { url: url_login, name: 'TCenter' },
+    { url: url_hq, name: 'TCenter' },
     { url: url_centers, name: 'Centers' },
     { url: url_courses, name: 'Courses' },
     { url: url_centerKpi, name: 'Center KPI' },

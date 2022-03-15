@@ -12,9 +12,9 @@ import { store } from 'redux/store';
 import Header from 'components/common/Header';
 import Container from 'components/common/Container';
 import FeedbackWrapper from 'components/wrappers/FeedbackWrapper';
-import RouteWrapper from 'components/wrappers/RouteWrapper';
 import GetUserWrapper from 'components/wrappers/GetUserWrapper';
 import RefetchWrapper from 'components/wrappers/RefetchWrapper';
+import GlobalContextWrapper from 'components/wrappers/GlobalContextWrapper';
 
 export const DarkModeContext = createContext()
 function App() {
@@ -57,18 +57,20 @@ function App() {
         <ThemeProvider theme={theme}>
           <FeedbackWrapper>
             <RefetchWrapper>
-              <div className="App dark:text-gray-300">
-                <Header />
-                <Container>
-                  <GetUserWrapper>
-                    <Routes>
-                      {routes.map(([element, path], index) =>
-                        <Route key={index} element={element} path={path} />
-                      )}
-                    </Routes>
-                  </GetUserWrapper>
-                </Container>
-              </div>
+              <GlobalContextWrapper>
+                <div className="App dark:text-gray-300">
+                  <Header />
+                  <Container>
+                    <GetUserWrapper>
+                      <Routes>
+                        {routes.map(([element, path], index) =>
+                          <Route key={index} element={element} path={path} />
+                        )}
+                      </Routes>
+                    </GetUserWrapper>
+                  </Container>
+                </div>
+              </GlobalContextWrapper>
             </RefetchWrapper>
           </FeedbackWrapper>
         </ThemeProvider>

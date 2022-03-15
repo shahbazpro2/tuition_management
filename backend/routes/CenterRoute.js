@@ -12,7 +12,7 @@ CenterRoute.route('/center')
             const res = await Center.create(_req.body)
             return _res.status(201).json({ message: 'Center added successfully', data: res })
         } catch (error) {
-            return _res.status(400).json({ message: formateError(error, "Center already exist") })
+            return _res.status(400).json(formateError(error, "Center already exist"))
         }
     })
     .get(async (_req, _res) => {
@@ -21,7 +21,7 @@ CenterRoute.route('/center')
             const res = await Center.findOne({ _id })
             return _res.status(200).json(formateRes("Center fetched successfully", res))
         } catch (error) {
-            return _res.status(400).json({ message: formateError(error) })
+            return _res.status(400).json(formateError(error))
         }
     })
     .put(async (_req, _res) => {
@@ -30,7 +30,7 @@ CenterRoute.route('/center')
             const res = await Center.updateOne({ _id }, _req.body)
             return _res.status(200).json(formateRes("Center updated successfully", res))
         } catch (error) {
-            return _res.status(400).json({ message: formateError(error) })
+            return _res.status(400).json(formateError(error))
         }
     })
     .delete(async (_req, _res) => {
@@ -39,7 +39,7 @@ CenterRoute.route('/center')
             const res = await Center.deleteOne({ _id })
             return _res.status(200).json(formateRes("Center deleted successfully", res))
         } catch (error) {
-            return _res.status(400).json({ message: formateError(error) })
+            return _res.status(400).json(formateError(error))
         }
     })
 
@@ -49,7 +49,7 @@ CenterRoute.route('/center/all')
             const res = await Center.find().populate(["pic"]).sort('date')
             return _res.status(200).json(formateRes("Center fetched successfully", res))
         } catch (error) {
-            return _res.status(400).json({ message: formateError(error) })
+            return _res.status(400).json(formateError(error))
         }
     })
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const centerSchema = new Schema({
+const schema = new Schema({
     name: { type: String, unique: true },
     address: String,
     regNumber: String,
@@ -13,4 +13,4 @@ const centerSchema = new Schema({
     date: { type: Date, default: Date.now },
 });
 
-export default mongoose.model('center', centerSchema)
+export default mongoose.model('center', schema)

@@ -21,8 +21,8 @@ UserRoute.route('/register').post(accessApi(), checkInputs(registerFields), asyn
         return _res.status(201).json(formateRes('User registered successfully', data))
     } catch (error) {
         if (['MongooseError', 'MongoServerError'].includes(error?.name))
-            return _res.status(400).json(formateRes(formateError(error, "User already exist")))
-        return _res.status(500).json(formateRes("There is something wrong"))
+            return _res.status(400).json(formateError(error, "User already exist"))
+        return _res.status(500).json(formateError("There is something wrong"))
     }
 })
 
@@ -31,27 +31,26 @@ UserRoute.route('/login').post(checkInputs(loginFields), async (_req, _res) => {
     const { email, password } = _req.body
     try {
         const res = await User.findOne({ email }).select('+password')
-        if (!res) return _res.status(401).json(formateRes("Email or password is invalid"))
+        if (!res) return _res.status(401).json(formateError("Email or password is invalid"))
         var passwordIsValid = bcrypt.compareSync(password, res.password);
-        if (!passwordIsValid) return _res.status(401).json(formateRes('Email or password is invalid'));
+        if (!passwordIsValid) return _res.status(401).json(formateError('Email or password is invalid'));
         var token = jwt.sign({ id: res._id }, process.env.secret);
         const data = { ...res._doc, token }
         delete data.password
         return _res.status(200).json(formateRes("Logged in successfully", data))
 
     } catch (error) {
-        console.log(error)
-        return _res.status(500).send(formateRes("There is something wrong"))
+        return _res.status(500).send(formateError("There is something wrong"))
     }
 })
 
 UserRoute.route('/me').get(async (_req, _res) => {
     try {
         var token = _req.headers['x-access-token'];
-        if (!token) return _res.status(401).send(formateRes("No token provided."))
+        if (!token) return _res.status(401).send(formateError("No token provided."))
 
         jwt.verify(token, process.env.secret, async (err, decoded) => {
-            if (err) return _res.status(500).send(formateRes("Failed to authenticate token."))
+            if (err) return _res.status(500).send(formateError("Failed to authenticate token."))
 
             const res = await User.findOne({ _id: decoded.id })
 
@@ -59,7 +58,7 @@ UserRoute.route('/me').get(async (_req, _res) => {
         });
 
     } catch (error) {
-        return _res.status(500).send(formateRes("There is something wrong"))
+        return _res.status(500).send(formateError("There is something wrong"))
     }
 })
 
@@ -67,10 +66,10 @@ UserRoute.route('/me').get(async (_req, _res) => {
 UserRoute.route('/all').get(async (_req, _res) => {
     try {
         var token = _req.headers['x-access-token'];
-        if (!token) return _res.status(401).send(formateRes("No token provided."))
+        if (!token) return _res.status(401).send(formateError("No token provided."))
 
         jwt.verify(token, process.env.secret, async (err, decoded) => {
-            if (err) return _res.status(401).send(formateRes("Failed to authenticate token."))
+            if (err) return _res.status(401).send(formateError("Failed to authenticate token."))
 
             const res = await User.find()
 
@@ -78,7 +77,7 @@ UserRoute.route('/all').get(async (_req, _res) => {
         });
 
     } catch (error) {
-        return _res.status(500).send(formateRes("There is something wrong"))
+        return _res.status(500).send(formateError("There is something wrong"))
     }
 })
 

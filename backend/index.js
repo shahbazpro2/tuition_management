@@ -21,7 +21,7 @@ const buildPath = path.join(__dirname + '/build')
 app.use(express.static(buildPath))
 
 //Api routes
-apiRoutes.map(([routes, url]) => app.use(`/api/${url}`, routes))
+apiRoutes.map(([routes, url]) => app.use(`/api/${url || ''}`, routes))
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname + '/build', 'index.html'));
