@@ -46,7 +46,7 @@ CourseRoute.route('/course')
 CourseRoute.route('/course/all')
     .get(async (_req, _res) => {
         try {
-            const res = await Course.find().populate(["pic"]).sort('date')
+            const res = await Course.find().populate(["language", "type"]).sort('date')
             return _res.status(200).json(formateRes("Course fetched successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))

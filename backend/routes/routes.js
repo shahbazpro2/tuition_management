@@ -1,6 +1,6 @@
 import BankRoute from './BankRoute.js'
 import CenterRoute from './CenterRoute.js'
-import CourseLanguageRoute from './CourseLanguage.js'
+import CourseLanguageRoute from './CourseLanguageRoute.js'
 import CourseRoute from './CourseRoute.js'
 import CourseTypeRoute from './CourseTypeRoute.js'
 import EnumsRoute from './Enums.js'

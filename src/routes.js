@@ -13,7 +13,7 @@ export const routes = [
     [<EditCenter />, `${url_editCenter}/:id`],
     [<Courses />, url_courses],
     [<AddCourse />, url_addCourse],
-    [<EditCourse />, url_editCourse],
+    [<EditCourse />, `${url_editCourse}/:id`],
     [<ViewCourse />, url_viewCourse],
     [<CenterKpi />, url_centerKpi],
     [<Packages />, url_packages],

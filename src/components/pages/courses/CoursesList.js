@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,23 +11,37 @@ import { useNavigate } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { url_editCourse, url_viewCourse } from 'utils/pageUrls'
 import TbCell from '../../common/TableCell';
-
-
-function createData(type, language, description, status) {
-    return { type, language, description, status };
-}
-
-const rows = [
-    createData("Flash Card ", 'BM', 'Bhassa Malaysia', 'Active'),
-    createData("Flash Card ", 'BM', 'Bhassa Malaysia', 'Active'),
-    createData("Flash Card ", 'BM', 'Bhassa Malaysia', 'Inactive'),
-    createData("Flash Card ", 'BM', 'Bhassa Malaysia', 'Active'),
-    createData("Flash Card ", 'BM', 'Bhassa Malaysia', 'Active'),
-
-];
+import { deleteCourseApi, getCoursesApi } from 'api/course';
+import { FeedbackContext } from 'context/FeedbackContext';
 
 const CoursesList = () => {
+    const context = useContext(FeedbackContext)
     const navigate = useNavigate()
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetchCourses()
+    }, [])
+
+
+    const fetchCourses = async () => {
+        const res = await getCoursesApi()
+        if (!res.error) setData(res.data)
+    }
+
+    const onDelete = async (id) => {
+        const res = await deleteCourseApi(id)
+
+        if (!res.error) {
+            context.setFeedback(res.message)
+            fetchCourses()
+            return
+        }
+
+        context.setFeedback("Delete failed", true)
+
+    }
+
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -43,22 +57,22 @@ const CoursesList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row.type}
+                                    {row.type?.name}
                                 </TableCell>
-                                <TableCell align="left"  >{row.language}</TableCell>
+                                <TableCell align="left"  >{row.language?.name}</TableCell>
                                 <TableCell align="left"  >{row.description}</TableCell>
                                 <TableCell align="left"  >{row.status}</TableCell>
                                 <TableCell align="left"  ><PlayArrowIcon onClick={() => navigate(url_viewCourse)} sx={{ cursor: 'pointer' }} /></TableCell>
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
-                                        <Button variant="contained" color="success" onClick={() => navigate(url_editCourse)}>Edit</Button>
-                                        <Button variant="contained" color='error'>Delete</Button>
+                                        <Button variant="contained" color="success" onClick={() => navigate(`${url_editCourse}/${row?._id}`)}>Edit</Button>
+                                        <Button variant="contained" color='error' onClick={() => onDelete(row?._id)}>Delete</Button>
                                     </div>
                                 </TableCell>
                             </TableRow>
@@ -66,7 +80,7 @@ const CoursesList = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+        </div >
     )
 }
 
