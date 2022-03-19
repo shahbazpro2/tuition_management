@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,8 +9,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { url_editCourse, url_editPackage, url_viewCourse } from 'utils/pageUrls'
+import { url_editPackage } from 'utils/pageUrls'
 import TbCell from '../../common/TableCell';
+import useApi from 'utils/hooks/useApi';
+import { deletePackageApi, getPackagesApi } from 'api/package';
 
 
 function createData(id, subject, days, amount, status) {
@@ -27,6 +29,8 @@ const rows = [
 ];
 
 const PackagesList = () => {
+    const [getPackages, { data }] = useApi(false, getPackagesApi)
+    const [deletePackage, { error }] = useApi(true)
     const navigate = useNavigate()
     return (
         <div>
@@ -43,13 +47,13 @@ const PackagesList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row.id}
+                                    {row._id}
                                 </TableCell>
                                 <TableCell align="left"  >{row.subject}</TableCell>
                                 <TableCell align="left"  >{row.days}</TableCell>
@@ -58,7 +62,7 @@ const PackagesList = () => {
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
                                         <Button variant="contained" color="success" onClick={() => navigate(url_editPackage)}>Edit</Button>
-                                        <Button variant="contained" color='error'>Delete</Button>
+                                        <Button variant="contained" color='error' onClick={() => deletePackage(deletePackageApi(row._id), getPackages(getPackagesApi))}>Delete</Button>
                                     </div>
                                 </TableCell>
                             </TableRow>
