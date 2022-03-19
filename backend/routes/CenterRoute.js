@@ -46,7 +46,7 @@ CenterRoute.route('/center')
 CenterRoute.route('/center/all')
     .get(async (_req, _res) => {
         try {
-            const res = await Center.find().populate(["pic"]).sort('date')
+            const res = await Center.find().populate(["pic", "kpi"]).sort('date')
             return _res.status(200).json(formateRes("Center fetched successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))

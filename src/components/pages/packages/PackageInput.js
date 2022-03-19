@@ -3,26 +3,29 @@ import React from 'react';
 import SelectField from '../../common/textFields/SelectField';
 import TextFieldSimple from '../../common/textFields/TextFieldSimple';
 
-const PackageInput = () => {
-    return <div className="">
+const PackageInput = ({ state, setState, onSubmit }) => {
+
+    const onChange = (e) => {
+        const { value, name } = e.target
+        setState({ ...state, [name]: value })
+    }
+
+    return <div className="" onSubmit={onSubmit}>
         <form className='space-y-4'>
 
-            <SelectField label="Number of Subject">
-            </SelectField>
-
-            <SelectField label="Number of Day/Week">
-            </SelectField>
+            <TextFieldSimple label="Number of Subject" name="subject" value={state.noSubject} onChange={onChange} />
+            <TextFieldSimple label="Number of Day/Week" name="days" value={state.noDays} onChange={onChange} />
             <div>
-                <TextFieldSimple label="Amount" />
+                <TextFieldSimple label="Amount" name="amount" value={state.amount} onChange={onChange} />
                 <FormHelperText>Amount in RM or % (For discount)</FormHelperText>
             </div>
 
-            <SelectField label="Status">
+            <SelectField label="Status" name="status" value={state.status} onChange={onChange}>
                 <MenuItem value="active">Active</MenuItem>
                 <MenuItem value="inactive">Inactive</MenuItem>
             </SelectField>
 
-            <Button variant="contained" fullWidth>Save</Button>
+            <Button variant="contained" fullWidth type="submit">Save</Button>
         </form>
     </div>;
 };

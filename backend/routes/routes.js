@@ -5,6 +5,7 @@ import CourseRoute from './CourseRoute.js'
 import CourseTypeRoute from './CourseTypeRoute.js'
 import EnumsRoute from './Enums.js'
 import KpiRoute from './KpiRoute.js'
+import PackageRoute from './packageRoute.js'
 import PicRoute from './PicRoute.js'
 import UserRoute from './UserRoute.js'
 
@@ -17,7 +18,8 @@ const allRoutes = [
     [EnumsRoute],
     [CourseRoute],
     [CourseTypeRoute],
-    [CourseLanguageRoute]
+    [CourseLanguageRoute],
+    [PackageRoute]
 ]
 
 export default allRoutes

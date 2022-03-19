@@ -1,24 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { getCentersApi } from 'api/center';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import useApi from 'utils/hooks/useApi';
 import TbCell from '../../common/TableCell';
 
-function createData(id, name, kpi, amt) {
-    return { id, name, kpi, amt };
-}
-
-const rows = [
-    createData("001", 'Ampang', 'Bhassa Malaysia', 'RM100000'),
-    createData("002", 'BM', 'Bhassa Malaysia', 'RM100000'),
-    createData("003", 'BM', 'Bhassa Malaysia', 'RM100000'),
-    createData("004", 'BM', 'Bhassa Malaysia', 'RM100000'),
-    createData("005", 'BM', 'Bhassa Malaysia', 'RM100000'),
-
-];
-
 const CenterKpi = () => {
-    const navigate = useNavigate()
+    const [, { data }] = useApi(false, getCentersApi)
+
     return <div className='content'>
         <div className="text-xl font-bold mb-5">Center's Kpi</div>
         <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -33,22 +22,22 @@ const CenterKpi = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row, index) => (
+                    {data?.map((row, index) => (
                         <TableRow
                             key={index}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell>
-                                {row.id}
+                                {row._id}
                             </TableCell>
-                            <TableCell align="left"  >{row.name}</TableCell>
-                            <TableCell align="left"  >{row.kpi}</TableCell>
-                            <TableCell align="left"  >{row.amt}</TableCell>
-                            <TableCell align="left">
+                            <TableCell align="left"  >{row?.name}</TableCell>
+                            <TableCell align="left"  >{row?.kpi?.name}</TableCell>
+                            <TableCell align="left"  >{row?.kpi?.amt}</TableCell>
+                            {/*  <TableCell align="left">
                                 <div className="flex space-x-2 justify-end">
                                     <Button variant="contained" color="success">Edit</Button>
                                 </div>
-                            </TableCell>
+                            </TableCell> */}
                         </TableRow>
                     ))}
                 </TableBody>

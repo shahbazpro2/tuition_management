@@ -1,10 +1,36 @@
-import React from 'react';
+import { createPackageApi } from 'api/package';
+import { FeedbackContext } from 'context/FeedbackContext';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useApi from 'utils/hooks/useApi';
+import { url_packages } from 'utils/pageUrls';
 import AddEditLayout from '../common/AddEditLayout';
 import PackageInput from './PackageInput';
 
+export const initialState = {
+    subject: '',
+    days: '',
+    amount: '',
+    status: '',
+}
+
 const AddPackage = () => {
+    const [createApi, { error }] = useApi(true)
+    const [state, setState] = useState(initialState)
+    const navigate = useNavigate()
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        createApi(() => createPackageApi(state))
+    }
+
+    if (error === false)
+        setTimeout(() => {
+            navigate(url_packages)
+        }, 500)
+
     return <AddEditLayout title="Add Package">
-        <PackageInput />
+        <PackageInput state={state} setState={setState} onSubmit={onSubmit} />
     </AddEditLayout>
 };
 
