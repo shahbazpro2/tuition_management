@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,24 +14,11 @@ import TbCell from '../../common/TableCell';
 import useApi from 'utils/hooks/useApi';
 import { deletePackageApi, getPackagesApi } from 'api/package';
 
-
-function createData(id, subject, days, amount, status) {
-    return { id, subject, days, amount, status };
-}
-
-const rows = [
-    createData("001", 'BM', 'Bhassa Malaysia', 'RM 220', 'Active'),
-    createData("001", 'BM', 'Bhassa Malaysia', 'RM 220', 'Active'),
-    createData("001", 'BM', 'Bhassa Malaysia', 'RM 220', 'Inactive'),
-    createData("001", 'BM', 'Bhassa Malaysia', 'RM 220', 'Active'),
-    createData("001", 'BM', 'Bhassa Malaysia', 'RM 220', 'Active'),
-
-];
-
 const PackagesList = () => {
     const [getPackages, { data }] = useApi(false, getPackagesApi)
-    const [deletePackage, { error }] = useApi(true)
+    const [deletePackage] = useApi(true)
     const navigate = useNavigate()
+
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -61,7 +48,7 @@ const PackagesList = () => {
                                 <TableCell align="left"  >{row.status}</TableCell>
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
-                                        <Button variant="contained" color="success" onClick={() => navigate(url_editPackage)}>Edit</Button>
+                                        <Button variant="contained" color="success" onClick={() => navigate(`${url_editPackage}/${row?._id}`)}>Edit</Button>
                                         <Button variant="contained" color='error' onClick={() => deletePackage(deletePackageApi(row._id), getPackages(getPackagesApi))}>Delete</Button>
                                     </div>
                                 </TableCell>

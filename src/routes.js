@@ -18,7 +18,7 @@ export const routes = [
     [<CenterKpi />, url_centerKpi],
     [<Packages />, url_packages],
     [<AddPackage />, url_addPackage],
-    [<EditPackage />, url_editPackage],
+    [<EditPackage />, `${url_editPackage}/:id`],
     [<Discounts />, url_dicounts],
     [<AddDiscount />, url_addDiscount],
     [<EditDiscount />, url_editDiscount],

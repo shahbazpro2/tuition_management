@@ -1,6 +1,5 @@
 import { createPackageApi } from 'api/package';
-import { FeedbackContext } from 'context/FeedbackContext';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useApi from 'utils/hooks/useApi';
 import { url_packages } from 'utils/pageUrls';
@@ -21,7 +20,7 @@ const AddPackage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        createApi(() => createPackageApi(state))
+        createApi(createPackageApi(state))
     }
 
     if (error === false)

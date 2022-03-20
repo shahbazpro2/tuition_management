@@ -1,12 +1,14 @@
 import { FeedbackContext } from 'context/FeedbackContext'
 import { useContext, useEffect, useState } from 'react'
 
-const useApi = (feedback, apiFun) => {
+const useApi = ({ errMsg, successMsg } = { errMsg: true }, apiFun) => {
     const context = useContext(FeedbackContext)
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-    const [data, setData] = useState([])
-    const [message, setMessage] = useState('')
+    const [state, setState] = useState({
+        loading: false,
+        error: null,
+        data: null,
+        message: null
+    })
 
     useEffect(() => {
         if (apiFun) {
@@ -22,24 +24,31 @@ const useApi = (feedback, apiFun) => {
     }
 
     const processing = async (api, refetch) => {
-        setLoading(true)
+        setState({ ...state, loading: true })
         let res = null
         if (api instanceof Function)
             res = await api()
         else
             res = await api
-        setLoading(false)
-        setError(res.error)
-        setMessage(res.message)
-        if (feedback) {
+        setState({
+            loading: false,
+            error: res.error,
+            message: res.message,
+            data: !res.error ? res.data : null
+        })
+        if (!res.error && successMsg) {
+            context.setFeedback(res.message, res.error)
+        } else if (res.error && errMsg) {
             context.setFeedback(res.message, res.error)
         }
         if (!res.error) {
-            setData(res.data)
-            if (refetch) refetch()
+            if (refetch)
+                if (api instanceof Function)
+                    refetch()
+                else refetch
         }
     }
-
+    const { loading, error, data, message } = state
     return [executeApi, { loading, error, data, message }]
 }
 
