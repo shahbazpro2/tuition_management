@@ -14,19 +14,17 @@ export const initialState = {
 }
 
 const AddPackage = () => {
-    const [createApi, { error }] = useApi(true)
+    const [createApi] = useApi({ errMsg: true, successMsg: true })
     const [state, setState] = useState(initialState)
     const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault()
-        createApi(createPackageApi(state))
+        createApi(createPackageApi(state), () => setTimeout(() => {
+            navigate(url_packages)
+        }, 500))
     }
 
-    if (error === false)
-        setTimeout(() => {
-            navigate(url_packages)
-        }, 500)
 
     return <AddEditLayout title="Add Package">
         <PackageInput state={state} setState={setState} onSubmit={onSubmit} />

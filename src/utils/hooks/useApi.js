@@ -16,14 +16,14 @@ const useApi = ({ errMsg, successMsg } = { errMsg: true }, apiFun) => {
         }
     }, [])
 
-    const executeApi = async (fun, refetch) => {
+    const executeApi = async (fun, callback) => {
         if (fun) {
-            processing(fun, refetch)
+            processing(fun, callback)
         }
 
     }
 
-    const processing = async (api, refetch) => {
+    const processing = async (api, callback) => {
         setState({ ...state, loading: true })
         let res = null
         if (api instanceof Function)
@@ -42,10 +42,8 @@ const useApi = ({ errMsg, successMsg } = { errMsg: true }, apiFun) => {
             context.setFeedback(res.message, res.error)
         }
         if (!res.error) {
-            if (refetch)
-                if (api instanceof Function)
-                    refetch()
-                else refetch
+            if (callback)
+                callback(res)
         }
     }
     const { loading, error, data, message } = state

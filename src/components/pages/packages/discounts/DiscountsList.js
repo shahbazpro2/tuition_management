@@ -11,22 +11,13 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editDiscount } from 'utils/pageUrls';
 import TbCell from '../../../common/TableCell';
+import useApi from 'utils/hooks/useApi'
+import { deleteDiscountApi, getDiscountsApi } from 'api/discount';
 
-
-function createData(id, description, discount, status) {
-    return { id, description, discount, status };
-}
-
-const rows = [
-    createData("001", 'BM', '20%', 'Active'),
-    createData("001", 'BM', '20%', 'Active'),
-    createData("001", 'BM', '20%', 'Active'),
-    createData("001", 'BM', '20%', 'Active'),
-    createData("001", 'BM', '20%', 'Active'),
-
-];
 
 const DiscountsList = () => {
+    const [getDicounts, { data }] = useApi(false, getDiscountsApi)
+    const [deleteDiscount] = useApi(true)
     const navigate = useNavigate()
     return (
         <div>
@@ -42,21 +33,21 @@ const DiscountsList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row.id}
+                                    {row._id}
                                 </TableCell>
                                 <TableCell align="left"  >{row.description}</TableCell>
                                 <TableCell align="left"  >{row.discount}</TableCell>
                                 <TableCell align="left"  >{row.status}</TableCell>
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
-                                        <Button variant="contained" color="success" onClick={() => navigate(url_editDiscount)}>Edit</Button>
-                                        <Button variant="contained" color='error'>Delete</Button>
+                                        <Button variant="contained" color="success" onClick={() => navigate(`${url_editDiscount}/${row?._id}`)}>Edit</Button>
+                                        <Button variant="contained" color='error' onClick={() => deleteDiscount(deleteDiscountApi(row._id), () => getDicounts(getDiscountsApi))}>Delete</Button>
                                     </div>
                                 </TableCell>
                             </TableRow>

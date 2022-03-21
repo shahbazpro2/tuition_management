@@ -10,8 +10,8 @@ const PackageInput = ({ state, setState, onSubmit }) => {
         setState({ ...state, [name]: value })
     }
 
-    return <div className="" onSubmit={onSubmit}>
-        <form className='space-y-4'>
+    return <div className="" >
+        <form className='space-y-4' onSubmit={onSubmit}>
 
             <TextFieldSimple label="Number of Subject" name="subject" value={state.subject} onChange={onChange} />
             <TextFieldSimple label="Number of Day/Week" name="days" value={state.days} onChange={onChange} />

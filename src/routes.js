@@ -21,7 +21,7 @@ export const routes = [
     [<EditPackage />, `${url_editPackage}/:id`],
     [<Discounts />, url_dicounts],
     [<AddDiscount />, url_addDiscount],
-    [<EditDiscount />, url_editDiscount],
+    [<EditDiscount />, `${url_editDiscount}/:id`],
     [<Others />, url_packageOthers],
     [<AddOthers />, url_packageAddOthers],
     [<EditOthers />, url_packageEditOthers],
