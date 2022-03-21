@@ -5,7 +5,7 @@ import CourseRoute from './CourseRoute.js'
 import CourseTypeRoute from './CourseTypeRoute.js'
 import EnumsRoute from './Enums.js'
 import KpiRoute from './KpiRoute.js'
-import PackageRoute from './packageRoute.js'
+import PackageRoute from './PackageRoute.js'
 import PicRoute from './PicRoute.js'
 import UserRoute from './UserRoute.js'
 
