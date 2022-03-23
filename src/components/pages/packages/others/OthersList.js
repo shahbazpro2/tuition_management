@@ -11,21 +11,13 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_packageEditOthers } from 'utils/pageUrls';
 import TbCell from '../../../common/TableCell';
+import useApi from 'utils/hooks/useApi';
+import { deleteOtherApi, getOthersApi, } from 'api/others';
 
-
-function createData(id, otherPrice, amount, status) {
-    return { id, otherPrice, amount, status };
-}
-
-const rows = [
-    createData("001", 'Non-refundable Advanced 1 Subject 1 day/week', 'RM 220', 'Active'),
-    createData("001", 'Non-refundable Advanced 1 Subject 1 day/week', 'RM 220', 'Active'),
-    createData("001", 'Non-refundable Advanced 1 Subject 1 day/week', 'RM 220', 'Active'),
-    createData("001", 'Non-refundable Advanced 1 Subject 1 day/week', 'RM 220', 'Active'),
-    createData("001", 'Non-refundable Advanced 1 Subject 1 day/week', 'RM 220', 'Active'),
-];
 
 const OthersList = () => {
+    const [getOthers, { data }] = useApi(false, getOthersApi)
+    const [deleteOthers] = useApi(true)
     const navigate = useNavigate()
     return (
         <div>
@@ -41,21 +33,21 @@ const OthersList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row.id}
+                                    {row._id}
                                 </TableCell>
-                                <TableCell align="left"  >{row.otherPrice}</TableCell>
-                                <TableCell align="left"  >{row.amount}</TableCell>
+                                <TableCell align="left"  >{row.description}</TableCell>
+                                <TableCell align="left"  >{row.discount}</TableCell>
                                 <TableCell align="left"  >{row.status}</TableCell>
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
-                                        <Button variant="contained" color="success" onClick={() => navigate(url_packageEditOthers)}>Edit</Button>
-                                        <Button variant="contained" color='error'>Delete</Button>
+                                        <Button variant="contained" color="success" onClick={() => navigate(`${url_packageEditOthers}/${row?._id}`)}>Edit</Button>
+                                        <Button variant="contained" color='error' onClick={() => deleteOthers(deleteOtherApi(row._id), () => getOthers(getOthersApi))}>Delete</Button>
                                     </div>
                                 </TableCell>
                             </TableRow>
