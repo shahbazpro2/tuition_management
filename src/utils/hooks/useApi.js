@@ -1,7 +1,7 @@
 import { FeedbackContext } from 'context/FeedbackContext'
 import { useContext, useEffect, useState } from 'react'
 
-const useApi = ({ errMsg, successMsg } = { errMsg: true }, apiFun) => {
+const useApi = ({ errMsg, successMsg } = { errMsg: true }, apiFun, callback) => {
     const context = useContext(FeedbackContext)
     const [state, setState] = useState({
         loading: false,
@@ -12,7 +12,7 @@ const useApi = ({ errMsg, successMsg } = { errMsg: true }, apiFun) => {
 
     useEffect(() => {
         if (apiFun) {
-            processing(apiFun)
+            processing(apiFun, callback)
         }
     }, [])
 

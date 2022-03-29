@@ -1,14 +1,37 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import { createBankApi } from 'api/enums';
+import { createInventoryCategoryApi } from 'api/inventory';
+import { FeedbackContext } from 'context/FeedbackContext';
+import { RefetchContext } from 'context/RefetchContext';
+import React, { useContext, useState } from 'react';
+import useApi from 'utils/hooks/useApi';
 import TextFieldSimple from '../../common/textFields/TextFieldSimple';
 
-const CategoryModal = () => {
-  return <div className="space-y-5">
-    <TextFieldSimple label="Category Name" />
+const CategoryModal = ({ setOpen }) => {
+  const [createApi] = useApi({ successMsg: true, errMsg: true });
+  const refetchContext = useContext(RefetchContext)
+  const [state, setState] = useState({
+    name: '',
+  })
 
-    <Button variant="contained">Add</Button>
-  </div>
+  const onChange = (e) => {
+    const { name, value } = e.target
+    setState({ ...state, [name]: value })
+  }
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    return createApi(createInventoryCategoryApi(state), () => {
+      refetchContext.setRefetch(true)
+      setOpen()
+    })
+  }
+
+  return <form className="space-y-5" onSubmit={onSubmit}>
+    <TextFieldSimple label="Category Name" name="name" onChange={onChange} />
+
+    <Button variant="contained" type="submit">Add</Button>
+  </form>
 };
 
 export default CategoryModal;

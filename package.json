@@ -37,12 +37,6 @@
     "start": "cd backend && npm start",
     "start-both": "concurrently \"react-scripts start\" \"cd backend && nodemon index.js\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

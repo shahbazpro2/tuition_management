@@ -22,7 +22,7 @@ const Contact = () => {
                 />
                 <TextFieldSimple
                     label="Description"
-                    multiline
+                    multiline={true}
                     rows={4}
                 />
                 <Button variant="contained" size="large" fullWidth>Submit</Button>

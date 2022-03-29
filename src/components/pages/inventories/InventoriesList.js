@@ -10,6 +10,8 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editInventory } from 'utils/pageUrls'
 import TbCell from '../../common/TableCell';
+import useApi from 'utils/hooks/useApi';
+import { getInventoriesApi } from 'api/inventory';
 
 
 function createData(id, category, description, qty, status) {
@@ -26,7 +28,9 @@ const rows = [
 ];
 
 const InventoriesList = () => {
+    const [, { data }] = useApi({}, getInventoriesApi)
     const navigate = useNavigate()
+
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -42,21 +46,21 @@ const InventoriesList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row.id}
+                                    {row?._id}
                                 </TableCell>
-                                <TableCell align="left"  >{row.category}</TableCell>
-                                <TableCell align="left"  >{row.description}</TableCell>
-                                <TableCell align="left"  >{row.qty}</TableCell>
-                                <TableCell align="left"  >{row.status}</TableCell>
+                                <TableCell align="left"  >{row?.category?.name}</TableCell>
+                                <TableCell align="left"  >{row?.description}</TableCell>
+                                <TableCell align="left"  >{row?.qty}</TableCell>
+                                <TableCell align="left"  >{row?.status}</TableCell>
                                 <TableCell align="left">
                                     <div className="flex space-x-2 justify-end">
-                                        <Button variant="contained" color="success" onClick={() => navigate(url_editInventory)}>Edit</Button>
+                                        <Button variant="contained" color="success" onClick={() => navigate(`${url_editInventory}/${row?._id}`)}>Edit</Button>
                                         <Button variant="contained" color='error'>Delete</Button>
                                     </div>
                                 </TableCell>

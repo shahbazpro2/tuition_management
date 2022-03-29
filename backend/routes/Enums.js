@@ -2,6 +2,7 @@ import express from 'express'
 import Bank from '../models/Bank.js';
 import CourseLanguage from '../models/CourseLanguage.js';
 import CourseType from '../models/CourseType.js';
+import InventoryCategory from '../models/InventoryCategory.js';
 import Kpi from '../models/Kpi.js';
 import Pic from '../models/Pic.js';
 import formateError from '../utils/formateError.js';
@@ -17,9 +18,9 @@ EnumsRoute.route('/enums')
             const kpi = Kpi.find()
             const courseType = CourseType.find()
             const courseLanguage = CourseLanguage.find()
-
-            Promise.all([pic, bank, kpi, courseType, courseLanguage]).then((values) => {
-                return _res.status(200).json(formateRes('Enums fetched successfully', { pic: values[0], bank: values[1], kpi: values[2], courseType: values[3], courseLanguage: values[4] }))
+            const inventoryCategory = InventoryCategory.find()
+            Promise.all([pic, bank, kpi, courseType, courseLanguage, inventoryCategory]).then((values) => {
+                return _res.status(200).json(formateRes('Enums fetched successfully', { pic: values[0], bank: values[1], kpi: values[2], courseType: values[3], courseLanguage: values[4], inventoryCategory: values[5] }))
             });
 
         } catch (error) {
