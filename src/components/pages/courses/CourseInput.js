@@ -20,7 +20,6 @@ const CourseInput = ({ state, setState, onSubmit }) => {
         setState({ ...state, [name]: value })
     }
 
-    console.log('conte', context, state)
     return <div className="">
         <form className='space-y-4' onSubmit={onSubmit}>
             <div className="flex space-x-3 items-center">
@@ -55,18 +54,24 @@ const CourseInput = ({ state, setState, onSubmit }) => {
                 multiline
                 rows={3}
             />
+            <SelectField label="Teacher" required={false} name="teacher" value={state.teacher} onChange={onChange}>
+                <MenuItem value="">Select a teacher</MenuItem>
+                {context.enums?.teachers?.map(item => (
+                    <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
+                ))}
+            </SelectField>
             <SelectField label="Status" name="status" value={state.status} onChange={onChange}>
                 <MenuItem value="active">Active</MenuItem>
                 <MenuItem value="inactive">Inactive</MenuItem>
             </SelectField>
-            <div>
+            {/* <div>
                 <label htmlFor="contained-button-file">
                     <Input id="contained-button-file" multiple type="file" />
                     <Button variant="contained" color="secondary" component="span">
                         Upload
                     </Button>
                 </label>
-            </div>
+            </div> */}
             <Button variant="contained" type="submit" fullWidth>Save</Button>
         </form>
     </div>;

@@ -5,7 +5,7 @@ import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
 const PackageRoute = express.Router();
 
-const centerFields = ['subject', 'days', "amount", "status"]
+const centerFields = ['name', 'subject', 'days', "amount", "status"]
 PackageRoute.route('/package')
     .post(checkInputs(centerFields), async (_req, _res) => {
         const { days } = _req.body
@@ -28,7 +28,7 @@ PackageRoute.route('/package')
             return _res.status(400).json(formateError(error))
         }
     })
-    .put(async (_req, _res) => {
+    .put(checkInputs(centerFields), async (_req, _res) => {
         const _id = _req.query?.id
         try {
             const res = await Package.updateOne({ _id }, _req.body)

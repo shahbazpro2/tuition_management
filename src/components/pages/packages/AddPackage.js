@@ -7,6 +7,7 @@ import AddEditLayout from '../common/AddEditLayout';
 import PackageInput from './PackageInput';
 
 export const initialState = {
+    name: '',
     subject: '',
     days: '',
     amount: '',

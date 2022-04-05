@@ -14,19 +14,6 @@ import useApi from 'utils/hooks/useApi';
 import { getInventoriesApi } from 'api/inventory';
 
 
-function createData(id, category, description, qty, status) {
-    return { id, category, description, qty, status };
-}
-
-const rows = [
-    createData("001", 'workbook', 'KBSR 1', "00", 'Active'),
-    createData("001", 'workbook', 'KBSR 1', "00", 'Active'),
-    createData("001", 'workbook', 'KBSR 1', "00", 'Inactive'),
-    createData("001", 'workbook', 'KBSR 1', "00", 'Active'),
-    createData("001", 'workbook', 'KBSR 1', "00", 'Active'),
-
-];
-
 const InventoriesList = () => {
     const [, { data }] = useApi({}, getInventoriesApi)
     const navigate = useNavigate()

@@ -6,24 +6,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import useRefetchEnums from "utils/hooks/useRefetchEnums";
 import { url_courses } from "utils/pageUrls";
 import AddEditLayout from "../common/AddEditLayout";
+import { initialState } from "./AddCourse";
 import CourseInput from "./CourseInput";
 
 const EditCourse = () => {
     const context = useContext(FeedbackContext)
     const [loading, setLoading] = useState(true)
-    const [state, setState] = useState({
-        type: '',
-        language: '',
-        description: '',
-        status: 'inactive'
-    })
+    const [state, setState] = useState(initialState)
     const navigate = useNavigate()
     const params = useParams()
-    const [getEnums] = useRefetchEnums()
-
-    useEffect(() => {
-        getEnums()
-    }, [])
+    useRefetchEnums()
 
     useEffect(() => {
         (async () => {

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -26,6 +25,7 @@ const PackagesList = () => {
                     <TableHead>
                         <TableRow>
                             <TbCell>ID</TbCell>
+                            <TbCell>Name</TbCell>
                             <TbCell>Number of Subject</TbCell>
                             <TbCell>Number of Day's Per Week</TbCell>
                             <TbCell>Amount</TbCell>
@@ -42,6 +42,7 @@ const PackagesList = () => {
                                 <TableCell>
                                     {row._id}
                                 </TableCell>
+                                <TableCell align="left">{row.name}</TableCell>
                                 <TableCell align="left"  >{row.subject}</TableCell>
                                 <TableCell align="left"  >{row.days}</TableCell>
                                 <TableCell align="left"  >{row.amount}</TableCell>

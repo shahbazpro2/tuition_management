@@ -34,7 +34,7 @@ export const routes = [
     [<CenterInvoice />, url_centerInvoice],
     [<Students />, url_students],
     [<AddStudent />, url_addStudent],
-    [<EditStudent />, url_editStudent],
+    [<EditStudent />, `${url_editStudent}/:id`],
     [<Attendence />, url_attendence],
     [<AttendenceHistory />, url_attendenceHistory],
     [<PayHq />, url_payHq],

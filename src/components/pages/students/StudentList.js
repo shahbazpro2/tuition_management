@@ -10,22 +10,11 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { url_editCourse, url_editStudent } from 'utils/pageUrls'
 import TbCell from '../../common/TableCell';
-
-
-function createData(id, studentName, gender, fatherName, motherName) {
-    return { id, studentName, gender, fatherName, motherName };
-}
-
-const rows = [
-    createData("001", 'Jason', 'Male', 'Frankie', "Theresa"),
-    createData("001", 'Jason', 'Male', 'Frankie', "Theresa"),
-    createData("001", 'Jason', 'Male', 'Frankie', "Theresa"),
-    createData("001", 'Jason', 'Male', 'Frankie', "Theresa"),
-    createData("001", 'Jason', 'Male', 'Frankie', "Theresa"),
-
-];
+import useApi from 'utils/hooks/useApi';
+import { getStudentsApi } from 'api/student';
 
 const StudentList = () => {
+    const [, { data }] = useApi({}, getStudentsApi)
     const navigate = useNavigate()
     return (
         <div>
@@ -38,26 +27,28 @@ const StudentList = () => {
                             <TbCell>Gender</TbCell>
                             <TbCell>Father Name</TbCell>
                             <TbCell>Mother Name</TbCell>
+                            <TbCell>Package</TbCell>
                             <TbCell></TbCell>
                             <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row.id}
+                                    {row._id}
                                 </TableCell>
-                                <TableCell align="left"  >{row.studentName}</TableCell>
-                                <TableCell align="left"  >{row.gender}</TableCell>
-                                <TableCell align="left"  >{row.fatherName}</TableCell>
-                                <TableCell align="left"  >{row.motherName}</TableCell>
-                                <TableCell align='center'><Button variant="contained" color="primary">View</Button></TableCell>
+                                <TableCell align="left"  >{row?.name}</TableCell>
+                                <TableCell align="left"  >{row?.gender}</TableCell>
+                                <TableCell align="left"  >{row?.fatherName}</TableCell>
+                                <TableCell align="left"  >{row?.motherName}</TableCell>
+                                <TableCell align="left"  >{row?.package?.name}</TableCell>
+                                {/*   <TableCell align='center'><Button variant="contained" color="primary">View</Button></TableCell> */}
                                 <TableCell align="center">
-                                    <Button variant="contained" color="success" onClick={() => navigate(url_editStudent)}>Edit</Button>
+                                    <Button variant="contained" color="success" onClick={() => navigate(`${url_editStudent}/${row?._id}`)}>Edit</Button>
                                 </TableCell>
                             </TableRow>
                         ))}

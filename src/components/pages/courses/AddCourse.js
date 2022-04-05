@@ -1,26 +1,23 @@
 import { createCourseApi } from 'api/course';
 import { FeedbackContext } from 'context/FeedbackContext';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useRefetchEnums from 'utils/hooks/useRefetchEnums';
 import { url_courses } from 'utils/pageUrls';
 import AddEditLayout from '../common/AddEditLayout';
 import CourseInput from './CourseInput';
-
+export const initialState = {
+    type: '',
+    language: '',
+    description: '',
+    teacher: '',
+    status: 'inactive'
+}
 const AddCourse = () => {
     const feedbackContext = useContext(FeedbackContext)
-    const [state, setState] = useState({
-        type: '',
-        language: '',
-        description: '',
-        status: 'inactive'
-    })
-    const [getEnums] = useRefetchEnums()
+    const [state, setState] = useState(initialState)
+    useRefetchEnums()
     const navigate = useNavigate()
-
-    useEffect(() => {
-        getEnums()
-    }, [])
 
     const onSubmit = async (e) => {
         e.preventDefault()

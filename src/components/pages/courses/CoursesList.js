@@ -51,13 +51,14 @@ const CoursesList = () => {
                             <TbCell>Type</TbCell>
                             <TbCell>Language</TbCell>
                             <TbCell>Description</TbCell>
+                            <TbCell>Teacher</TbCell>
                             <TbCell>Status</TbCell>
                             <TbCell>View</TbCell>
                             <TbCell></TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -67,6 +68,7 @@ const CoursesList = () => {
                                 </TableCell>
                                 <TableCell align="left"  >{row.language?.name}</TableCell>
                                 <TableCell align="left"  >{row.description}</TableCell>
+                                <TableCell align="left"  >{row.teacher?.name}</TableCell>
                                 <TableCell align="left"  >{row.status}</TableCell>
                                 <TableCell align="left"  ><PlayArrowIcon onClick={() => navigate(url_viewCourse)} sx={{ cursor: 'pointer' }} /></TableCell>
                                 <TableCell align="left">

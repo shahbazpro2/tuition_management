@@ -28,7 +28,7 @@ const EditPackage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        updatePackage(updatePackageApi(params?.id, state),
+        updatePackage(updatePackageApi(params?.id, state), () =>
             setTimeout(() => {
                 navigate(url_packages)
             }, 500)
