@@ -24,7 +24,7 @@ const rows = [
 
 ];
 
-const AttendenceList = () => {
+const AttendenceList = ({ data }) => {
     const navigate = useNavigate()
     return (
         <div>
@@ -40,16 +40,16 @@ const AttendenceList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell>
-                                    {row.id}
-                                </TableCell>
                                 <TableCell align="left"  ><Checkbox /></TableCell>
-                                <TableCell align="left"  >{row.studentName}</TableCell>
+                                <TableCell>
+                                    {row._id}
+                                </TableCell>
+                                <TableCell align="left"  >{row.name}</TableCell>
                                 <TableCell align="left"  >{row.fatherName}</TableCell>
                                 <TableCell align="left"  >{row.motherName}</TableCell>
                             </TableRow>

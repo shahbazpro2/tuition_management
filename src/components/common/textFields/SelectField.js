@@ -10,7 +10,7 @@ const SelectField = ({ required, multiple, ...props }) => {
             select
             required={required ?? true}
             className="w-full h-full text-left"
-            defaultValue={null}
+            defaultValue={""}
             SelectProps={{
                 displayEmpty: true,
                 multiple: multiple ?? false,

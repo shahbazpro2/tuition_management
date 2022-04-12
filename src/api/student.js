@@ -21,3 +21,11 @@ export const updateStudentApi = (id, data) => {
 export const deleteStudentApi = (id) => {
     return responseApi(`${studentUrl}?id=${id}`, 'delete')
 }
+
+export const getStudentCoursesApi = () => {
+    return responseApi(`${studentUrl}/courses/`, 'get')
+}
+
+export const getStudentsCourseApi = (id) => {
+    return responseApi(`${studentUrl}/courses/${id}`, 'get')
+}

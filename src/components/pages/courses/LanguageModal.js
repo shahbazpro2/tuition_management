@@ -12,6 +12,7 @@ const LanguageModal = ({ setLanguageModal }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        e.stopPropagation()
         const res = await createCourseLanguage(name)
         context.setFeedback(res.message, res.error)
         if (!res.error) {

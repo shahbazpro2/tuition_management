@@ -1,13 +1,12 @@
 import express from 'express'
 import Student from '../models/Student.js';
-import Course from '../models/Course.js';
 import checkInputs from '../utils/checkInputs.js';
 import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
-const StudentRoute = express.Router();
+const AttendanceRoute = express.Router();
 
 const fields = ['name', 'gender', "religion", "address", "contact", "emergencyContact", "fatherName", "motherName", "package", "courses", "health", "language"]
-StudentRoute.route('/student')
+AttendanceRoute.route('/attendence')
     .post(checkInputs(fields), async (_req, _res) => {
         try {
             const res = await Student.create(_req.body)
@@ -44,29 +43,17 @@ StudentRoute.route('/student')
         }
     })
 
-StudentRoute.route('/student/courses/')
-    .get(async (_req, _res) => {
-        try {
-            const res = await Student.distinct('courses')
-            const res1 = await Course.find({ _id: { $in: res } }).populate(['language'])
-            return _res.status(200).json(formateRes("Courses fetched successfully", res1))
-        } catch (error) {
-            return _res.status(400).json(formateError(error))
-        }
-    })
+AttendanceRoute.route('/attendence/course/:id').get(async (_req, _res) => {
+    const _id = _req.params.id
+    try {
+        const res = await Student.find({ courses: _id }).populate(['package'])
+        return _res.status(200).json(formateRes("Student fetched successfully", res))
+    } catch (error) {
+        return _res.status(400).json(formateError(error))
+    }
+})
 
-StudentRoute.route('/student/courses/:id')
-    .get(async (_req, _res) => {
-        const _id = _req.params.id
-        try {
-            const res = await Student.find({ courses: _id }).populate(['courses'])
-            return _res.status(200).json(formateRes("Student fetched successfully", res))
-        } catch (error) {
-            return _res.status(400).json(formateError(error))
-        }
-    })
-
-StudentRoute.route('/student/all')
+AttendanceRoute.route('/attendence/all')
     .get(async (_req, _res) => {
         try {
             const res = await Student.find().populate(['package']).sort('date')
@@ -77,7 +64,6 @@ StudentRoute.route('/student/all')
     })
 
 
-
-export default StudentRoute
+export default AttendanceRoute
 
 

@@ -1,3 +1,4 @@
+import AttendanceRoute from './AttendanceRoute.js'
 import BankRoute from './BankRoute.js'
 import CenterRoute from './CenterRoute.js'
 import CourseLanguageRoute from './CourseLanguageRoute.js'
@@ -29,7 +30,8 @@ const allRoutes = [
     [DiscountRoute],
     [OthersRoute],
     [InventoryRoute],
-    [StudentRoute]
+    [StudentRoute],
+    [AttendanceRoute]
 ]
 
 export default allRoutes

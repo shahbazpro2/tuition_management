@@ -6,7 +6,13 @@ import useApi from "./useApi"
 
 const useRefetchEnums = () => {
     const context = useContext(GlobalContext)
-    const [, { data }] = useApi({}, enumsApi, ({ data }) => context.setContext('enums', data))
+    const [getEnumsApi, { data }] = useApi({}, enumsApi, ({ data }) => context.setContext('enums', data))
+
+    const getEnums = () => {
+        getEnumsApi(enumsApi())
+    }
+
+    return [getEnums]
 }
 
 export default useRefetchEnums
