@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import { url_attendence, url_centerKpi, url_centers, url_contact, url_courses, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoice, url_students } from 'utils/pageUrls';
+import { url_attendence, url_centerKpi, url_centers, url_contact, url_courses, url_enquires, url_hq, url_inventories, url_issue2Student, url_login, url_packages, url_payByStudent, url_payHq, url_report, url_settings, url_studentInvoicing, url_students } from 'utils/pageUrls';
 import { Toggle } from './Toggle';
 const links = [
     { url: url_hq, name: 'TCenter' },
@@ -16,7 +16,7 @@ const links = [
     { url: url_centerKpi, name: 'Center KPI' },
     { url: url_packages, name: 'Packages' },
     { url: url_inventories, name: 'Inventories' },
-    { url: url_studentInvoice, name: 'Invoice/Billing' },
+    { url: url_studentInvoicing, name: 'Invoice/Billing' },
     { url: url_students, name: 'Students' },
     { url: url_attendence, name: 'Attendance' },
 ]
