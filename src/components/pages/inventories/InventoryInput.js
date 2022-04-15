@@ -27,6 +27,12 @@ const InventoryInput = ({ state, setState, onSubmit }) => {
 
     return <div className="">
         <form className='space-y-4' onSubmit={onSubmit}>
+            <TextFieldSimple
+                label="Name"
+                name="name"
+                value={state.name}
+                onChange={onChange}
+            />
             <div className="flex space-x-3 items-center">
                 <SelectField label="Category" name="category" value={state.category} onChange={onChange}>
                     <MenuItem value="">Select category</MenuItem>

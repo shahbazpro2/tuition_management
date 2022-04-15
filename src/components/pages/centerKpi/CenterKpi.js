@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { getCentersApi } from 'api/center';
 import React from 'react';
@@ -14,7 +13,6 @@ const CenterKpi = () => {
             <Table stickyHeader sx={{ minWidth: 650 }}>
                 <TableHead>
                     <TableRow>
-                        <TbCell>Center Id Number</TbCell>
                         <TbCell>Center Name</TbCell>
                         <TbCell>KPI</TbCell>
                         <TbCell>Amt/Qty</TbCell>
@@ -27,9 +25,6 @@ const CenterKpi = () => {
                             key={index}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell>
-                                {row._id}
-                            </TableCell>
                             <TableCell align="left"  >{row?.name}</TableCell>
                             <TableCell align="left"  >{row?.kpi?.name}</TableCell>
                             <TableCell align="left"  >{row?.kpi?.amt}</TableCell>

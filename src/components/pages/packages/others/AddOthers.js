@@ -7,6 +7,7 @@ import AddEditLayout from '../../common/AddEditLayout';
 import OthersInput from './OthersInput';
 
 export const initialState = {
+    name: '',
     discount: '',
     description: '',
     status: '',

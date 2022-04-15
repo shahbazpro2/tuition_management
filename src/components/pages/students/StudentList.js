@@ -22,7 +22,6 @@ const StudentList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TbCell>ID</TbCell>
                             <TbCell>Student Name</TbCell>
                             <TbCell>Gender</TbCell>
                             <TbCell>Father Name</TbCell>
@@ -38,9 +37,6 @@ const StudentList = () => {
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell>
-                                    {row._id}
-                                </TableCell>
                                 <TableCell align="left"  >{row?.name}</TableCell>
                                 <TableCell align="left"  >{row?.gender}</TableCell>
                                 <TableCell align="left"  >{row?.fatherName}</TableCell>

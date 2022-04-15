@@ -10,7 +10,7 @@ const TextFieldSimple = ({ required, ...props }) => {
         required={required || true}
         sx={{ '.MuiOutlinedInput-root': { background: dark ? '#1c1c1c' : 'white' } }}
         fullWidth
-        InputLabelProps={props.shrink && { shrink: props.shrink }}
+
     />;
 };
 

@@ -5,7 +5,7 @@ import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
 const DiscountRoute = express.Router();
 
-const otherFields = ['description', 'discount', "status"]
+const otherFields = ['name', 'description', 'discount', "status"]
 DiscountRoute.route('/discount')
     .post(checkInputs(otherFields), async (_req, _res) => {
         try {

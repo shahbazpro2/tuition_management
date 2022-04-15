@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "start-dev": "nodemon index.js"
   },
   "author": "",
@@ -17,7 +17,7 @@
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.0",
-    "mongoose": "^6.2.3"
+    "mongoose": "^6.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

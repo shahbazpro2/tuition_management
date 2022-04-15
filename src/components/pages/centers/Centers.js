@@ -44,7 +44,6 @@ const Centers = () => {
                     <Table stickyHeader sx={{ minWidth: 650 }}>
                         <TableHead>
                             <TableRow>
-                                <TbCell>Center ID</TbCell>
                                 <TbCell>Center Name</TbCell>
                                 <TbCell>Office Number</TbCell>
                                 <TbCell>PIC Name</TbCell>
@@ -58,9 +57,6 @@ const Centers = () => {
                                     key={row._id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell>
-                                        {row._id}
-                                    </TableCell>
                                     <TableCell align="left"  >{row?.name}</TableCell>
                                     <TableCell align="left"  >{row?.officeNumber}</TableCell>
                                     <TableCell align="left"  >{row?.pic?.name}</TableCell>

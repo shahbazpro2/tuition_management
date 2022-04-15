@@ -29,7 +29,7 @@ export const routes = [
     [<AddInventory />, url_addInventory],
     [<EditInventory />, `${url_editInventory}/:id`],
     [<StudentInvoicing />, url_studentInvoicing],
-    [<StudentInvoice />, url_studentInvoice],
+    [<StudentInvoice />, `${url_studentInvoice}/:id`],
     [<CenterInvoicing />, url_centerInvoicing],
     [<CenterInvoice />, url_centerInvoice],
     [<Students />, url_students],

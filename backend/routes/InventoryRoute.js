@@ -5,7 +5,7 @@ import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
 const InventoryRoute = express.Router();
 
-const inventoryFields = ['category', 'description', "qty", "status"]
+const inventoryFields = ['name', 'category', 'description', "qty", "status"]
 InventoryRoute.route('/inventory')
     .post(checkInputs(inventoryFields), async (_req, _res) => {
         try {

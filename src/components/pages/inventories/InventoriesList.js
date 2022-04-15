@@ -24,7 +24,7 @@ const InventoriesList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TbCell>ID</TbCell>
+                            <TbCell>Name</TbCell>
                             <TbCell>Category</TbCell>
                             <TbCell>Description</TbCell>
                             <TbCell>Qty</TbCell>
@@ -39,7 +39,7 @@ const InventoriesList = () => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row?._id}
+                                    {row?.name}
                                 </TableCell>
                                 <TableCell align="left"  >{row?.category?.name}</TableCell>
                                 <TableCell align="left"  >{row?.description}</TableCell>

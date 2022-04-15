@@ -17,4 +17,4 @@ const schema = new Schema({
     date: { type: Date, default: Date.now },
 });
 
-export default mongoose.model('student', schema)
+export default mongoose.model('Student', schema)

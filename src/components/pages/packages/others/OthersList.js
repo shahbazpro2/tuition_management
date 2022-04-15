@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -25,7 +24,7 @@ const OthersList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TbCell>ID</TbCell>
+                            <TbCell>Name</TbCell>
                             <TbCell>Other Price</TbCell>
                             <TbCell>Amount</TbCell>
                             <TbCell>Status</TbCell>
@@ -39,7 +38,7 @@ const OthersList = () => {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell>
-                                    {row._id}
+                                    {row.name}
                                 </TableCell>
                                 <TableCell align="left"  >{row.description}</TableCell>
                                 <TableCell align="left"  >{row.discount}</TableCell>

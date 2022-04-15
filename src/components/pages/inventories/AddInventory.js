@@ -4,6 +4,7 @@ import InventoryInput from './InventoryInput';
 import { createInventoryApi } from 'api/inventory';
 import useApi from 'utils/hooks/useApi'
 export const initialState = {
+    name: '',
     category: '',
     description: '',
     qty: '',

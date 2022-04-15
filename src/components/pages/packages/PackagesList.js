@@ -24,7 +24,6 @@ const PackagesList = () => {
                 <Table stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TbCell>ID</TbCell>
                             <TbCell>Name</TbCell>
                             <TbCell>Number of Subject</TbCell>
                             <TbCell>Number of Day's Per Week</TbCell>
@@ -39,9 +38,6 @@ const PackagesList = () => {
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell>
-                                    {row._id}
-                                </TableCell>
                                 <TableCell align="left">{row.name}</TableCell>
                                 <TableCell align="left"  >{row.subject}</TableCell>
                                 <TableCell align="left"  >{row.days}</TableCell>

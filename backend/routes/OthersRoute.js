@@ -5,7 +5,7 @@ import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
 const OthersRoute = express.Router();
 
-const otherFields = ['description', 'discount', "status"]
+const otherFields = ['name', 'description', 'discount', "status"]
 OthersRoute.route('/others')
     .post(checkInputs(otherFields), async (_req, _res) => {
         try {

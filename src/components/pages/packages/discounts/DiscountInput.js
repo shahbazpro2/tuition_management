@@ -12,6 +12,12 @@ const DiscountInput = ({ state, setState, onSubmit }) => {
 
     return <div className="" >
         <form className='space-y-4' onSubmit={onSubmit}>
+            <TextFieldSimple
+                label="Name"
+                name="name"
+                value={state.name}
+                onChange={onChange}
+            />
 
             <TextFieldSimple
                 label="Discount Description"
