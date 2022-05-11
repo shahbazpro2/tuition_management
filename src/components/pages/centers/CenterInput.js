@@ -95,6 +95,10 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                     <MenuItem key={kpi._id} value={kpi._id}>{kpi.name}</MenuItem>
                 ))}
             </SelectField>
+            <SelectField label="Status" name="status" value={state.status} onChange={onChange}>
+                <MenuItem value="active">Active</MenuItem>
+                <MenuItem value="inactive">Inactive</MenuItem>
+            </SelectField>
             <Button variant="contained" type="submit" fullWidth>Save</Button>
         </form>
     </div>

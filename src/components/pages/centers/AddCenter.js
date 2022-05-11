@@ -12,7 +12,8 @@ export const initialState = {
     pic: '',
     bank: '',
     officeNumber: '',
-    kpi: ''
+    kpi: '',
+    status: 'inactive'
 }
 
 const AddCenter = () => {

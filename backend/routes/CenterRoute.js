@@ -5,7 +5,7 @@ import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
 const CenterRoute = express.Router();
 
-const centerFields = ['name', 'address', "regNumber", "pic", "bank", "officeNumber", "kpi"]
+const centerFields = ['name', 'address', "regNumber", "pic", "bank", "officeNumber", "kpi", "status"]
 CenterRoute.route('/center')
     .post(checkInputs(centerFields), async (_req, _res) => {
         try {
