@@ -7,6 +7,9 @@ import ModalLayout from '../../common/Modal';
 import TypeModal from './TypeModal';
 import LanguageModal from './LanguageModal';
 import { GlobalContext } from 'context/GlobalContext';
+import useApi from 'utils/hooks/useApi';
+import useRefetchEnums from 'utils/hooks/useRefetchEnums';
+import { deleteCourseLanguageApi, deleteCourseTypeApi } from 'api/enums';
 const Input = styled('input')({
     display: 'none',
 });
@@ -14,19 +17,45 @@ const CourseInput = ({ state, setState, onSubmit }) => {
     const context = useContext(GlobalContext)
     const [typeModal, setTypeModal] = useState(false)
     const [languageModal, setLanguageModal] = useState(false)
+    const [deleteApi] = useApi({ successMsg: true, errMsg: true })
+
+    const [getEnums] = useRefetchEnums()
 
     const onChange = (e) => {
         const { name, value } = e.target
         setState({ ...state, [name]: value })
     }
 
+    const onRemoveCourseType = (e, id) => {
+        e.stopPropagation()
+        deleteApi(deleteCourseTypeApi(id), () => {
+            getEnums()
+        })
+    }
+
+    const onRemoveLanguage = (e, id) => {
+        e.stopPropagation()
+        deleteApi(deleteCourseLanguageApi(id), () => {
+            getEnums()
+        })
+    }
+
     return <div className="">
         <form className='space-y-4' onSubmit={onSubmit}>
             <div className="flex space-x-3 items-center">
-                <SelectField label="Type" name="type" value={state.type} onChange={onChange}>
+                <SelectField label="Type" name="type" value={state.type} onChange={onChange} selectProps={{
+                    renderValue: (selected) => {
+                        return context.enums?.courseType?.find(x => x._id === selected)?.name || 'Select type'
+                    }
+                }}>
                     <MenuItem value="">Select type</MenuItem>
                     {context.enums?.courseType?.map(item => (
-                        <MenuItem key={item.name} value={item._id}>{item.name}</MenuItem>
+                        <MenuItem key={item.name} value={item._id}>
+                            <div className="flex items-center justify-between w-full">
+                                <div>{item.name}</div>
+                                <Button onClick={(e) => onRemoveCourseType(e, item._id)}>Remove</Button>
+                            </div>
+                        </MenuItem>
                     ))}
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setTypeModal(true)} />
@@ -35,10 +64,19 @@ const CourseInput = ({ state, setState, onSubmit }) => {
                 </ModalLayout>
             </div>
             <div className="flex space-x-3 items-center">
-                <SelectField label="Language" name="language" value={state.language} onChange={onChange}>
+                <SelectField label="Language" name="language" value={state.language} onChange={onChange} selectProps={{
+                    renderValue: (selected) => {
+                        return context.enums?.courseLanguage?.find(x => x._id === selected)?.name || 'Select type'
+                    }
+                }}>
                     <MenuItem value="">Select language</MenuItem>
                     {context.enums?.courseLanguage?.map(item => (
-                        <MenuItem key={item.name} value={item._id}>{item.name}</MenuItem>
+                        <MenuItem key={item.name} value={item._id}>
+                            <div className="flex items-center justify-between w-full">
+                                <div>{item.name}</div>
+                                <Button onClick={(e) => onRemoveLanguage(e, item._id)}>Remove</Button>
+                            </div>
+                        </MenuItem>
                     ))}
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setLanguageModal(true)} />

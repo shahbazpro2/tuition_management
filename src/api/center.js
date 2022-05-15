@@ -21,3 +21,4 @@ export const updateCenterApi = async (id, data) => {
 export const deleteCenterApi = async (id) => {
     return responseApi(`${centerUrl}?id=${id}`, 'delete')
 }
+

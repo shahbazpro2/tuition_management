@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@mui/material'
 import { useTheme } from '@mui/system'
 
-const SelectField = ({ required, multiple, ...props }) => {
+const SelectField = ({ required, multiple, selectProps, ...props }) => {
     const theme = useTheme()
     const dark = theme.palette.mode === 'dark'
     return (
@@ -14,6 +14,7 @@ const SelectField = ({ required, multiple, ...props }) => {
             SelectProps={{
                 displayEmpty: true,
                 multiple: multiple ?? false,
+                ...selectProps
             }}
             InputLabelProps={{ shrink: true }}
             {...props}

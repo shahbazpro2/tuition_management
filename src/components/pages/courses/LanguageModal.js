@@ -4,21 +4,21 @@ import TextFieldSimple from 'components/common/textFields/TextFieldSimple';
 import { FeedbackContext } from 'context/FeedbackContext';
 import { createCourseLanguage } from 'api/enums';
 import useRefetchEnums from 'utils/hooks/useRefetchEnums';
+import useApi from 'utils/hooks/useApi';
 
 const LanguageModal = ({ setLanguageModal }) => {
-    const context = useContext(FeedbackContext)
+    const [createApi] = useApi({ successMsg: true, errMsg: true })
     const [name, setName] = useState('')
     const [getEnums] = useRefetchEnums()
 
     const onSubmit = async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        const res = await createCourseLanguage(name)
-        context.setFeedback(res.message, res.error)
-        if (!res.error) {
-            setLanguageModal(false)
+        createApi(createCourseLanguage(name), () => {
             getEnums()
-        }
+            setLanguageModal(false)
+        })
+
     }
 
     return <div >

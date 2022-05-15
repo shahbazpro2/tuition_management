@@ -1,5 +1,6 @@
 import express from 'express'
 import Bank from '../models/Bank.js';
+import Center from '../models/Center.js';
 import checkInputs from '../utils/checkInputs.js';
 import formateError from '../utils/formateError.js';
 import formateRes from '../utils/formateRes.js';
@@ -19,6 +20,19 @@ BankRoute.route('/bank')
         try {
             const res = await Bank.find()
             return _res.status(200).json(formateRes('Bank fetched successfully', res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
+    .delete(async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const isCenterExist = await Center.findOne({ bank: _id })
+            if (isCenterExist) {
+                return _res.status(400).json(formateError("Bank is assigned to center"))
+            }
+            const res = await Bank.deleteOne({ _id })
+            return _res.status(200).json(formateRes("Bank deleted successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))
         }

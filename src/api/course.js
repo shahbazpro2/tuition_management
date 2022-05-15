@@ -6,7 +6,6 @@ export const createCourseApi = async (data) => {
     return responseApi(courseUrl, 'post', data)
 }
 
-
 export const getCoursesApi = async () => {
     return responseApi(`${courseUrl}/all`, 'get')
 }

@@ -9,7 +9,7 @@ const useRefetchEnums = () => {
     const [getEnumsApi, { data }] = useApi({}, enumsApi, ({ data }) => context.setContext('enums', data))
 
     const getEnums = () => {
-        getEnumsApi(enumsApi())
+        getEnumsApi(enumsApi(), ({ data }) => context.setContext('enums', data))
     }
 
     return [getEnums]

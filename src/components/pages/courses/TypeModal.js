@@ -1,22 +1,22 @@
 import { Button } from '@mui/material';
 import React, { useState, useContext } from 'react';
 import TextFieldSimple from 'components/common/textFields/TextFieldSimple';
-import { FeedbackContext } from 'context/FeedbackContext';
 import { createCourseType } from 'api/enums';
 import useRefetchEnums from 'utils/hooks/useRefetchEnums';
+import useApi from 'utils/hooks/useApi';
 
 const TypeModal = ({ setTypeModal }) => {
-    const context = useContext(FeedbackContext)
+    const [createApi] = useApi({ successMsg: true, errMsg: true })
     const [name, setName] = useState('')
-
+    const [getEnums] = useRefetchEnums()
     const onSubmit = async (e) => {
         e.preventDefault()
-        const res = await createCourseType(name)
-        context.setFeedback(res.message, res.error)
-        if (!res.error) {
+        e.stopPropagation()
+        createApi(createCourseType(name), () => {
+            getEnums()
             setTypeModal(false)
-            useRefetchEnums()
-        }
+        })
+
     }
 
     return <div >

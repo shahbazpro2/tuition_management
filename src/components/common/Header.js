@@ -19,6 +19,12 @@ const links = [
     { url: url_studentInvoicing, name: 'Invoice/Billing' },
     { url: url_students, name: 'Students' },
     { url: url_attendence, name: 'Attendance' },
+    { url: url_payHq, name: 'PayHQ' },
+    { url: url_report, name: 'Report' },
+    { url: url_enquires, name: 'Enquiries' },
+    { url: url_issue2Student, name: 'Issue Inventory' },
+    { url: url_payByStudent, name: 'Received Payment' },
+    { url: url_settings, name: 'Setting' },
 ]
 const extraLinks = [
     { url: url_payHq, name: 'PayHQ' },
@@ -35,18 +41,18 @@ const Header = () => {
     return (
         <div className='bg-headcolor dark:bg-gray-900 dark:text-white text-black print:hidden'>
             <Container>
-                <div className='h-[75px] flex items-center'>
+                <div className='h-[75px] flex items-center justify-between'>
                     <Link to={links[0].url}><div className='text-xl cursor-pointer'><img src={`${process.env.PUBLIC_URL}/assets/logo_default.png`} width="45" /></div></Link>
                     {(!location.pathname.includes(url_login)) ? <>
-                        <div className="md:hidden ml-auto flex items-center" onClick={() => setOpen(true)}>
+                        <div className="lg:hidden ml-auto flex items-center" onClick={() => setOpen(true)}>
                             <MenuIcon />
                         </div>
-                        <div className="ml-auto space-x-7 hidden md:flex items-center">
+                        <div className="hidden lg:flex items-center w-[95%] flex-wrap">
                             {links.map((link, index) => (
-                                index !== 0 && <Link key={index} to={link.url}>  <div className="cursor-pointer">{link.name}</div></Link>
+                                index !== 0 && <Link key={index} to={link.url}>  <div className="cursor-pointer mx-3">{link.name}</div></Link>
 
                             ))}
-                            <PopupState variant="popover" popupId="demo-popup-menu">
+                            {/*  <PopupState variant="popover" popupId="demo-popup-menu">
                                 {(popupState) => (
                                     <React.Fragment>
                                         <div className='cursor-pointer' {...bindTrigger(popupState)}>
@@ -59,7 +65,7 @@ const Header = () => {
                                         </Menu>
                                     </React.Fragment>
                                 )}
-                            </PopupState>
+                            </PopupState> */}
                             <Toggle />
                         </div>
                     </> : <div className="ml-auto space-x-7 hidden md:flex items-center">

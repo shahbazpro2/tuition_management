@@ -6,6 +6,10 @@ export const createInventoryCategoryApi = async (data) => {
     return responseApi(inventoryCategoryUrl, 'post', data)
 }
 
+export const deleteInventoryCategoryApi = async (id) => {
+    return responseApi(`${inventoryCategoryUrl}?id=${id}`, 'delete')
+}
+
 export const createInventoryApi = async (data) => {
     return responseApi(inventoryUrl, 'post', data)
 }

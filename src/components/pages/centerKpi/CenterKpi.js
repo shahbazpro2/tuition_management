@@ -7,6 +7,9 @@ import TbCell from '../../common/TableCell';
 const CenterKpi = () => {
     const [, { data }] = useApi(false, getCentersApi)
 
+
+
+
     return <div className='content'>
         <div className="text-xl font-bold mb-5">Center's Kpi</div>
         <TableContainer component={Paper} sx={{ maxHeight: 440 }}>

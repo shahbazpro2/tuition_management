@@ -1,17 +1,18 @@
 import { Button } from '@mui/material';
 import { createPicApi } from 'api/enums';
-import { FeedbackContext } from 'context/FeedbackContext';
-import { RefetchContext } from 'context/RefetchContext';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import useApi from 'utils/hooks/useApi';
+import useRefetchEnums from 'utils/hooks/useRefetchEnums';
 import TextFieldSimple from '../../common/textFields/TextFieldSimple';
 
 const PICModal = ({ setOpen }) => {
-  const context = useContext(FeedbackContext)
-  const refetchContext = useContext(RefetchContext)
+  const [createApi] = useApi({ successMsg: true, errMsg: true })
   const [state, setState] = useState({
     name: '',
     contactNumber: ''
   })
+
+  const [getEnums] = useRefetchEnums()
 
   const onChange = (e) => {
     const { name, value } = e.target
@@ -19,13 +20,12 @@ const PICModal = ({ setOpen }) => {
   }
 
   const onSubmit = async (e) => {
+    e.stopPropagation()
     e.preventDefault()
-    const res = await createPicApi(state)
-    if (!res.error) {
-      refetchContext.setRefetch(true)
+    createApi(createPicApi(state), () => {
+      getEnums()
       setOpen()
-    }
-    context.setFeedback(res.message, res.error)
+    })
   }
 
 

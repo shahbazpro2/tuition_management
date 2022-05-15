@@ -42,7 +42,7 @@ const EditCourse = () => {
 
     }
     console.log(state)
-    return <AddEditLayout title="Edit Center">
+    return <AddEditLayout title="Edit Course">
         {loading ? <Spinner /> :
             <CourseInput state={state} setState={setState} onSubmit={onSubmit} />
         }

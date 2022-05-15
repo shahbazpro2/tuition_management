@@ -6,38 +6,47 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import PICModal from './PICModal';
 import ModalLayout from '../../common/Modal';
 import BankModal from './BankModal';
-import { enumsApi } from 'api/enums';
-import { RefetchContext } from 'context/RefetchContext';
+import { deleteBankApi, deletePicApi } from 'api/enums';
+import useApi from 'utils/hooks/useApi';
+import { deleteCenterKpiApi } from 'api/kpi';
+import KpiModal from './KpiModal'
+import { GlobalContext } from 'context/GlobalContext';
+import useRefetchEnums from 'utils/hooks/useRefetchEnums';
 
 const CenterInput = ({ state, setState, onSubmit }) => {
-    const context = useContext(RefetchContext)
+    const context = useContext(GlobalContext)
     const [picModal, setPicModal] = useState(false)
     const [bankModal, setBankModal] = useState(false)
+    const [kpiModal, setKpiModal] = useState(false)
+    const [deleteApi] = useApi({ successMsg: true, errMsg: true })
 
-    const [enums, setEnums] = useState({ pic: [], bank: [], kpi: [] })
-
-
-    useEffect(() => {
-        getEnums()
-    }, [])
-
-    useEffect(() => {
-        if (context.refetch)
-            getEnums()
-    }, [context.refetch])
-
-
-
-    const getEnums = async () => {
-        const res = await enumsApi()
-        if (!res.error) {
-            setEnums(res.data)
-        }
-    }
+    const enums = context.enums
+    const [getEnums] = useRefetchEnums()
 
     const onChange = (e) => {
         const { value, name } = e.target
         setState({ ...state, [name]: value })
+    }
+
+    const onRemovePic = (e, id) => {
+        e.stopPropagation()
+        deleteApi(deletePicApi(id), () => {
+            getEnums()
+        })
+    }
+
+    const onRemoveBank = (e, id) => {
+        e.stopPropagation()
+        deleteApi(deleteBankApi(id), () => {
+            getEnums()
+        })
+    }
+
+    const onRemoveKpi = (e, id) => {
+        e.stopPropagation()
+        deleteApi(deleteCenterKpiApi(id), () => {
+            getEnums()
+        })
     }
 
     return <div className="">
@@ -61,10 +70,19 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                 onChange={onChange}
             />
             <div className="flex space-x-3 items-center">
-                <SelectField label="PIC Name" name="pic" value={state.pic} onChange={onChange}>
+                <SelectField label="PIC Name" name="pic" value={state.pic} onChange={onChange} selectProps={{
+                    renderValue: (selected) => {
+                        return enums?.pic?.find(x => x._id === selected)?.name || 'Select pic name'
+                    }
+                }} >
                     <MenuItem value={''}>Select pic name</MenuItem>
-                    {enums.pic.map(pic => (
-                        <MenuItem key={pic._id} value={pic._id}>{pic.name}</MenuItem>
+                    {enums?.pic?.map(pic => (
+                        <MenuItem key={pic._id} value={pic._id}>
+                            <div className="flex items-center justify-between w-full">
+                                <div>{pic.name}</div>
+                                <Button onClick={(e) => onRemovePic(e, pic._id)}>Remove</Button>
+                            </div>
+                        </MenuItem>
                     ))}
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setPicModal(true)} />
@@ -73,10 +91,20 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                 </ModalLayout>
             </div>
             <div className="flex space-x-3 items-center">
-                <SelectField label="Bank Merchant & Account" name="bank" value={state.bank} onChange={onChange}>
+                <SelectField label="Bank Merchant & Account" name="bank" value={state.bank} onChange={onChange} selectProps={{
+                    renderValue: (selected) => {
+                        return enums?.bank?.find(x => x._id === selected)?.name || 'Select bank merchant'
+                    }
+                }}>
                     <MenuItem value={''}>Select bank merchant</MenuItem>
-                    {enums.bank.map(bank => (
-                        <MenuItem key={bank._id} value={bank._id}>{bank.name}</MenuItem>
+                    {enums?.bank?.map(bank => (
+                        <MenuItem key={bank._id} value={bank._id}>
+                            <div className="flex items-center justify-between w-full">
+                                <div>{bank.name}</div>
+                                <Button onClick={(e) => onRemoveBank(e, bank._id)}>Remove</Button>
+                            </div>
+                        </MenuItem>
+
                     ))}
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setBankModal(true)} />
@@ -89,12 +117,28 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                 name="officeNumber" value={state.officeNumber}
                 onChange={onChange}
             />
-            <SelectField label="KPI" name="kpi" value={state.kpi} onChange={onChange}>
-                <MenuItem value={''}>Select kpi</MenuItem>
-                {enums.kpi.map(kpi => (
-                    <MenuItem key={kpi._id} value={kpi._id}>{kpi.name}</MenuItem>
-                ))}
-            </SelectField>
+            <div className="flex space-x-3 items-center">
+                <SelectField label="KPI" name="kpi" value={state.kpi} onChange={onChange} selectProps={{
+                    renderValue: (selected) => {
+                        return enums?.kpi?.find(x => x._id === selected)?.name || 'Select kpi'
+                    }
+                }}>
+                    <MenuItem value={''}>Select kpi</MenuItem>
+                    {enums?.kpi?.map(kpi => (
+                        <MenuItem key={kpi._id} value={kpi._id}>
+                            <div className="flex items-center justify-between w-full">
+                                <div>{kpi.name}</div>
+                                <Button onClick={(e) => onRemoveKpi(e, kpi._id)}>Remove</Button>
+                            </div>
+                        </MenuItem>
+
+                    ))}
+                </SelectField>
+                <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setKpiModal(true)} />
+                <ModalLayout title="Kpi" open={kpiModal} setOpen={() => setKpiModal(false)} >
+                    <KpiModal setOpen={() => setKpiModal(false)} />
+                </ModalLayout>
+            </div>
             <SelectField label="Status" name="status" value={state.status} onChange={onChange}>
                 <MenuItem value="active">Active</MenuItem>
                 <MenuItem value="inactive">Inactive</MenuItem>
