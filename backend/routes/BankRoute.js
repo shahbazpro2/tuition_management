@@ -24,6 +24,15 @@ BankRoute.route('/bank')
             return _res.status(400).json(formateError(error))
         }
     })
+    .put(checkInputs(bankFields), async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const res = await Bank.updateOne({ _id }, _req.body)
+            return _res.status(200).json(formateRes("Bank updated successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
     .delete(async (_req, _res) => {
         const _id = _req.query?.id
         try {

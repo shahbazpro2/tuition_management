@@ -3,12 +3,15 @@ import * as React from 'react';
 import { Icon, MinimalButton, Plugin, RenderViewer, Position, SpecialZoomLevel, Tooltip, Viewer, Worker } from '@react-pdf-viewer/core';
 import { pageNavigationPlugin, RenderGoToPageProps } from '@react-pdf-viewer/page-navigation';
 import { RenderCurrentScaleProps, RenderZoomInProps, RenderZoomOutProps, zoomPlugin } from '@react-pdf-viewer/zoom';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 
 // Import styles
 import '@react-pdf-viewer/zoom/lib/styles/index.css';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/page-navigation/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
 
 const disableScrollPlugin = () => {
     const renderViewer = (props) => {
@@ -34,7 +37,7 @@ const ViewCourse = () => {
     const pageNavigationPluginInstance = pageNavigationPlugin();
     const zoomPluginInstance = zoomPlugin();
     const { CurrentScale, ZoomIn, ZoomOut } = zoomPluginInstance;
-
+    const defaultLayoutPluginInstance = defaultLayoutPlugin();
     const { GoToNextPage, GoToPreviousPage } = pageNavigationPluginInstance;
 
     return (
@@ -153,13 +156,14 @@ const ViewCourse = () => {
                     )}
                 </GoToNextPage>
             </div>
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.12.313/build/pdf.worker.min.js">
+            {console.log('pdf', __dirname)}
+            <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
                 <div
                     className="h-[80vh] overflow-auto"
                 >
                     <Viewer plugins={[
-                        disableScrollPluginInstance, pageNavigationPluginInstance, zoomPluginInstance
-                    ]} defaultScale={SpecialZoomLevel.PageFit} fileUrl={`${process.env.PUBLIC_URL}/assets/courses/hano.pdf`} />
+                        defaultLayoutPluginInstance,
+                    ]} defaultScale={SpecialZoomLevel.PageFit} fileUrl={`https://www.clickdimensions.com/links/TestPDFfile.pdf`} />
                 </div>
             </Worker>
 

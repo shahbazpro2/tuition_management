@@ -39,7 +39,7 @@ const Header = () => {
     const [open, setOpen] = useState(false)
     const navigate = useNavigate()
     return (
-        <div className='bg-headcolor dark:bg-gray-900 dark:text-white text-black print:hidden'>
+        <div className='bg-headcolor dark:bg-gray-900 dark:text-white text-black print:hidden py-5'>
             <Container>
                 <div className='h-[75px] flex items-center justify-between'>
                     <Link to={links[0].url}><div className='text-xl cursor-pointer'><img src={`${process.env.PUBLIC_URL}/assets/logo_default.png`} width="45" /></div></Link>

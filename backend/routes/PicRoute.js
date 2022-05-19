@@ -24,6 +24,15 @@ PicRoute.route('/pic')
             return _res.status(400).json(formateError(error))
         }
     })
+    .put(checkInputs(picnameFields), async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const res = await Pic.updateOne({ _id }, _req.body)
+            return _res.status(200).json(formateRes("Pic updated successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
     .delete(async (_req, _res) => {
         const _id = _req.query?.id
         try {

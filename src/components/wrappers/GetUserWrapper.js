@@ -1,4 +1,4 @@
-import { getUserApi } from 'api/auth'
+import { getUserApiThunk } from 'api/auth'
 import React, { useEffect, useState } from 'react'
 import RouteWrapper from './RouteWrapper'
 import Spinner from '../common/spinner/Spinner'
@@ -14,7 +14,7 @@ const GetUserWrapper = ({ children }) => {
 
     useEffect(() => {
         (async () => {
-            await dispatch(getUserApi())
+            await dispatch(getUserApiThunk())
             setLoading(false)
         })()
     }, [location.pathname])

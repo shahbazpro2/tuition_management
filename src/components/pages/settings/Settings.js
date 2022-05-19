@@ -1,9 +1,12 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Add from '../../common/Add'
 import TbCell from '../../common/TableCell'
-import { url_addUser } from 'utils/pageUrls';
-import { getUsersApi } from 'api/auth';
+import { url_addUser, url_editUser } from 'utils/pageUrls';
+import { deleteUserApi, getUsersApi } from 'api/auth';
+import { useNavigate } from 'react-router-dom';
+import useApi from 'utils/hooks/useApi';
+import { FeedbackContext } from 'context/FeedbackContext';
 
 function createData(id, name, email, role) {
     return { id, name, email, role };
@@ -19,19 +22,22 @@ const rows = [
 ];
 
 const Settings = () => {
-    const [data, setData] = useState([])
+    const context = useContext(FeedbackContext)
+    const [getUsers, { data }] = useApi({}, getUsersApi)
+    const navigate = useNavigate()
 
-    useEffect(() => {
-        (async () => {
-            const res = await getUsersApi()
-            if (!res.error) {
-                setData(res.data)
-            }
-            console.log('res', res)
-        })()
-    }, [])
+    const onDelete = async (id) => {
+        const res = await deleteUserApi(id)
 
+        if (!res.error) {
+            context.setFeedback(res.message)
+            getUsers(getUsersApi)
+            return
+        }
 
+        context.setFeedback("Delete failed", true)
+
+    }
 
     return (
         <div className="content">
@@ -64,8 +70,8 @@ const Settings = () => {
                                         <TableCell align="left"  >{row.role}</TableCell>
                                         <TableCell align="left">
                                             <div className="flex space-x-2 justify-end">
-                                                <Button variant="contained" color="success">Edit</Button>
-                                                <Button variant="contained" color='error'>Delete</Button>
+                                                <Button variant="contained" color="success" onClick={() => navigate(`${url_editUser}/${row?._id}`)}>Edit</Button>
+                                                <Button variant="contained" color='error' onClick={() => onDelete(row?._id)}>Delete</Button>
                                             </div>
                                         </TableCell>
                                     </TableRow>

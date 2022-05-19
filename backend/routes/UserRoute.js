@@ -11,20 +11,51 @@ const UserRoute = express.Router();
 
 
 const registerFields = ['name', 'role', 'email', 'password']
-UserRoute.route('/register').post(accessApi(), checkInputs(registerFields), async (_req, _res) => {
-    try {
-        const hashedPassword = bcrypt.hashSync(_req.body.password, 8);
-        const res = await User.create({ ..._req.body, password: hashedPassword })
-        var token = jwt.sign({ id: res._id }, process.env.secret);
-        const data = { ...res._doc, token }
-        delete data.password
-        return _res.status(201).json(formateRes('User registered successfully', data))
-    } catch (error) {
-        if (['MongooseError', 'MongoServerError'].includes(error?.name))
-            return _res.status(400).json(formateError(error, "User already exist"))
-        return _res.status(500).json(formateError("There is something wrong"))
-    }
-})
+UserRoute.route('/register')
+    .post(accessApi(), checkInputs(registerFields), async (_req, _res) => {
+        try {
+            const hashedPassword = bcrypt.hashSync(_req.body.password, 8);
+            const res = await User.create({ ..._req.body, password: hashedPassword })
+            var token = jwt.sign({ id: res._id }, process.env.secret);
+            const data = { ...res._doc, token }
+            delete data.password
+            return _res.status(201).json(formateRes('User registered successfully', data))
+        } catch (error) {
+            if (['MongooseError', 'MongoServerError'].includes(error?.name))
+                return _res.status(400).json(formateError(error, "User already exist"))
+            return _res.status(500).json(formateError("There is something wrong"))
+        }
+    })
+
+UserRoute.route('/')
+    .get(async (_req, _res) => {
+        try {
+            const _id = _req.query?.id
+            console.log('id', _id)
+            const res = await User.findOne({ _id })
+            return _res.status(200).json(formateRes("User fetched successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
+    .put(async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const res = await User.updateOne({ _id }, _req.body)
+            return _res.status(200).json(formateRes("User updated successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
+    .delete(async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const res = await User.deleteOne({ _id })
+            return _res.status(200).json(formateRes("User deleted successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
 
 const loginFields = ['email', 'password']
 UserRoute.route('/login').post(checkInputs(loginFields), async (_req, _res) => {

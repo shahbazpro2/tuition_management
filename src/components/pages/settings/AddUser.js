@@ -6,15 +6,17 @@ import { url_settings } from 'utils/pageUrls'
 import AddEditLayout from '../common/AddEditLayout'
 import UserInput from './UserInput'
 
+export const initialState = {
+    name: '',
+    email: '',
+    password: '',
+    role: ''
+}
+
 const AddUser = () => {
     const context = useContext(FeedbackContext)
     const navigator = useNavigate()
-    const [state, setState] = useState({
-        name: '',
-        email: '',
-        password: '',
-        role: ''
-    })
+    const [state, setState] = useState(initialState)
 
     const onSubmit = async (e) => {
         e.preventDefault()

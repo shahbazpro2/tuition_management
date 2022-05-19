@@ -9,12 +9,20 @@ export const createPicApi = async (data) => {
     return responseApi(picUrl, 'post', data)
 }
 
+export const updatePicApi = async (id, data) => {
+    return responseApi(`${picUrl}?id=${id}`, 'put', data)
+}
+
 export const deletePicApi = async (id) => {
     return responseApi(`${picUrl}?id=${id}`, 'delete')
 }
 
 export const createBankApi = async (data) => {
     return responseApi(bankUrl, 'post', data)
+}
+
+export const updateBankApi = async (id, data) => {
+    return responseApi(`${bankUrl}?id=${id}`, 'put', data)
 }
 
 export const deleteBankApi = async (id) => {

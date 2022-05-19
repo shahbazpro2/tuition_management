@@ -48,5 +48,5 @@ export const routes = [
     [<Enquires />, url_enquires],
     [<Settings />, url_settings],
     [<AddUser />, url_addUser],
-    [<EditUser />, url_editUser],
+    [<EditUser />, `${url_editUser}/:id`],
 ]

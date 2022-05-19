@@ -15,6 +15,18 @@ export const getUsersApi = () => {
     return responseApi(getUsersUrl, 'get')
 }
 
-export const getUserApi = createAsyncThunk("auth/getUserApi", async () => {
+export const getUserApi = (id) => {
+    return responseApi(`user/?id=${id}`, 'get')
+}
+
+export const updateUserApi = (id, data) => {
+    return responseApi(`user/?id=${id}`, 'put', data)
+}
+
+export const deleteUserApi = (id) => {
+    return responseApi(`user/?id=${id}`, 'delete')
+}
+
+export const getUserApiThunk = createAsyncThunk("auth/getUserApi", async () => {
     return await responseApi(getUserUrl, 'get')
 })

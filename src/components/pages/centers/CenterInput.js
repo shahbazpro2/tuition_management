@@ -18,6 +18,7 @@ const CenterInput = ({ state, setState, onSubmit }) => {
     const [picModal, setPicModal] = useState(false)
     const [bankModal, setBankModal] = useState(false)
     const [kpiModal, setKpiModal] = useState(false)
+    const [editData, setEditData] = useState({})
     const [deleteApi] = useApi({ successMsg: true, errMsg: true })
 
     const enums = context.enums
@@ -47,6 +48,18 @@ const CenterInput = ({ state, setState, onSubmit }) => {
         deleteApi(deleteCenterKpiApi(id), () => {
             getEnums()
         })
+    }
+
+    const onEdit = (e, data, type) => {
+        e.stopPropagation()
+        setEditData(data)
+        if (type === 'pic') {
+            setPicModal(true)
+        } else if (type === 'bank') {
+            setBankModal(true)
+        } else if (type === 'kpi') {
+            setKpiModal(true)
+        }
     }
 
     return <div className="">
@@ -80,14 +93,17 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                         <MenuItem key={pic._id} value={pic._id}>
                             <div className="flex items-center justify-between w-full">
                                 <div>{pic.name}</div>
-                                <Button onClick={(e) => onRemovePic(e, pic._id)}>Remove</Button>
+                                <div className="flex space-x-2">
+                                    <Button onClick={(e) => onEdit(e, pic, 'pic')}>Edit</Button>
+                                    <Button onClick={(e) => onRemoveBank(e, pic._id)}>Remove</Button>
+                                </div>
                             </div>
                         </MenuItem>
                     ))}
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setPicModal(true)} />
                 <ModalLayout title="PIC Details" open={picModal} setOpen={() => setPicModal(false)}>
-                    <PICModal setOpen={() => setPicModal(false)} />
+                    <PICModal setOpen={() => setPicModal(false)} data={editData} />
                 </ModalLayout>
             </div>
             <div className="flex space-x-3 items-center">
@@ -101,7 +117,10 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                         <MenuItem key={bank._id} value={bank._id}>
                             <div className="flex items-center justify-between w-full">
                                 <div>{bank.name}</div>
-                                <Button onClick={(e) => onRemoveBank(e, bank._id)}>Remove</Button>
+                                <div className="flex space-x-2">
+                                    <Button onClick={(e) => onEdit(e, bank, 'bank')}>Edit</Button>
+                                    <Button onClick={(e) => onRemoveBank(e, bank._id)}>Remove</Button>
+                                </div>
                             </div>
                         </MenuItem>
 
@@ -109,7 +128,7 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setBankModal(true)} />
                 <ModalLayout title="Bank Merchant Details" open={bankModal} setOpen={() => setBankModal(false)} >
-                    <BankModal setOpen={() => setBankModal(false)} />
+                    <BankModal setOpen={() => setBankModal(false)} data={editData} />
                 </ModalLayout>
             </div>
             <TextFieldSimple
@@ -128,7 +147,10 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                         <MenuItem key={kpi._id} value={kpi._id}>
                             <div className="flex items-center justify-between w-full">
                                 <div>{kpi.name}</div>
-                                <Button onClick={(e) => onRemoveKpi(e, kpi._id)}>Remove</Button>
+                                <div className="flex space-x-2">
+                                    <Button onClick={(e) => onEdit(e, kpi, 'kpi')}>Edit</Button>
+                                    <Button onClick={(e) => onRemoveKpi(e, kpi._id)}>Remove</Button>
+                                </div>
                             </div>
                         </MenuItem>
 
@@ -136,7 +158,7 @@ const CenterInput = ({ state, setState, onSubmit }) => {
                 </SelectField>
                 <AddCircleIcon sx={{ fontSize: '25px', cursor: 'pointer' }} onClick={() => setKpiModal(true)} />
                 <ModalLayout title="Kpi" open={kpiModal} setOpen={() => setKpiModal(false)} >
-                    <KpiModal setOpen={() => setKpiModal(false)} />
+                    <KpiModal setOpen={() => setKpiModal(false)} data={editData} />
                 </ModalLayout>
             </div>
             <SelectField label="Status" name="status" value={state.status} onChange={onChange}>

@@ -3,7 +3,7 @@ import React from 'react'
 import SelectField from '../../common/textFields/SelectField'
 import TextFieldSimple from '../../common/textFields/TextFieldSimple'
 
-const UserInput = ({ state, setState, onSubmit }) => {
+const UserInput = ({ state, setState, onSubmit, update }) => {
 
     const onChangeInput = (e) => {
         const { name, value } = e.target
@@ -27,20 +27,22 @@ const UserInput = ({ state, setState, onSubmit }) => {
                 name="email"
                 onChange={onChangeInput}
             />
-            <TextFieldSimple
-                label="Password"
-                type="password"
-                required
-                name="password"
-                value={state.password}
-                onChange={onChangeInput}
-            />
+            {!update &&
+                <TextFieldSimple
+                    label="Password"
+                    type="password"
+                    required
+                    name="password"
+                    value={state.password}
+                    onChange={onChangeInput}
+                />
+            }
             <SelectField label="Role" name="role" value={state.role} onChange={onChangeInput} required>
                 <MenuItem value="admin">Admin</MenuItem>
                 <MenuItem value="hq">Hq</MenuItem>
                 <MenuItem value="teacher">Teacher</MenuItem>
             </SelectField>
-            <Button type="submit" variant="contained" fullWidth>Create</Button>
+            <Button type="submit" variant="contained" fullWidth>Save</Button>
         </form>
     )
 }

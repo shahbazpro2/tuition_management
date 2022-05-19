@@ -24,6 +24,15 @@ KpiRoute.route('/kpi')
             return _res.status(400).json(formateError(error))
         }
     })
+    .put(checkInputs(kpiFields), async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const res = await Kpi.updateOne({ _id }, _req.body)
+            return _res.status(200).json(formateRes("Kpi updated successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
     .delete(async (_req, _res) => {
         const _id = _req.query?.id
         try {

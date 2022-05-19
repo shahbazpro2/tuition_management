@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserApi } from "../api/auth";
+import { getUserApiThunk } from "../api/auth";
 import { url_login } from "utils/pageUrls";
 
 
@@ -22,7 +22,7 @@ export const authSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getUserApi.fulfilled, (state, { payload }) => {
+        builder.addCase(getUserApiThunk.fulfilled, (state, { payload }) => {
             if (!payload.error) {
                 state.user = payload.data
             } else {
