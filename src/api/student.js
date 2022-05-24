@@ -6,8 +6,8 @@ export const createStudentApi = (data) => {
     return responseApi(studentUrl, 'post', data)
 }
 
-export const getStudentsApi = () => {
-    return responseApi(`${studentUrl}/all`, 'get')
+export const getStudentsApi = (date) => {
+    return responseApi(`${studentUrl}/all?date=${date}`, 'get')
 }
 
 export const getStudentApi = (id) => {

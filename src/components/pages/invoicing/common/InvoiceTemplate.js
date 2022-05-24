@@ -51,12 +51,12 @@ const InvoiceTemplate = ({ data }) => {
                     </TableHead>
                     <TableBody>
 
-                        <TableRow>
+                        {/*   <TableRow>
                             <TableCell>{1}</TableCell>
                             <TableCell >{stPackage?.name}, {stPackage?.subject} Subjects, {stPackage?.days} Days</TableCell>
                             <TableCell align="right">{1}</TableCell>
                             <TableCell align="right">RM{stPackage?.amount}</TableCell>
-                        </TableRow>
+                        </TableRow> */}
 
                         {package_id &&
                             <TableRow>

@@ -10,6 +10,10 @@ export const getStudentInvoicesApi = async () => {
     return responseApi(`${studentInvoiceUrl}/all`, 'get')
 }
 
+export const getStudentInvoiceStudentApi = async (studentId) => {
+    return responseApi(`${studentInvoiceUrl}/student?id=${studentId}`, 'get')
+}
+
 export const getStudentInvoiceApi = async (id) => {
     return responseApi(`${studentInvoiceUrl}?id=${id}`, 'get')
 }

@@ -14,7 +14,6 @@ const schema = new Schema({
     courses: { type: [Schema.Types.ObjectId], ref: 'Course', required: true },
     health: { type: Boolean, required: true },
     language: { type: String, required: true },
-    date: { type: Date, default: Date.now },
-});
+}, { strict: false, timestamps: true });
 
 export default mongoose.model('Student', schema)

@@ -79,7 +79,18 @@ StudentInvoiceRoute.route('/student/invoice')
 StudentInvoiceRoute.route('/student/invoice/all')
     .get(async (_req, _res) => {
         try {
-            const res = await Invoice.find().sort('date')
+            const res = await Invoice.find().sort({ createdAt: -1 })
+            return _res.status(200).json(formateRes("Invoice fetched successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
+
+StudentInvoiceRoute.route('/student/invoice/student/')
+    .get(async (_req, _res) => {
+        const studentId = _req.query?.id
+        try {
+            const res = await Invoice.find({ student: studentId }).sort({ createdAt: -1 })
             return _res.status(200).json(formateRes("Invoice fetched successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))

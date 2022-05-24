@@ -25,7 +25,7 @@ const GenerateBillModal = ({ state, setState, onSubmit }) => {
         }
     }
     return <div className="space-y-7">
-        <TextFieldSimple type="date" label="Which Month" InputLabelProps={{ shrink: true }} value={state.date} name="date" onChange={onChange} />
+        <TextFieldSimple type="month" label="Which Month" InputLabelProps={{ shrink: true }} value={state.date} name="date" onChange={onChange} />
         <div className="space-y-3">
             <div className="text-lg">Additional item to include in</div>
             <div className="grid grid-cols-5 gap-3">
