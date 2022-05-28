@@ -6,8 +6,8 @@ export const createCenterApi = async (data) => {
     return responseApi(centerUrl, 'post', data)
 }
 
-export const getCentersApi = async () => {
-    return responseApi(`${centerUrl}/all`, 'get')
+export const getCentersApi = async (date) => {
+    return responseApi(`${centerUrl}/all?date=${date}`, 'get')
 }
 
 export const getCenterApi = async (id) => {
