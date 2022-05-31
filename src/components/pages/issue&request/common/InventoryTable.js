@@ -8,46 +8,41 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Checkbox } from '@mui/material';
 import TbCell from '../../../common/TableCell';
+import useApi from 'utils/hooks/useApi'
+import { getInventoriesApi } from 'api/inventory'
 
 
-function createData(id, description, qty) {
-    return { id, description, qty };
-}
+const InventoryTable = ({ selectInventories, setSelectInventories }) => {
+    const [, { data }] = useApi({}, getInventoriesApi)
 
-const rows = [
-    createData("1", 'Book 1', '10'),
-    createData("1", 'Book 1', '10'),
-    createData("1", 'Book 1', '10'),
-    createData("1", 'Book 1', '10'),
-    createData("1", 'Book 1', '10'),
+    const onChange = (id) => {
+        if (selectInventories.includes(id)) {
+            setSelectInventories(selectInventories.filter(item => item !== id))
+        } else {
+            setSelectInventories([...selectInventories, id])
+        }
+    }
 
-];
-
-const InventoryTable = () => {
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
                 <Table size="small" stickyHeader sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TbCell>ID</TbCell>
                             <TbCell>Select</TbCell>
                             <TbCell>Description</TbCell>
                             <TbCell>Qty</TbCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
+                        {data?.map((row, index) => (
                             <TableRow
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell>
-                                    {row.id}
-                                </TableCell>
-                                <TableCell align="left"  ><Checkbox /></TableCell>
-                                <TableCell align="left"  >{row.description}</TableCell>
-                                <TableCell align="left"  >{row.qty}</TableCell>
+                                <TableCell align="left"  ><Checkbox checked={selectInventories?.includes(row?._id)} onChange={() => onChange(row?._id)} /></TableCell>
+                                <TableCell align="left"  >{row?.description}</TableCell>
+                                <TableCell align="left"  >{row?.qty}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

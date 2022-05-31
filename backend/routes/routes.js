@@ -13,6 +13,7 @@ import OthersRoute from './OthersRoute.js'
 import PackageRoute from './PackageRoute.js'
 import PicRoute from './PicRoute.js'
 import StudentInvoiceRoute from './StudentInvoiceRoute.js'
+import StudentIssueRoute from './StudentIssueRoute.js'
 import StudentRoute from './StudentRoute.js'
 import UserRoute from './UserRoute.js'
 
@@ -33,7 +34,8 @@ const allRoutes = [
     [InventoryRoute],
     [StudentRoute],
     [AttendanceRoute],
-    [StudentInvoiceRoute]
+    [StudentInvoiceRoute],
+    [StudentIssueRoute]
 ]
 
 export default allRoutes
