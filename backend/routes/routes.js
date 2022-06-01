@@ -1,5 +1,6 @@
 import AttendanceRoute from './AttendanceRoute.js'
 import BankRoute from './BankRoute.js'
+import CenterInvoiceRoute from './CenterInvoiceRoute.js'
 import CenterRoute from './CenterRoute.js'
 import CourseLanguageRoute from './CourseLanguageRoute.js'
 import CourseRoute from './CourseRoute.js'
@@ -37,7 +38,8 @@ const allRoutes = [
     [AttendanceRoute],
     [StudentInvoiceRoute],
     [StudentIssueRoute],
-    [RequestHqRoute]
+    [RequestHqRoute],
+    [CenterInvoiceRoute]
 ]
 
 export default allRoutes

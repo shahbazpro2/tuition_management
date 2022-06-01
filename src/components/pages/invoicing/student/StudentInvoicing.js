@@ -8,7 +8,6 @@ import { url_centerInvoicing, url_studentInvoice, url_studentInvoicing } from 'u
 import useApi from 'utils/hooks/useApi';
 import { getStudentsApi } from 'api/student';
 import { createStudentInvoiceApi } from 'api/StudentInvoice'
-import moment from 'moment'
 import { useNavigate } from 'react-router-dom';
 import TextFieldSimple from 'components/common/textFields/TextFieldSimple';
 import { FeedbackContext } from 'context/FeedbackContext';

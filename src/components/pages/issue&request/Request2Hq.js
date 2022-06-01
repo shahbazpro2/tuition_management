@@ -20,7 +20,7 @@ const Request2Hq = () => {
     useEffect(() => {
         if (selectCenter) {
             getRequest(getRequestHqApi(selectCenter), ({ data }) => {
-                setSelectInventories(data?.inventories)
+                setSelectInventories(data?.inventories?.map(data => data._id))
             })
         }
     }, [selectCenter])
@@ -37,7 +37,7 @@ const Request2Hq = () => {
         createUpdate(createRequestHqApi({ centerId: selectCenter, inventories: selectInventories }))
     }
 
-
+    console.log('inventories', selectInventories)
 
     return (
         <div className="content">
@@ -55,7 +55,7 @@ const Request2Hq = () => {
                 Inventory To Request
             </div>
             <div className="mt-3">
-                <InventoryTable selectInventories={selectInventories} setSelectInventories={setSelectInventories} />
+                <InventoryTable selectInventories={selectInventories || []} setSelectInventories={setSelectInventories} />
             </div>
             <div className="mt-7 float-right mb-10">
                 <Button variant="contained" onClick={onSubmit}>Request</Button>

@@ -24,9 +24,9 @@ StudentInvoiceRoute.route('/student/invoice')
 
             }
             const res = await Invoice.create(payload)
-            return _res.status(201).json({ message: 'Invoice added successfully', data: res })
+            return _res.status(201).json({ message: 'Invoice created successfully', data: res })
         } catch (error) {
-            return _res.status(400).json(formateError(error, "Invoice already exist"))
+            return _res.status(400).json(formateError(error, "Invoice created failed"))
         }
     })
     .get(async (_req, _res) => {

@@ -19,7 +19,7 @@ RequestHqRoute.route('/request/hq')
     .get(async (_req, _res) => {
         const _id = _req.query?.id
         try {
-            const res = await RequestHq.findOne({ centerId: _id })
+            const res = await RequestHq.findOne({ centerId: _id }).populate('inventories')
             return _res.status(200).json(formateRes("fetched successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))

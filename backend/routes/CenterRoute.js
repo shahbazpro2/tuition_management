@@ -43,11 +43,47 @@ CenterRoute.route('/center')
         }
     })
 
-CenterRoute.route('/center/all')
+/* CenterRoute.route('/center/all')
     .get(async (_req, _res) => {
         try {
             const res = await Center.find().populate(["pic", "kpi"]).sort('date')
             return _res.status(200).json(formateRes("Center fetched successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    }) */
+
+
+CenterRoute.route('/center/all')
+    .get(async (_req, _res) => {
+        const date = _req.query?.date
+        console.log('date', date)
+        try {
+            const res = await Center.aggregate([
+
+                {
+
+                    $lookup: {
+                        from: 'centerinvoices',
+
+                        let: { id: '$_id' },
+                        as: 'invoices',
+                        pipeline: [
+                            {
+                                $match: {
+                                    $expr: {
+                                        $and: [
+                                            { $eq: ['$center', '$$id'] },
+                                            { $eq: ['$invoiceDate', date] },
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+
+                }])
+            return _res.status(200).json(formateRes("Student fetched successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))
         }

@@ -20,16 +20,16 @@ const rows = [
 const InvoiceTemplate = ({ data }) => {
 
     const { package: stPackage } = data?.student || {}
-    const { student, discount, inventory_id, inventory_qty, package_id, package_qty, other_id, other_qty } = data || {}
+    const { center, discount, inventory_id } = data || {}
 
     return <div className="content dark:text-white print:text-black">
         <div className="grid grid-cols-2">
             <div className="flex space-x-5">
                 <img src={`${process.env.PUBLIC_URL}/assets/logo_default.png`} width="45" />
                 <div>
-                    <div>{student?.name}</div>
+                    <div>{center?.name}</div>
                     <div>
-                        {student?.address}
+                        {center?.address}
                     </div>
                 </div>
             </div>
@@ -51,38 +51,18 @@ const InvoiceTemplate = ({ data }) => {
                     </TableHead>
                     <TableBody>
 
-                        {/*   <TableRow>
-                            <TableCell>{1}</TableCell>
-                            <TableCell >{stPackage?.name}, {stPackage?.subject} Subjects, {stPackage?.days} Days</TableCell>
-                            <TableCell align="right">{1}</TableCell>
-                            <TableCell align="right">RM{stPackage?.amount}</TableCell>
-                        </TableRow> */}
 
-                        {package_id &&
-                            <TableRow>
-                                <TableCell>{2}</TableCell>
-                                <TableCell >{package_id?.name}, {package_id?.subject} Subjects, {package_id?.days} Days</TableCell>
-                                <TableCell align="right">{package_qty}</TableCell>
-                                <TableCell align="right">RM{package_id?.amount}</TableCell>
-                            </TableRow>
-                        }
+
 
                         {inventory_id &&
                             <TableRow>
                                 <TableCell>{3}</TableCell>
                                 <TableCell >{inventory_id?.name}, {inventory_id?.description}</TableCell>
-                                <TableCell align="right">{inventory_qty}</TableCell>
+                                <TableCell align="right">{inventory_id?.qty}</TableCell>
                                 <TableCell align="right">RM{inventory_id?.amount}</TableCell>
                             </TableRow>
                         }
-                        {other_id &&
-                            <TableRow>
-                                <TableCell>{4}</TableCell>
-                                <TableCell >{stPackage?.name}, {stPackage?.subject} Subjects, {stPackage?.days} Days</TableCell>
-                                <TableCell align="right">{other_qty}</TableCell>
-                                <TableCell align="right">RM{stPackage?.amount}</TableCell>
-                            </TableRow>
-                        }
+
                         <TableRow>
                             <TableCell colSpan={3} align="right">Total</TableCell>
                             <TableCell align="right">RM{stPackage?.amount}</TableCell>

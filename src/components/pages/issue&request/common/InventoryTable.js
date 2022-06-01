@@ -16,7 +16,7 @@ const InventoryTable = ({ selectInventories, setSelectInventories }) => {
     const [, { data }] = useApi({}, getInventoriesApi)
 
     const onChange = (id) => {
-        if (selectInventories.includes(id)) {
+        if (selectInventories?.includes(id)) {
             setSelectInventories(selectInventories.filter(item => item !== id))
         } else {
             setSelectInventories([...selectInventories, id])
