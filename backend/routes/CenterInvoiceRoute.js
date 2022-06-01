@@ -35,6 +35,15 @@ CenterInvoiceRoute.route('/center/invoice')
             return _res.status(400).json(formateError(error))
         }
     })
+    .put(async (_req, _res) => {
+        const _id = _req.query?.id
+        try {
+            const res = await CenterInvoice.updateOne({ _id }, _req.body)
+            return _res.status(200).json(formateRes("Invoice updated successfully", res))
+        } catch (error) {
+            return _res.status(400).json(formateError(error))
+        }
+    })
 
 
 CenterInvoiceRoute.route('/center/invoice/all')
