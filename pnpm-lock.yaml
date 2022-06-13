@@ -28,6 +28,7 @@ specifiers:
   postcss: ^8.4.5
   react: ^17.0.2
   react-app-rewire-alias: ^1.1.7
+  react-csv: ^2.2.2
   react-dom: ^17.0.2
   react-redux: ^7.2.6
   react-router-dom: ^6.2.1
@@ -58,6 +59,7 @@ dependencies:
   pdfjs-dist: 2.13.216
   react: 17.0.2
   react-app-rewire-alias: 1.1.7
+  react-csv: 2.2.2
   react-dom: 17.0.2_react@17.0.2
   react-redux: 7.2.8_sfoxds7t5ydpegc3knd667wn6m
   react-router-dom: 6.3.0_sfoxds7t5ydpegc3knd667wn6m
@@ -8970,6 +8972,10 @@ packages:
     resolution: {integrity: sha512-vn4xU3E/wzh2/fGxda9ZQ6CtW2XdZB/WxAgNOdNPyUcX3hA3mh+kCRGwo19gSjzeTPpoZQwZRblHabLr6mwOTw==}
     peerDependencies:
       react-app-rewired: 1 || ^2
+    dev: false
+
+  /react-csv/2.2.2:
+    resolution: {integrity: sha512-RG5hOcZKZFigIGE8LxIEV/OgS1vigFQT4EkaHeKgyuCbUAu9Nbd/1RYq++bJcJJ9VOqO/n9TZRADsXNDR4VEpw==}
     dev: false
 
   /react-dev-utils/12.0.1_vzdnq34ogkorkjhrihd2nzxd6u:
