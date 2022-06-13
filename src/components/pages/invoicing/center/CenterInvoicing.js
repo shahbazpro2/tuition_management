@@ -33,7 +33,7 @@ export default function CenterInvoicing() {
         { field: 'officeNumber', headerName: 'Office Number', width: 130 },
         {
             field: 'status', headerName: 'Status', width: 130, renderCell: ({ row }) => {
-                return row?.invoices.length > 0 ? row?.invoices[0]?.status : ''
+                return row?.invoices.length > 0 ? row?.invoices[row?.invoices.length - 1]?.status : ''
             }
         },
         {

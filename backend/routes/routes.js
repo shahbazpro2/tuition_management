@@ -13,6 +13,7 @@ import KpiRoute from './KpiRoute.js'
 import OthersRoute from './OthersRoute.js'
 import PackageRoute from './PackageRoute.js'
 import PicRoute from './PicRoute.js'
+import ReportRoute from './ReportRoute.js'
 import RequestHqRoute from './RequestHqRoute.js'
 import StudentInvoiceRoute from './StudentInvoiceRoute.js'
 import StudentIssueRoute from './StudentIssueRoute.js'
@@ -39,7 +40,8 @@ const allRoutes = [
     [StudentInvoiceRoute],
     [StudentIssueRoute],
     [RequestHqRoute],
-    [CenterInvoiceRoute]
+    [CenterInvoiceRoute],
+    [ReportRoute]
 ]
 
 export default allRoutes
