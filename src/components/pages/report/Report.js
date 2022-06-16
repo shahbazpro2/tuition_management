@@ -2,18 +2,19 @@ import { Button } from '@mui/material'
 import { MenuItem } from '@mui/material'
 import { getCentersApi } from 'api/center'
 import { getCenterReportApi, getStudentReportApi } from 'api/report'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import useApi from 'utils/hooks/useApi'
 import SelectField from '../../common/textFields/SelectField'
 import TextFieldSimple from '../../common/textFields/TextFieldSimple'
 import AddEditLayout from '../common/AddEditLayout'
-import { CSVLink } from "react-csv";
+import { CSVDownload, CSVLink } from "react-csv";
 import { FeedbackContext } from 'context/FeedbackContext'
 import { FormControlLabel } from '@mui/material'
 import { Checkbox } from '@mui/material'
 import { getStudentsApi } from 'api/student'
 
 const Report = () => {
+    const csvDownloadRef = useRef()
     const context = useContext(FeedbackContext)
     const [, { data }] = useApi({}, getCentersApi)
     const [, { data: studentData }] = useApi({}, getStudentsApi)
@@ -39,39 +40,18 @@ const Report = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         console.log(state)
-        const res = await new Promise((resolve, reject) => {
-            getCenterInvoices(getCenterReportApi(state), ({ data }) => {
-                resolve(data)
-            })
-        })
-        return res
-    }
-
-    const onCsvDownload = (e, done) => {
-        const { report, center, fromDate, toDate, student } = state
-        console.log('state', state)
-        if (!report || !fromDate || !toDate) {
-            done(false)
-            return context.setFeedback('Please fill all the fields', true)
-        } else if (checkBox === 'student' && !student) {
-            done(false)
-            return context.setFeedback('Please fill all the fields', true)
-        } else if (checkBox === 'center' && !center) {
-            done(false)
-            return context.setFeedback('Please fill all the fields', true)
-        }
-
         if (checkBox === 'student') {
-            getCenterInvoices(getStudentReportApi(state), () => {
+
+            getCenterInvoices(getStudentReportApi(state), ({ data }) => {
+
                 setTimeout(() => {
-                    done()
+                    csvDownloadRef.current.link.click()
                 }, 500)
             })
         } else {
             getCenterInvoices(getCenterReportApi(state), () => {
                 setTimeout(() => {
-                    done()
-                }, 500)
+                }, 1000)
             })
         }
     }
@@ -124,7 +104,11 @@ const Report = () => {
                 </div>
                 {/*        <CSVLink data={excelData || []}>Download me</CSVLink> */}
                 <div className="grid grid-cols-1 pt-10">
-                    <CSVLink asyncOnClick={true} data={excelData || []} onClick={onCsvDownload} className='cursor-pointer h-20 text-center' >
+                    <Button type="submit" className='cursor-pointer h-20 text-center' >
+                        <img src="https://img.icons8.com/color/48/000000/ms-excel.png" className='m-auto w-12' /><br />
+                        Generate Excel
+                    </Button>
+                    <CSVLink ref={csvDownloadRef} data={excelData || []} className='cursor-pointer h-20 text-center' >
                         <img src="https://img.icons8.com/color/48/000000/ms-excel.png" className='m-auto w-12' /><br />
                         Generate Excel
                     </CSVLink>
