@@ -90,13 +90,17 @@ StudentRoute.route('/student/all')
                                             { $eq: ['$invoiceDate', date] },
                                         ]
                                     }
-                                }
-                            }
+                                },
+
+                            },
+
                         ]
                     }
 
                 }])
-            return _res.status(200).json(formateRes("Student fetched successfully", res))
+
+            const endRes = await Student.populate(res, ['package'])
+            return _res.status(200).json(formateRes("Student fetched successfully", endRes))
         } catch (error) {
             return _res.status(400).json(formateError(error))
         }

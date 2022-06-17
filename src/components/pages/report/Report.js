@@ -41,16 +41,15 @@ const Report = () => {
         e.preventDefault()
         console.log(state)
         if (checkBox === 'student') {
-
-            getCenterInvoices(getStudentReportApi(state), ({ data }) => {
-
+            getCenterInvoices(getStudentReportApi(state), () => {
                 setTimeout(() => {
                     csvDownloadRef.current.link.click()
-                }, 500)
+                }, 1000)
             })
         } else {
             getCenterInvoices(getCenterReportApi(state), () => {
                 setTimeout(() => {
+                    csvDownloadRef.current.link.click()
                 }, 1000)
             })
         }
@@ -104,11 +103,12 @@ const Report = () => {
                 </div>
                 {/*        <CSVLink data={excelData || []}>Download me</CSVLink> */}
                 <div className="grid grid-cols-1 pt-10">
-                    <Button type="submit" className='cursor-pointer h-20 text-center' >
-                        <img src="https://img.icons8.com/color/48/000000/ms-excel.png" className='m-auto w-12' /><br />
-                        Generate Excel
-                    </Button>
-                    <CSVLink ref={csvDownloadRef} data={excelData || []} className='cursor-pointer h-20 text-center' >
+                    <div className="flex justify-center">
+                        <Button variant='contained' startIcon={<img src="https://img.icons8.com/color/48/000000/ms-excel.png" className='m-auto w-12' />} type="submit" className='cursor-pointer h-20 text-center w-52' >
+                            Generate Excel
+                        </Button>
+                    </div>
+                    <CSVLink ref={csvDownloadRef} data={excelData || []} className='cursor-pointer h-20 text-center hidden' >
                         <img src="https://img.icons8.com/color/48/000000/ms-excel.png" className='m-auto w-12' /><br />
                         Generate Excel
                     </CSVLink>

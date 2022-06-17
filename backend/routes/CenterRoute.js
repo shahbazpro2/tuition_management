@@ -83,6 +83,7 @@ CenterRoute.route('/center/all')
                     }
 
                 }])
+            const endRes = await Center.populate(res, ['pic'])
             return _res.status(200).json(formateRes("Center fetched successfully", res))
         } catch (error) {
             return _res.status(400).json(formateError(error))
