@@ -12,10 +12,11 @@ const Attendence = () => {
     const [course, setCourse] = useState('')
     const [, { data }] = useApi({}, getStudentCoursesApi)
     const [getStudents, { data: students }] = useApi({ errMsg: true })
-    const navigate = useNavigate()
+    const [attendance, setAttendance] = useState([])
 
 
     useEffect(() => {
+        setAttendance([])
         if (course)
             getStudents(getStudentsCourseApi(course))
     }, [course])
@@ -34,15 +35,15 @@ const Attendence = () => {
                 </div>
                 <div className="col-span-3">
                     <div className="w-[200px] ml-auto">
-                        <TextFieldSimple type="date" label="Date" shrink={true} />
+                        <TextFieldSimple type="date" label="Date" InputLabelProps={{ shrink: true }} />
                     </div>
                 </div>
             </div>
             <div className="">
-                <AttendenceList data={students} />
+                <AttendenceList data={students} attendance={attendance} setAttendance={setAttendance} />
             </div>
             <div className="flex justify-between">
-                <Button variant="contained" onClick={() => navigate(url_attendenceHistory)}>Attendence History</Button>
+                {/*  <Button variant="contained" onClick={() => navigate(url_attendenceHistory)}>Attendence History</Button> */}
                 <Button variant="contained" color="success">Submit</Button>
             </div>
         </div>

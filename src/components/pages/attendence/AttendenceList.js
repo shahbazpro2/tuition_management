@@ -7,25 +7,22 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Checkbox } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import TbCell from '../../common/TableCell';
 
+const AttendenceList = ({ data, attendance, setAttendance }) => {
 
-function createData(id, studentName, fatherName, motherName) {
-    return { id, studentName, fatherName, motherName };
-}
+    const onAttendanceChange = (id, index) => {
+        const newAttendance = [...attendance]
+        if (newAttendance[index] !== id) {
+            newAttendance[index] = id
+            setAttendance(newAttendance)
+        }
+        else {
+            setAttendance(newAttendance.filter(item => item !== id))
+        }
+    }
 
-const rows = [
-    createData("001", 'Jason', "Male", "Frankie", 'May'),
-    createData("001", 'Jason', "Male", "Frankie", 'May'),
-    createData("001", 'Jason', "Male", "Frankie", 'May'),
-    createData("001", 'Jason', "Male", "Frankie", 'May'),
-    createData("001", 'Jason', "Male", "Frankie", 'May'),
 
-];
-
-const AttendenceList = ({ data }) => {
-    const navigate = useNavigate()
     return (
         <div>
             <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -33,7 +30,6 @@ const AttendenceList = ({ data }) => {
                     <TableHead>
                         <TableRow>
                             <TbCell>ID</TbCell>
-                            <TbCell>Select</TbCell>
                             <TbCell>Student Name</TbCell>
                             <TbCell>Father Name</TbCell>
                             <TbCell>Mother Name</TbCell>
@@ -45,10 +41,7 @@ const AttendenceList = ({ data }) => {
                                 key={index}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell align="left"  ><Checkbox /></TableCell>
-                                <TableCell>
-                                    {row._id}
-                                </TableCell>
+                                <TableCell align="left"  ><Checkbox checked={attendance.find(element => element === row?._id) ? true : false} onChange={() => onAttendanceChange(row?._id, index)} /></TableCell>
                                 <TableCell align="left"  >{row.name}</TableCell>
                                 <TableCell align="left"  >{row.fatherName}</TableCell>
                                 <TableCell align="left"  >{row.motherName}</TableCell>
